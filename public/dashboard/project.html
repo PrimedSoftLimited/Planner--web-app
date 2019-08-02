@@ -128,8 +128,8 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item border-0 col-12">Cull Obsidian joined the team<small
                                             style="float: right" class="">10:32am</small></li>
-                                    <li class="list-group-item border-0 col-12">Ebony Maw joined the team<small style="float: right"
-                                            class="">10:32am</small></li>
+                                    <li class="list-group-item border-0 col-12">Ebony Maw joined the team<small
+                                            style="float: right" class="">10:32am</small></li>
                                     <li class="list-group-item border-0 col-12">Proxima Midnight joined the team<small
                                             style="float: right" class="">10:32am</small></li>
                                     <li class="list-group-item border-0 col-12">Corvus Glaive joined the team<small
@@ -154,15 +154,133 @@
                                 </ul>
                             </div>
 
-                            <div class="tab-pane fade show active mt-2 row" id="milestones" role="tabpanel"
+                            <div class="tab-pane fade show mt-2" id="milestones" role="tabpanel"
                                 aria-labelledby="milestones-tab">
+                                <h5 class="mb-3">Here's every milestone currently available for this project</h5>
+                                <!-- <div class="col-8 milestones-list border-right">
+                                    <div class="col-12 row milestone px-0 mx-0 border-bottom">
+                                        <div class="col-1 px-0">
+                                            <div class="completed-box mt-2 mx-auto text-center">
+                                                <i class="fas fa fa-check mt-2"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 milestone-details border-right">
+                                            <div class="col-12 milestone-name">
+                                                <span>Create authentication pages</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="progress milestone-progress">
+                                                <div class="progress-bar milestone-progress-bar progress-bar-striped progress-bar-animated"
+                                                    role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                    aria-valuemax="100" style="width: 75%">75%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="milestones-list col-8 border-right">
+                                    <div class="col-12 mb-3 row milestone border">
+                                        <div class="col-1 px-0">
+                                            <div class="completed-box mt-3 mx-auto text-center">
+                                                <i class="fas fa fa-check mt-2"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <p data-toggle="modal" data-target="#milestoneModal"
+                                                class="mt-3 mb-0 milestone-name">Create authentication pages</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="progress milestone-progress mt-4">
+                                                <div class="progress-bar milestone-progress-bar progress-bar-striped progress-bar-animated"
+                                                    role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                    aria-valuemax="100" style="width: 25%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="assigned-user-img mt-2 border ml-auto">
+                                                <img src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3 row milestone border">
+                                        <div class="col-1 px-0">
+                                            <div class="completed-box mt-3 mx-auto text-center">
+                                                <i class="fas fa fa-check mt-2"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 scroller" style="scrollbar-width:1px">
+                                            <p data-toggle="modal" data-target="#milestoneModal"
+                                                class="mt-3 mb-0 milestone-name">Create Landing Page</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="progress milestone-progress mt-4">
+                                                <div class="progress-bar milestone-progress-bar progress-bar-striped progress-bar-animated"
+                                                    role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                    aria-valuemax="100" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="assigned-user-img mt-2 border ml-auto">
+                                                <img src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3 row milestone border">
+                                        <div class="col-1 px-0">
+                                            <div class="completed-box mt-3 mx-auto text-center">
+                                                <i class="fas fa fa-check mt-2"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <p data-toggle="modal" data-target="#milestoneModal"
+                                                class="mt-3 mb-0 milestone-name">Draw dashboard Mockups</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="progress milestone-progress mt-4">
+                                                <div class="progress-bar milestone-progress-bar progress-bar-striped progress-bar-animated"
+                                                    role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                    aria-valuemax="100" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="assigned-user-img mt-2 border ml-auto">
+                                                <img src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3 row milestone border">
+                                        <div class="col-1 px-0">
+                                            <div class="completed-box mt-3 mx-auto text-center">
+                                                <i class="fas fa fa-check mt-2"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <p data-toggle="modal" data-target="#milestoneModal"
+                                                class="mt-3 mb-0 milestone-name">Call Authhentication APIs</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="progress milestone-progress mt-4">
+                                                <div class="progress-bar milestone-progress-bar progress-bar-striped progress-bar-animated"
+                                                    role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                    aria-valuemax="100" style="width: 100%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="assigned-user-img mt-2 border ml-auto">
+                                                <img src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
+    </div>
     </div>
 
 
@@ -207,6 +325,232 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="milestoneModal" tabindex="-1" role="dialog" aria-labelledby="milestoneModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content mx-auto">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="milestoneModalLabel">Here's all the tasks for this milestone
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid border px-0">
+                        <div class="col-12 milestones-body border row px-0 mx-0">
+                            <div class="col border-right milestone-sections mr-2">
+                                <div class="section-title col-12 border-bottom">
+                                    <h6 class="mt-3"><b>Upcoming (5)</b></h6>
+                                </div>
+                                <div class="tasks-list scroller col-12  px-0">
+                                    <div class="task col-12 border mt-2">
+                                        <div class="task-name col-12 text-center">
+                                            <h6 class="mt-2 mb-0">Confirmation Page</h6>
+                                        </div>
+                                        <div class="task-details col-12 row">
+                                            <div class="t-assigned col-2 px-0 text-center">
+                                                <img class="" src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                            <div class="task-duration col-10">
+                                                <div class="td-holder col-12 px-0 text-center mt-1">
+                                                    <span>Aug 20 - Aug 24</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 task-utility text-center">
+                                            <button class="btn btn-brand py-0">Start</button>
+                                        </div>
+                                    </div>
+                                    <div class="task col-12 border mt-2">
+                                        <div class="task-name col-12 text-center">
+                                            <h6 class="mt-2 mb-0">Confirmation Page</h6>
+                                        </div>
+                                        <div class="task-details col-12 row">
+                                            <div class="t-assigned col-2 px-0 text-center">
+                                                <img class="" src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                            <div class="task-duration col-10">
+                                                <div class="td-holder col-12 px-0 text-center mt-1">
+                                                    <span>Aug 20 - Aug 24</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 task-utility text-center">
+                                            <button class="btn btn-brand py-0">Start</button>
+                                        </div>
+                                    </div>
+                                    <div class="task col-12 border mt-2">
+                                        <div class="task-name col-12 text-center">
+                                            <h6 class="mt-2 mb-0">Confirmation Page</h6>
+                                        </div>
+                                        <div class="task-details col-12 row">
+                                            <div class="t-assigned col-2 px-0 text-center">
+                                                <img class="" src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                            <div class="task-duration col-10">
+                                                <div class="td-holder col-12 px-0 text-center mt-1">
+                                                    <span>Aug 20 - Aug 24</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 task-utility text-center">
+                                            <button class="btn btn-brand py-0">Start</button>
+                                        </div>
+                                    </div>
+                                    <div class="task col-12 border mt-2">
+                                        <div class="task-name col-12 text-center">
+                                            <h6 class="mt-2 mb-0">Confirmation Page</h6>
+                                        </div>
+                                        <div class="task-details col-12 row">
+                                            <div class="t-assigned col-2 px-0 text-center">
+                                                <img class="" src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                            <div class="task-duration col-10">
+                                                <div class="td-holder col-12 px-0 text-center mt-1">
+                                                    <span>Aug 20 - Aug 24</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 task-utility text-center">
+                                            <button class="btn btn-brand py-0">Start</button>
+                                        </div>
+                                    </div>
+                                    <div class="task col-12 border mt-2">
+                                        <div class="task-name col-12 text-center">
+                                            <h6 class="mt-2 mb-0">Confirmation Page</h6>
+                                        </div>
+                                        <div class="task-details col-12 row">
+                                            <div class="t-assigned col-2 px-0 text-center">
+                                                <img class="" src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                            <div class="task-duration col-10">
+                                                <div class="td-holder col-12 px-0 text-center mt-1">
+                                                    <span>Aug 20 - Aug 24</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 task-utility text-center">
+                                            <button class="btn btn-brand py-0">Start</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col border-right milestone-sections mr-2">
+                                <div class="section-title col-12 border-bottom">
+                                    <h6 class="mt-3"><b>Ongoing (2)</b></h6>
+                                </div>
+                                <div class="tasks-list scroller col-12  px-0">
+                                    <div class="task col-12 border mt-2">
+                                        <div class="task-name col-12 text-center">
+                                            <h6 class="mt-2 mb-0">Sign In Page</h6>
+                                        </div>
+                                        <div class="task-details col-12 row">
+                                            <div class="t-assigned col-2 px-0 text-center">
+                                                <img class="" src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                            <div class="task-duration col-10">
+                                                <div class="td-holder col-12 px-0 text-center mt-1">
+                                                    <span>Aug 20 - Aug 24</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 task-utility text-center">
+                                            <button class="btn btn-brand py-0">Finish</button>
+                                        </div>
+                                    </div>
+                                    <div class="task col-12 border mt-2">
+                                        <div class="task-name col-12 text-center">
+                                            <h6 class="mt-2 mb-0">Sign In Page</h6>
+                                        </div>
+                                        <div class="task-details col-12 row">
+                                            <div class="t-assigned col-2 px-0 text-center">
+                                                <img class="" src="../Images/thanos.jpg" alt="">
+                                            </div>
+                                            <div class="task-duration col-10">
+                                                <div class="td-holder col-12 px-0 text-center mt-1">
+                                                    <span>Aug 20 - Aug 24</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 task-utility text-center">
+                                            <button class="btn btn-brand py-0">Finish</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col border-right milestone-sections px-0">
+                                <div class="section-title col-12 border-bottom">
+                                    <h6 class="mt-3"><b>Completed (3)</b></h6>
+                                    <div class="tasks-list scroller col-12  px-0">
+                                        <div class="task col-12 border mt-2">
+                                            <div class="task-name col-12 text-center">
+                                                <h6 class="mt-2 mb-0">Sign Up Page</h6>
+                                            </div>
+                                            <div class="task-details col-12 row">
+                                                <div class="t-assigned col-2 px-0 text-center">
+                                                    <img class="" src="../Images/thanos.jpg" alt="">
+                                                </div>
+                                                <div class="task-duration col-10">
+                                                    <div class="td-holder col-12 px-0 text-center mt-1">
+                                                        <span>Aug 20 - Aug 24</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 task-utility text-center">
+                                                <button class="btn btn-outline-brand py-0" disabled>Finished</button>
+                                            </div>
+                                        </div>
+                                        <div class="task col-12 border mt-2">
+                                            <div class="task-name col-12 text-center">
+                                                <h6 class="mt-2 mb-0">Sign Up Page</h6>
+                                            </div>
+                                            <div class="task-details col-12 row">
+                                                <div class="t-assigned col-2 px-0 text-center">
+                                                    <img class="" src="../Images/thanos.jpg" alt="">
+                                                </div>
+                                                <div class="task-duration col-10">
+                                                    <div class="td-holder col-12 px-0 text-center mt-1">
+                                                        <span>Aug 20 - Aug 24</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 task-utility text-center">
+                                                <button class="btn btn-outline-brand py-0" disabled>Finished</button>
+                                            </div>
+                                        </div>
+                                        <div class="task col-12 border mt-2">
+                                            <div class="task-name col-12 text-center">
+                                                <h6 class="mt-2 mb-0">Sign Up Page</h6>
+                                            </div>
+                                            <div class="task-details col-12 row">
+                                                <div class="t-assigned col-2 px-0 text-center">
+                                                    <img class="" src="../Images/thanos.jpg" alt="">
+                                                </div>
+                                                <div class="task-duration col-10">
+                                                    <div class="td-holder col-12 px-0 text-center mt-1">
+                                                        <span>Aug 20 - Aug 24</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 task-utility text-center">
+                                                <button class="btn btn-outline-brand py-0" disabled>Finished</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save
+                        changes</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -222,4 +566,5 @@
     new WOW().init();
 </script>
 <script src="../js/dashboardJS/projectChart.js"></script>
+
 </html>

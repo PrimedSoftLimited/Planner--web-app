@@ -35,3 +35,106 @@
 .project-chart{
     height: 50vh;
 }
+.milestone{
+    min-height: 9vh;
+    border-radius: 5px;
+    border: 1px solid #343a40;
+}
+.milestones-list{
+    height: 100%;
+}
+.completed-box{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    color: grey;
+    border: 1px solid grey;
+}
+.completed-box:hover{
+    color: white;
+    background-color: grey;
+}
+.milestone-name{
+    font-size: 14px;
+}
+.milestone-name:hover{
+    color: grey;
+    cursor: pointer;
+}
+.milestone-progress{
+    background-color: white;
+    border: 1px solid #343a40;
+    border-radius: 5px;
+    height: 7px;
+    width: 10vw;
+}
+.milestone-progress-bar{
+    background-color: #343a40;
+}
+.assigned-user-img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.assigned-user-img img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+.view-milestone{
+    font-size: 16px;
+    border-radius: 10px;
+}
+#milestoneModal .modal-dialog{
+    max-width: 100%;
+}
+#milestoneModal .modal-content{
+    width: 80vw;
+    height: 90vh;
+}
+.milestones-body{
+    height: 70vh;
+}
+.milestone-sections{
+    height: 100%;
+}
+.section-title{
+    height: 5vh;
+}
+.tasks-list{
+    height: 60vh;
+}
+.task{
+    height: 15vh;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.task-name h6{
+    font-weight: 400;
+    font-size: 14px;
+}
+.task-details{
+    height: 5vh;
+}
+.t-assigned img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+.td-holder{
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+.td-holder span{
+    font-size: 12px;
+    font-weight: bold;
+}
+.task-utility{
+    height: 5vh;
+}
+.task-utility button{
+    height: 20px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/workspace.css">
+    <script src="./js/welcome/base.js" defer></script>
+    <script src="./js/welcome/verify_code.js" defer></script>
+    <title>plannerr</title>
+</head>
+
+<body class="authentication-body">
+    <nav class="navbar navbar-expand-lg navbar-light bg-brand our-nav">
+        <span id="open-slide">
+            <a href="#" onclick="openSlideMenu()">
+                <svg width="30" height="30">
+                    <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
+                    <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
+                    <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
+                </svg>
+            </a>
+        </span>
+        <button onclick="location.href='index.html'" class="btn btn-default logo-btn">plannerr</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+            <ul class="navbar-nav ml-auto">
+                <li class="add-project-nav mr-5 mt-2"><i style="color: lightgrey"
+                        class="add-project-icon fa fas fa-plus fa-lg"></i></li>
+                <li class="mr-5 mt-2"><i style="color: lightgrey" class="projects-icon fa fas fa-folder fa-lg"></i></li>
+                <li class="notifs-nav mr-5 mt-2"><i style="color: lightgrey"
+                        class="notifs-icon fa fas fa-bell fa-lg"></i></li>
+                <li class="nav-item dropdown mx-2">
+                    <a style="color: lightgrey" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Dashboard</a>
+                        <a class="dropdown-item" href="#">Projects</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </div>
+                </li>
+                <div class="user-image-nav border mx-2 mr-5 ml-4">
+
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="company col-12">
+                <h4 class="mt-2">Primedsoft</h4>
+            </div>
+            <div class="col-12 row dashboard-full px-0">
+                <div class="col-3 workspace-nav">
+                    <div class="border mt-4 p-3 team-con">
+                        <div class="col-12 team-leader">
+                            <p class="mb-0">Team Leader</p>
+                            <span>Emma (You)</span>
+                        </div>
+                        <div class="col-12 team-members row scroller">
+                            <p class="mb-0 col-12">Team Members</p>
+                            <span class="col-12">Jane</span>
+                            <span class="col-12">Susan</span>
+                            <span class="col-12">Jackson</span>
+                            <span class="col-12">Miranda</span>
+                            <span class="col-12">Hannah</span>
+                            <span class="col-12">Josh</span>
+                            <span class="col-12">Franklin</span>
+                            <span class="col-12">Sanjay</span>
+                            <span class="col-12">Mary</span>
+                            <span class="col-12">Vanya</span>
+                            <span class="col-12">Friedrich</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="workspace-body border col-9 px-0">
+                    <div class="col-12 to-dash-btn text-right mt-2 border-bottom">
+                        <button onclick="location.href='project.html'" class="btn btn-brand mb-2">To Project</button>
+                    </div>
+                    <div class="row project-data col-12">
+                        <div class="col-8 tasks-workspace border-right">
+                            <div class="col-12 border-bottom task-highlight mt-3 row ml-1">
+                                <div class="col-1 px-0">
+                                    <div class="completed-box mt-1 mx-auto text-center">
+                                        <i class="fas fa fa-check mt-2"></i>
+                                    </div>
+                                </div>
+                                <div class="col-7 pt-2">
+                                    <span class="task-name">Sign Up Page</span>
+                                    <span>&bull;</span>
+                                    <span class="task-milestone">Authentication Pages</span>
+                                </div>
+                                <div class="col-3">
+                                    <div class="task-status task-ongoing mt-2 col-10">
+                                        <span>ongoing</span>
+                                    </div>
+                                </div>
+                                <div class="col-1 px-0">
+                                    <button class="btn btn-brand to-task-btn mt-1 p-0">
+                                        <i class="fas fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 border-bottom task-highlight mt-3 row ml-1">
+                                <div class="col-1 px-0">
+                                    <div class="completed-box mt-1 mx-auto text-center">
+                                        <i class="fas fa fa-check mt-2"></i>
+                                    </div>
+                                </div>
+                                <div class="col-7 pt-2">
+                                    <span class="task-name">Sign In Page</span>
+                                    <span>&bull;</span>
+                                    <span class="task-milestone">Authentication Pages</span>
+                                </div>
+                                <div class="col-3">
+                                    <div class="task-status task-upcoming mt-2 px-0 text-center col-10">
+                                        <span>upcoming</span>
+                                    </div>
+                                </div>
+                                <div class="col-1 px-0">
+                                    <button class="btn btn-brand to-task-btn mt-1 p-0">
+                                        <i class="fas fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 border-bottom task-highlight mt-3 row ml-1">
+                                <div class="col-1 px-0">
+                                    <div class="completed-box mt-1 mx-auto text-center">
+                                        <i class="fas fa fa-check mt-2"></i>
+                                    </div>
+                                </div>
+                                <div class="col-7 pt-2">
+                                    <span class="task-name">Confirmation Page</span>
+                                    <span>&bull;</span>
+                                    <span class="task-milestone">Authentication Pages</span>
+                                </div>
+                                <div class="col-3">
+                                    <div class="task-status task-upcoming mt-2 px-0 text-center col-10">
+                                        <span>upcoming</span>
+                                    </div>
+                                </div>
+                                <div class="col-1 px-0">
+                                    <button class="btn btn-brand to-task-btn mt-1 p-0">
+                                        <i class="fas fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 border-bottom task-highlight mt-3 row ml-1">
+                                <div class="col-1 px-0">
+                                    <div class="completed-box mt-1 mx-auto text-center">
+                                        <i class="fas fa fa-check mt-2"></i>
+                                    </div>
+                                </div>
+                                <div class="col-7 pt-2">
+                                    <span class="task-name">Forgot Password Page</span>
+                                    <span>&bull;</span>
+                                    <span class="task-milestone">Authentication Pages</span>
+                                </div>
+                                <div class="col-3">
+                                    <div class="task-status task-upcoming mt-2 px-0 text-center col-10">
+                                        <span>upcoming</span>
+                                    </div>
+                                </div>
+                                <div class="col-1 px-0">
+                                    <button class="btn btn-brand to-task-btn mt-1 p-0">
+                                        <i class="fas fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 border-bottom task-highlight mt-3 row ml-1">
+                                <div class="col-1 px-0">
+                                    <div class="completed-box mt-1 mx-auto text-center">
+                                        <i class="fas fa fa-check mt-2"></i>
+                                    </div>
+                                </div>
+                                <div class="col-7 pt-2">
+                                    <span class="task-name">Main dashboard Page</span>
+                                    <span>&bull;</span>
+                                    <span class="task-milestone">Dashboard Pages</span>
+                                </div>
+                                <div class="col-3">
+                                    <div class="task-status task-upcoming mt-2 px-0 text-center col-10">
+                                        <span>upcoming</span>
+                                    </div>
+                                </div>
+                                <div class="col-1 px-0">
+                                    <button class="btn btn-brand to-task-btn mt-1 p-0">
+                                        <i class="fas fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 border-bottom task-highlight mt-3 row ml-1">
+                                    <div class="col-1 px-0">
+                                        <div class="completed-box mt-1 mx-auto text-center">
+                                            <i class="fas fa fa-check mt-2"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 pt-2">
+                                        <span class="task-name">Profile Page</span>
+                                        <span>&bull;</span>
+                                        <span class="task-milestone">Dashboard Pages</span>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="task-status task-upcoming mt-2 px-0 text-center col-10">
+                                            <span>upcoming</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 px-0">
+                                        <button class="btn btn-brand to-task-btn mt-1 p-0">
+                                            <i class="fas fa fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="workspace-charts scroller col-4">
+                            <div class="col-12 border-bottom px-0">
+                                <h4 class="mt-4 mb-3">Project</h4>
+                                <canvas id="projectChart" class="my-3"></canvas>
+                            </div>
+                            <div class="col-12 px-0">
+                                <h4 class="mt-4 mb-3">Members</h4>
+                                <canvas id="membersChart" class="mt-5 col-12 px-0"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Modals -->
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+<script src="../js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<script src="../js/dashboardJS/charts.js"></script>
+
+</html>

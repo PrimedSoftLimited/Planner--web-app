@@ -1,0 +1,66 @@
+.container-fluid{
+    height: 100vh;
+    border: 1px solid black;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('../Images/workspace-bg.jpg');
+    background-position: center;
+    background-size: cover;
+}
+.welcome-user{
+    color: white;
+    margin-top: 10vh;
+}
+.welcome-user h1{
+    margin-left: 10vw;
+    font-size: 50px;
+}
+.choose-header h1{
+    font-size: 70px;
+    color: white;
+}
+.workspaces-con{
+    height: 60vh;
+}
+.workspace-holder{
+    height: 40vh;
+}
+.workspace{
+    height: 30vh;
+    border-radius: 5px;
+    background-color: white;
+    position: relative;
+}
+.workspace-img{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.no-img{
+    font-family: 'Saira Stencil One', cursive;
+    font-size: 13vw;
+    font-weight: bold;
+}
+.workspace-data{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+}
+.workspace-data .list-group-flush .list-group-item{
+    background-color: inherit;
+    color: white;
+    border-color: white;
+}
+.workspace-overlay{
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 5px;
+}
+.workspace:hover .workspace-data{
+    display: block;
+}
+.workspace:hover .workspace-overlay{
+    display: block;
+}

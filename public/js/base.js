@@ -59,31 +59,32 @@ function showPwd(x, y) {
 }
 // 
 function handleError(error) {
-    if (error.status == undefined) {
-        console.log(typeof error.status);
+    if (error == undefined) {
+        $("#myToast").toast('show');
+        $("#myToast").css('height', '15vh');
+    } else if (error.status == 400) {
         // what to do
         $("#myToast").toast('show');
-        $("#myToast").css('height', '100%');
-    }
-    if (error.status == 400) {
-        // what to do
-        $("#myToast").toast('show');
-        $("#myToast").css('height', '100%');
-    }
-    else if (error.status == 401) {
+        $("#myToast").css('height', '15vh');
+    } else if (error.status == 401) {
         genericErrorFunction("password");
-    }
-    else if (error.status == 404 || error.status == 422) {
+    } else if (error.status == 404 || error.status == 422) {
         genericErrorFunction("email");
-    }
-    else if (error.status == 501) {
+    } else if (error.status == 500) {
+        $("#myToast").toast('show');
+        $("#myToast").css('height', '15vh');
+    } else if (error.status == 501) {
         // what to do
         $("#myToast").toast('show');
-    } 
-    else if (error.status == 503) {
+        $("#myToast").css('height', '15vh');
+    } else if (error.status == 503) {
         // what to do
         $("#myToast").toast('show');
-        $("#myToast").css('height', '100%');
+        $("#myToast").css('height', '15vh');
+    } else if (error.status == 504) {
+        // what to do
+        $("#myToast").toast('show');
+        $("#myToast").css('height', '15vh');
     }
     function genericErrorFunction(data) {
         const errorElem = _(`[data-id='${data}']`);
@@ -120,19 +121,23 @@ all(".con-input input").forEach((elem) => {
 })
 
 // breadcrumb navigation
-_("#left-btn").addEventListener("click", e => {
-    e.preventDefault();
-    _("[data-roll='2']").style.display = "none";
-    _("[data-roll='1']").style.display = "block";
-    _("[data-roll='1']").style.opacity = "1";
-});
-
-_("#right-btn").addEventListener("click", e => {
-    e.preventDefault();
-    _("[data-roll='1']").style.display = "none";
-    _("[data-roll='2']").style.display = "block";
-    _("[data-roll='2']").style.opacity = "1";
-});
+try {
+    _("#left-btn").addEventListener("click", e => {
+        e.preventDefault();
+        _("[data-roll='2']").style.display = "none";
+        _("[data-roll='1']").style.display = "block";
+        _("[data-roll='1']").style.opacity = "1";
+    });
+    
+    _("#right-btn").addEventListener("click", e => {
+        e.preventDefault();
+        _("[data-roll='1']").style.display = "none";
+        _("[data-roll='2']").style.display = "block";
+        _("[data-roll='2']").style.opacity = "1";
+    });
+} catch (e) {
+    
+}
 
 // To keep label up when input has text (on validation)
 all('.brand-input').forEach(e => {
@@ -140,8 +145,8 @@ all('.brand-input').forEach(e => {
         try {
             event.preventDefault();
             const elemId = e.id;
-            const span = _(`#${elemId} ~ .floating-label`);
-            e.value == "" ? span.classList.remove("stay") : span.classList.add("stay");
+            const floatingLabel = _(`#${elemId} ~ .floating-label`);
+            e.value == "" ? floatingLabel.classList.remove("stay") : floatingLabel.classList.add("stay");
         } catch (e) {
             if (e instanceof TypeError) {
                 // console.clear();
