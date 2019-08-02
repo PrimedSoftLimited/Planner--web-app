@@ -279,13 +279,3 @@ input:not(:focus):valid ~ .floating-label,
   .grey-out {
       pointer-events: none;
   }
-
-  .appendage-join {
-      height: auto;
-      width: auto;
-      
-  }
-
-  .append {
-      height: 50px;
-  }

@@ -84,3 +84,46 @@ body {
 .breadcrumb .fas{
     filter: opacity(0.8);
 }
+.appendage-join{
+    min-height: 12vh;
+    max-height: 35vh;
+    position: absolute;
+    background-color: white;
+    z-index: 10000;
+    border: 1px solid black;
+    width: 94%;
+    display: none;
+    border-radius: 5px;
+}
+.append-join{
+    height: 8vh;
+}
+.append-img{
+    height: 7vh;
+    width: 7vh;
+}
+.append-img img{
+    height:100%;
+    width: 100%;
+}
+.append-name{
+    height: 50%;
+}
+.append-name span{
+    font-weight: bold;
+    font-size: 18px;
+}
+.append-id{
+    height: 50%;
+}
+.append-id span{
+    color: grey;
+    font-size: 13px;
+}
+.add-append-btn{
+    border-radius: 50%;
+}
+.skip-step span{
+    font-size: 14px;
+    color: grey;
+}

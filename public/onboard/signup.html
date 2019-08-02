@@ -160,16 +160,42 @@
                         </div>
                         <div class="tab-pane fade show active" id="join-workspace-tab" role="tabpanel"
                             aria-labelledby="join-workspace-btn">
-                            <form class="mt-5 col-12 workspace-form" id="join-workspace-form">
-                                <div class="form-group conInput">
+                            <form class="mt-2 col-12 workspace-form" id="join-workspace-form">
+                                <div class="form-group conInput mb-2">
                                     <label for="join-workspace-name"></label>
                                     <input placeholder=" " type="text" min="4" class="form-control brand-input"
                                         name="title" id="join-workspace-name" required>
                                     <span class="floating-label">Workspace Name</span>
-                                    <div class="appendage-join">
-                                        <div class="append-join">
-
+                                </div>
+                                <div class="appendage-join col-12 scroller px-1">
+                                    <div class="append-join border mt-1 mb-1 row mx-0">
+                                        <div class="col-2">
+                                            <div class="append-img">
+                                                <img src="../Images/primed.png" alt="">
+                                            </div>
                                         </div>
+                                        <div class="col-8">
+                                            <div class="col-12 append-name">
+                                                <span class="">Plannerr Devs</span>
+                                            </div>
+                                            <div class="col-12 append-id">
+                                                <span class="">@plannerrdevs01</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <button class="btn btn-brand add-append-btn mt-2">
+                                                <i class="fas fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="append-join border mt-1 mb-1">
+
+                                    </div>
+                                    <div class="append-join border mt-1 mb-1">
+
+                                    </div>
+                                    <div class="append-join border mt-1 mb-1">
+
                                     </div>
                                 </div>
 
@@ -198,25 +224,25 @@
                 </div>
                 <div class="tab-pane fade" data-roll="2" id="company-tab" role="tabpanel"
                     aria-labelledby="company-tab-btn">
-                    <h3 class="text-center col-12 mt-5 mb-3">You can work as part of a company</h3>
-                    <div class="company-nav col-8 mx-auto mt-5">
+                    <h3 class="text-center col-12 mb-1">You can work as part of a company</h3>
+                    <div class="company-nav col-8 mx-auto mt-2">
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                            <li class="nav-item">
+                            <li class="nav-item mx-auto">
                                 <a class="nav-link active" id="join-company-btn" data-toggle="pill"
                                     href="#join-company-tab" role="tab" aria-controls="join-company-tab"
-                                    aria-selected="true">Join Company</a>
+                                    aria-selected="true">Join</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item mx-auto">
                                 <a class="nav-link" id="create-company-btn" data-toggle="pill"
                                     href="#create-company-tab" role="tab" aria-controls="create-company-tab"
-                                    aria-selected="false">Create Company</a>
+                                    aria-selected="false">Create</a>
                             </li>
                         </ul>
                     </div>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="join-company-tab" role="tabpanel"
                             aria-labelledby="join-company-btn">
-                            <form class="mt-5 col-12 company-form">
+                            <form class="col-12 company-form">
                                 <div class="form-group conInput">
                                     <label for="join-company-name"></label>
                                     <input placeholder=" " type="text" minlength="4" class="form-control brand-input"
@@ -224,24 +250,59 @@
                                     <span class="floating-label">Company Name</span>
 
                                 </div>
+                                <div class="appendage-join col-12 scroller px-1">
+                                    <div class="append-join border mt-1 mb-1 row mx-0">
+                                        <div class="col-2">
+                                            <div class="append-img">
+                                                <img src="../Images/primed.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="col-12 append-name">
+                                                <span class="">Plannerr Devs</span>
+                                            </div>
+                                            <div class="col-12 append-id">
+                                                <span class="">@plannerrdevs01</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <button class="btn btn-brand add-append-btn mt-2">
+                                                <i class="fas fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="append-join border mt-1 mb-1">
 
+                                    </div>
+                                    <div class="append-join border mt-1 mb-1">
+
+                                    </div>
+                                    <div class="append-join border mt-1 mb-1">
+
+                                    </div>
+                                </div>
                                 <a class="nav-button" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
                                     role="tab" aria-controls="pills-profile" aria-selected="false">
                                     <button type="" class="btn col-12 btn-brand" data-toggle="">
                                         <i class="fa fa-arrow-right"></i>
                                     </button>
                                 </a>
+                                <div class="col-12 skip-step text-right mt-3">
+                                    <span>Skip this step>></span>
+                                </div>
                             </form>
 
                         </div>
                         <div class="tab-pane fade" id="create-company-tab" role="tabpanel"
                             aria-labelledby="create-company-btn">
-                            <form class="mt-5 col-12 company-form">
+                            <form class="mt-2 col-12 company-form">
                                 <div class="form-group conInput">
                                     <label for="create-company-name"></label>
                                     <input placeholder=" " type="text" minlength="4" class="form-control brand-input"
                                         name="name" id="create-company-name" required>
                                     <span class="floating-label">Company Name</span>
+                                </div>
+                                <div class="form-group conInput">
                                     <label class="switch">
                                         <input class="input-switch" type="checkbox" name="status">
                                         <span class="slider round"></span>
@@ -415,6 +476,9 @@
                                         <i class="fa fa-arrow-right"></i>
                                     </button>
                                 </a>
+                                <div class="col-12 skip-step text-right mt-3">
+                                    <span>Skip this step>></span>
+                                </div>
                             </form>
                         </div>
                     </div>

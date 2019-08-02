@@ -12,10 +12,52 @@ body{
     border-radius: 20px;    
     height: 80vh;
 }
-.task-highlight{
+.team-con span:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
-.task-status div{
-    background-color: skyblue;
+.task-highlight{
+    height: 7vh;
+}
+.completed-box{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    color: grey;
+    border: 1px solid grey;
+}
+.completed-box:hover{
+    color: white;
+    background-color: grey;
+}
+.task-name{
+    font-size: 13px;
+    font-weight: bold;
+}
+.task-milestone{
+    font-size: 12px;
+    font-weight: 400;
+}
+.task-name:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.task-milestone:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.task-status{
     color: white;
     border-radius: 10px;
+}
+.task-ongoing{
+    background-color: #343a40;
+}
+.task-upcoming{
+    background-color: grey;
+}
+.to-task-btn{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
 }
