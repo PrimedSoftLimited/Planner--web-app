@@ -1,3 +1,18 @@
+:root {
+    --color1: #24A4A3;
+    --color2: #95E7E7;
+    --color3: #0A0F0F;
+    --color4: #919191;
+    --color5: #EAEAEA;
+    --color6: #395E5E;
+    --color7: #1D807F;
+    --color8: #698B9D;
+    --color9: #97A4AC;
+    --color10: #091828;
+    --color11: #284759;
+    --color12: #9A6767;
+}
+
 body {
     position: relative;
     overflow-x: hidden;
@@ -71,6 +86,7 @@ body {
 }
 .workspace-form{
     min-height: 40vh;
+    height: auto;
 }
 .no-before::before{
     color: white !important;
@@ -87,24 +103,46 @@ body {
 .appendage-join{
     min-height: 12vh;
     max-height: 35vh;
-    position: absolute;
-    background-color: white;
+    /* position: absolute; */
     z-index: 10000;
-    border: 1px solid black;
-    width: 94%;
-    display: none;
+    width: 95%;
     border-radius: 5px;
 }
-.append-join{
-    height: 8vh;
+
+.inactive {
+    height: 0;
+    min-height: 0vh;
+    max-height: 0vh;
+    position: relative;
+    z-index: 0;
+    display: none;
 }
+
+.append-join{
+    height: 50px;
+    background-color: var(--color5);
+    cursor: pointer;
+}
+
+.append-join:hover {
+    background-color: var(--color2);
+    border: none;
+}
+
+.append-title {
+    text-align: left;
+}
+
 .append-img{
+    border-radius: 50%;
     height: 7vh;
     width: 7vh;
 }
 .append-img img{
     height:100%;
     width: 100%;
+    transform: scale(.75);
+    object-position: center;
 }
 .append-name{
     height: 50%;
@@ -121,9 +159,31 @@ body {
     font-size: 13px;
 }
 .add-append-btn{
-    border-radius: 50%;
+    margin: 50% 0;
 }
 .skip-step span{
     font-size: 14px;
     color: grey;
+}
+
+#con-append-join .append-join {
+    border-radius: .25rem;
+    width: 100%;
+    height: 50px;
+    top: -4px;
+    cursor: default;
+}
+
+.append-join:hover .add-append-btn.show {
+    display: block;
+}
+
+.add-append-btn {
+    display: none;
+    cursor: pointer;
+}
+
+#join-workspace--submit-btn {
+    position: relative;
+
 }
