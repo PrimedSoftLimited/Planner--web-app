@@ -1,152 +1,68 @@
-.dashboard-full {
-  overflow: none;
-}
-#sidebar {
-  min-height: 80vh;
-  border-right: 1px solid #343a40
-}
-.sidenav-links {
-  font-size: 16px;
-}
-.btn-close {
-  display: none;
-}
-#sidebar,
-.sidenav-links {
-  background-color: #f8f9fa;
-}
-.sidenav-links.active {
-  background-color: lightgray;
-}
-.sidenav-links:hover {
-  background-color: #282828;
-  color: white;
-}
-.dashboard-content {
-  max-height: 83vh;
-  max-width: 100%;
-  overflow: scroll;
-}
-.company {
-  background-color: #282828;
-  color: white;
-  height: 6vh;
-}
-.project {
-  height: 50vh;
-}
-.filter-con {
-  height: 5vh;
-}
-@media (min-width: 320px) and (max-width: 768px) {
-  /* .sidenav-links span {
-    margin-left: 0px !important;
-  }
-  #sidebar {
-    display: block;
-    position: absolute;
-    z-index: 50;
-  }
-  .dashboard-content {
-    position: absolute;
-  }
-  .project {
-    margin: 0;
-  }
-  .dashboard-content {
-    
-  } */
-}
-@media (min-width: 769px) {
-  #open-slide {
-    display: block;
-  }
-  #sidebar {
-    display: block;
-  }
-  /* .dashboard-content {
-    overflow: scroll;
-    max-height: 88vh;
-  } */
-  .project {
-    margin-left: 5vw !important;
-    border-radius: 5px;
-  }
-}
-@media (min-width: 992px) {
-  .project {
-    margin-left: 5vw !important;
-  }
-  #open-slide {
-    display: none;
-  }
-}
-@media (max-width: 992px) {
-  .btn-close {
-    display: block;
-  }
-  .profile-body{
-    margin-top: 15vh;
-  }
-  .info-right{
-    margin-bottom: 5vh;
-  }
-}
-/* Profile Screen */
-.profile-info {
-}
-.profile-head {
-  height: 35vh;
-}
-.profile-image {
-  /* width: 24vw;
-  height: 12vw; */
-}
-.profile-body {
-  min-height: 80vh;
-}
-.info-left {
-  min-height: 80vh;
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.info-fields input:read-only {
+main {
+  display: grid;
+  grid-template-columns: 15% 3fr auto;
+  grid-template-rows: 10% 90%;
+  grid-template-areas:
+    "sidenav header header"
+    "sidenav section aside"
+    "sidenav section aside";
+  width: 100vw;
+  height: 100vh;
+}
+
+main > header {
+  grid-area: header;
   background-color: white;
 }
-.basic-info {
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-  min-height: 42vh;
+
+main > nav {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: white;
+  grid-area: sidenav;
 }
-.additional-info {
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
+
+main > section {
+  display: flex;
+  flex-flow: column nowrap;
+  grid-area: section;
 }
-.basic-info button {
-  font-size: 12px;
-  height: 35px;
+
+main > aside {
+	width: 0;
+  background-color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  grid-area: aside;
 }
-#profile {
-  overflow-x: hidden;
+
+main > aside.show {
+	width: 30vw;
 }
-/* My Projects */
-.project-name{
-  height: 23%;
-  border-bottom: 1px solid black;
-  align-content: baseline;
+
+.con-about-project {
+	min-height: 10vh;
 }
-.project-name h3{
-  margin:auto;
+
+.about-project-details {
+	display: none;
 }
-.project-name h3:hover{
-  text-decoration: underline;
-  cursor: pointer;
+
+.about-project-details.show {
+	display: block;
 }
-.project-activity{
-  height:60%;
+
+.modal-full {
+  min-width: 100vw;
+  margin: 0;
 }
-.project-activity ul{
-  background-color: inherit;
-  font-size: 12px;
+
+.modal-full .modal-content {
+  min-height: 100vh;
 }

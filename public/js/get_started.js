@@ -2,8 +2,6 @@
 
 const urlParams = new URLSearchParams(window.location.search);
 const cToken = urlParams.get('confirm_token') ? urlParams.get('confirm_token') : null;
-let createWorkspaceUrl = "/api/workspace/create";
-createWorkspaceUrl = `${api_link}${createWorkspaceUrl}`;
 let createCompanyUrl = "/api/company/create";
 createCompanyUrl = `${api_link}${createCompanyUrl}`;
 let joinWorkspaceUrl = "/api/workspace/request";
@@ -16,6 +14,7 @@ let submitInterestUrl = "/api/interest/select";
 submitInterestUrl = `${api_link}${submitInterestUrl}`;
 const activateAccUrl = `${api_link}/api/confirmation/${cToken}`
 let btn, companyBuffer = [], workspaceBuffer = [], interestBuffer = [], formData, token, user, url, request, status = "Public";
+
 
 // (async function () {
 //     const req = await fetch('https://randomapi.com/api/006b08a801d82d0c9824dcfdfdfa3b3c');
@@ -35,7 +34,7 @@ const helperScript = () => {
         option.value = option.textContent;
     })
 
-    // helper function to switch text for input[type="checkbox"] in create workspace and company form 
+    // helper function to switch text for input[type="checkbox"] in create workspace and company form
     const textAccordingToCheckbox = all(".switch-text");
 
     Array.from(all(".input-switch")).forEach((checkbox, i) => {
@@ -55,49 +54,51 @@ helperScript();
 
 // do acc. activation i.e confirmation
 const activateUserAccount = () => {
-    const config = {
-        method: "GET",
-        url: activateAccUrl
-        // url: "https://randomapi.com/api/006b08a801d82d0c9824dcfdfdfa3b3c"
-    }
+	const config = {
+			method: "GET",
+			url: activateAccUrl
+			// url: "https://randomapi.com/api/006b08a801d82d0c9824dcfdfdfa3b3c"
+	}
 
-    let percentCompleted = 1;
+	let percentCompleted = 1;
 
-    axios(config)
-        .then(response => {
-            if (response.data) {
-                const z = setInterval(() => {
-                    if (percentCompleted>=100) {
-                        clearInterval(z);
-                        _("#loading > div").classList.add("animated", "fadeOut");
-                        _("#loading").classList.add("animated", "delay-1s", "slideOutUp");
-                        setTimeout(() => _("#preset").classList.add("animated", "slideInUp", "try"), 1100);
-                    } 
-                    const elem = _("#progress");
-                    elem.style.width = `${percentCompleted}%`;
-                    percentCompleted+=1;
-                }, 50)
-                let userData = response.data.data;
-                localStorage.setItem("userData", JSON.stringify(userData));
-                userData = JSON.parse(localStorage.getItem("userData"));
-                ({ token } = userData);
-                ({ user } = userData);
-                _("#putName").textContent = `${"You\'re almost there, "}${user.name}`
-                window.location.hash = "#onboard";
-                console.log(response);   
-            }
-        })
-        .catch(error => {
-            // handleError(error.response);
-            console.log(error);
-        });
+	axios(config)
+		.then(response => {
+			if (response.data) {
+				const z = setInterval(() => {
+					if (percentCompleted>=100) {
+						clearInterval(z);
+						_("#loading > div").classList.add("animated", "fadeOut");
+						_("#loading").classList.add("animated", "delay-1s", "slideOutUp");
+						setTimeout(() => _("#preset").classList.add("animated", "slideInUp", "try"), 1100);
+					}
+					const elem = _("#progress");
+					elem.style.width = `${percentCompleted}%`;
+					percentCompleted+=1;
+				}, 50)
+				let userData = response.data.data;
+				localStorage.setItem("userData", JSON.stringify(userData));
+				userData = JSON.parse(localStorage.getItem("userData"));
+
+				({ token } = userData);
+				({ user } = userData);
+
+				_("#putName").textContent = `${"You\'re almost there, "}${user.name}`
+				window.location.hash = "#onboard";
+				console.log(response);
+			}
+		})
+		.catch(error => {
+			// handleError(error.response);
+			console.log(error);
+		});
 }
 activateUserAccount();
 
 const submitCreateData = async (formData, url) => {
     formData = formDataToObject(formData);
     btn = _("#preset-btn3b");
-
+    console.log("insubmit");
     try {
         let response = await axios.post(url, formData, {
             headers: {
@@ -127,7 +128,7 @@ const getJoinData = async (formData, url) => {
         let data = await response.data;
 
         return data;
-        
+
     } catch (error) {
         console.log(error);
     }
@@ -217,6 +218,49 @@ const getInterests = async () => {
     }
 }
 
+const loadInterestsOntoTab = (tab) => {
+    tab.classList.remove("show", "active");
+    _("#interest-tab").classList.add("show", "active");
+    getInterests()
+    .then(data => {
+        let {categories} = data, index = 0;
+        categories.forEach(category => {
+            _("#sub-interest-tab").innerHTML += `
+                <div data-category-id="${category.id}" class="category mb-5 d-flex flex-wrap col-12">
+                    <h4 class="category-name d-flex col-12 pb-1">${category.title}</h4>
+                </div>`;
+            category.interests.forEach(interest => {
+                _(`[data-category-id="${category.id}"]`).innerHTML += `
+                    <div data-category-id="${category.id}" data-interest-id="${interest.id}" data-index="${index}" class="select-interest b-shadow mx-2 my-2 p-0">
+                        <div></div>
+                        <div class="text-center col-12 overflow-auto p-2">${interest.title}</div>
+                    </div>`;
+
+                index++;
+            });
+        });
+        all(`[data-interest-id]`).forEach(interest => {
+            interest.addEventListener("click", function() {
+
+                if (this.classList.contains("clicked")) {
+                    this.classList.remove("clicked");
+                    delete interestBuffer[this.dataset.index];
+                    if (!(interestBuffer.some(e => e instanceof Array))) {
+                        _(".con-bottom-lg").classList.remove("animated", "slideInUp", "d-flex");
+                        _(".con-bottom-lg").classList.add("d-none");
+                    }
+                } else {
+                    this.classList.add("clicked");
+                    _(".con-bottom-lg").classList.add("animated", "slideInUp", "d-flex");
+                    _(".con-bottom-lg").classList.remove("d-none");
+                    interestBuffer[this.dataset.index] = [Number(this.dataset.categoryId), Number(this.dataset.interestId)];
+                }
+            });
+        });
+    })
+    .catch(error => console.log(error));
+}
+
 const UI = () => {
     _("#preset-btn1").addEventListener("click", e => {
         e.preventDefault();
@@ -236,7 +280,7 @@ const UI = () => {
         _("#preset-right").classList.add("show", "active");
     })
 
-    _("#preset-btn3b").addEventListener("click", e => {
+    _("#preset-btn3b").addEventListener("click", async (e) => {
         e.preventDefault();
         btn = e.target || e.srcElement;
         btn.disabled = true;
@@ -249,18 +293,16 @@ const UI = () => {
         workspaceFormData.append("wallpaper", wallpaper);
         companyFormData.append("status", status);
         companyFormData.append("wallpaper", wallpaper);
-        submitCreateData(workspaceFormData, createWorkspaceUrl)
-        .then(() => submitCreateData(companyFormData, createCompanyUrl))
-        .then((data) => {
-            if (data) {
-                console.log(data);
-                _("#create-tab").classList.remove("show", "active");
-                _("#interest-tab").classList.add("show", "active");
-            }
-        })
-        .catch(error => console.log(error));
-
-    })
+				let data = await submitCreateData(companyFormData, createCompanyUrl);
+				// let { data: { new_company: id } } = data;
+				let {data: {new_company: {id: companyId}}} = data;
+				localStorage.setItem("companyId", companyId);
+        createWorkspaceUrl = `${api_link}/api/workspace/${companyId}/create`;
+        data = await submitCreateData(workspaceFormData, createWorkspaceUrl);
+				let {data: {new_workspace: {id: workspaceId}}} = data;
+				localStorage.setItem("workspaceId", workspaceId);
+        loadInterestsOntoTab(_("#create-tab"));
+    });
 
     _("#search-workspaces").addEventListener("click", e => {
         e.preventDefault();
@@ -306,46 +348,7 @@ const UI = () => {
 
     _("#preset-btn5").addEventListener("click", e => {
         e.preventDefault();
-        _("#join-company-tab").classList.remove("show", "active");
-        _("#interest-tab").classList.add("show", "active");
-        getInterests()
-        .then(data => {
-            let {categories} = data, index = 0;
-            categories.forEach(category => {
-                _("#sub-interest-tab").innerHTML += `
-                    <div data-category-id="${category.id}" class="category mb-5 d-flex flex-wrap col-12">
-                        <h4 class="category-name d-flex col-12 pb-1">${category.title}</h4>
-                    </div>`;
-                category.interests.forEach(interest => {
-                    _(`[data-category-id="${category.id}"]`).innerHTML += `
-                        <div data-category-id="${category.id}" data-interest-id="${interest.id}" data-index="${index}" class="select-interest b-shadow mx-2 my-2 p-0">
-                            <div></div>
-                            <div class="text-center col-12 overflow-auto p-2">${interest.title}</div>
-                        </div>`;
-
-                    index++;
-                });
-            });
-            all(`[data-interest-id]`).forEach(interest => {
-                interest.addEventListener("click", function() {
-
-                    if (this.classList.contains("clicked")) {
-                        this.classList.remove("clicked");
-                        delete interestBuffer[this.dataset.index];
-                        if (!(interestBuffer.some(e => e instanceof Array))) {
-                            _(".con-bottom-lg").classList.remove("animated", "slideInUp", "d-flex");
-                            _(".con-bottom-lg").classList.add("d-none");
-                        }
-                    } else {
-                        this.classList.add("clicked");
-                        _(".con-bottom-lg").classList.add("animated", "slideInUp", "d-flex");
-                        _(".con-bottom-lg").classList.remove("d-none");
-                        interestBuffer[this.dataset.index] = [Number(this.dataset.categoryId), Number(this.dataset.interestId)];
-                    }
-                });
-            });
-        })
-        .catch(error => console.log(error));
+        loadInterestsOntoTab(_("#join-company-tab"))
     });
 
     _("#btn-follow-interests").addEventListener("click", e => {

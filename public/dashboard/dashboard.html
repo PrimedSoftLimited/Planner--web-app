@@ -2,232 +2,406 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="../styles/dashboard.css">
-    <script src="../js/base.js" defer></script>
-    <script src="../js/dashboardJS/main.js"></script>
-    <title>Plannerr | Dashboard</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="../styles/global.css">
+	<link rel="stylesheet" href="../styles/authentication.css">
+	<link rel="stylesheet" href="../styles/style.css">
+	<link rel="stylesheet" href="../styles/dashboard.css">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="../js/base.js" defer></script>
+	<!-- <script src="../js/get_started.js" type="module" defer></script> -->
+	<script src="../js/dashboardJS/project.js" defer></script>
+	<script src="../js/dashboardJS/navigation.js" defer></script>
+	<title>Plannerr | Dashboard</title>
 </head>
 
-<body class="authentication-body">
-    <nav class="navbar navbar-expand-lg navbar-light bg-brand our-nav">
-        <span id="open-slide">
-            <a href="#" onclick="openSlideMenu()">
-                <svg width="30" height="30">
-                    <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
-                    <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
-                    <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
-                </svg>
-            </a>
-        </span>
-        <button onclick="location.reload()" class="btn btn-default logo-btn">plannerr</button>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body>
+	<main>
+		<header>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="tab-content">
+						<div id="project-header" data-id="project" data-nav-controlled class="tab-header tab-pane">
+							<div class="d-flex">
+								<div>
+									<input type="text" placeholder="Search for...">
+								</div>
+								<div>
+									<div class="header-profile">
+										<div class="profile-pic"></div>
+										<div class="profile-name">Uzor Ruzor</div>
+									</div>
+									<div class="settings"></div>
+								</div>
+							</div>
+						</div>
+						<div id="milestone-header" data-id="milestone" data-nav-controlled class="px-3 tab-header tab-pane">
+							<div class="d-flex">
+								<a href="#">&#8592;Back to project dashboard</a>
+								<div class="header-profile">
+									<div class="profile-pic"></div>
+									<div class="profile-name">Uzor Ruzor</div>
+								</div>
+								<div class="settings"></div>
+							</div>
+						</div>
+						<div id="chat-header" data-id="chat" data-nav-controlled class="tab-header tab-pane">
+							#VISIO
+						</div>
+						<div id="library-header" data-id="library" data-nav-controlled class="tab-header tab-pane active show">
+							Library Header
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
-            <ul class="navbar-nav ml-auto">
-                <li class="add-project-nav mr-5 mt-2"><i style="color: lightgrey"
-                        class="add-project-icon fa fas fa-plus fa-lg"></i></li>
-                <li class="mr-5 mt-2"><i style="color: lightgrey"
-                        class="projects-icon fa fas fa-folder fa-lg"></i></li>
-                <li class="notifs-nav mr-5 mt-2"><i style="color: lightgrey"
-                        class="notifs-icon fa fas fa-bell fa-lg"></i></li>
-                <li class="nav-item dropdown mx-2">
-                    <a style="color: lightgrey" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Dashboard</a>
-                        <a class="dropdown-item" href="#">Projects</a>
-                        <a class="dropdown-item" href="#">Settings</a>
-                    </div>
-                </li>
-                <div class="user-image-nav border mx-2 mr-5 ml-4">
+		<nav>
+			<div class="plannerr-logo">
+				<div class="loading" id="text">
+					<span class="">Plannerr</span>
+					<div id="ball"></div>
+				</div>
+				<div>
+					<button></button>
+				</div>
+			</div>
 
-                </div>
-            </ul>
-        </div>
-    </nav>
+			<div class="nav-search">
+				<input type="text" placeholder="Search">
+			</div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="company col-12">
-                <h4 class="mt-2">Primedsoft</h4>
-            </div>
-            <div class="col-12 row dashboard-full">
-                <div id="sidebar" class="col-12 col-lg-3">
-                    <ul class="list-group list-group-flush col-12 px-0">
-                        <a href="#" class="btn-close col-12 text-right mt-3" onclick="closeSlideMenu()">
-                            <i class="fas fa fa-window-close"></i>
-                        </a>
-                        <li id="dashHome" class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">My Projects</span>
-                        </li>
-                        <li id="dashActivity" class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Activity</span>
-                        </li>
-                        <li id="dashMessages" class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Messages</span>
-                        </li>
-                        <li class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Dashboards</span>
-                        </li>
-                        <li class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Unread Comments</span>
-                        </li>
-                        <li class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Unread Messages</span>
-                        </li>
-                        <li id="dashProfile" class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Profile</span>
-                        </li>
+			<div data-id="project" data-nav-controlled class="nav-tab-link">
+				<div class="nav-tab-icon"></div>
+				<span class="nav-tab">Project</span>
+			</div>
+			<div data-id="threads" data-nav-controlled class="nav-tab-link">
+				<div class="nav-tab-icon"></div>
+				<span class="nav-tab">Threads</span>
+			</div>
+			<div data-id="library" data-nav-controlled class="nav-tab-link active">
+				<div class="nav-tab-icon"></div>
+				<span class="nav-tab">Library</span>
+			</div>
 
-                    </ul>
-                </div>
+			<div>
+				<div>
+					<div>Direct Messages</div>
+					<div></div>
+				</div>
+				<div>
+					<div class="dm-chat">
+						<div class="dm-status"></div>
+						<div class="dm-name"></div>
+						<div class="dm-number"></div>
+						<div class="dm-remove"></div>
+					</div>
+				</div>
+			</div>
 
-                <style>
-                    #activity,
-                    #messages,
-                    #profile {
-                        display: none;
-                    }
+			<footer class="nav-footer">
+				<div>
+					<div>VISIO</div>
+					<div></div>
+				</div>
+				<div>Invite People</div>
+				<div>
+					<a href="#">Open the Plannerr App</a>
+				</div>
+			</footer>
+		</nav>
 
-                    #home {
-                        display: block;
-                    }
-                </style>
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="tab-content col-12">
+						<div data-project="project-false" data-nav-controlled class="tab-pane tab-body">
+							<div class="noproject-image"></div>
+							<div>
+								<h3>You're an early bird</h3>
+								<p>
+									Milestones, tasks created by the workspace adminstrators, and all project based activities will appear
+									here.
+								</p>
+								<a href="#" data-toggle="modal" data-target="#addProject">Add a project</a>
+								<!-- modal to add project to workspace -->
+								<div class="modal" id="addProject" tabindex="-1" role="dialog" aria-labelledby="addAProject"
+									aria-hidden="true">
+									<div class="modal-dialog modal-full" role="document">
+										<div class="col-12 modal-content">
+											<div class="modal-header border-0">
+												<button type="button" class="border rounded-circle close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													<p>esc</p>
+												</button>
+											</div>
+											<form id="projectForm">
+												<div class="col-4 mx-auto modal-body">
+													<h2 class="modal-title my-2" id="addAProject">Add a project to workspace</h2>
+													<div class="form-group conInput">
+														<input placeholder=" " type="text" minlength="4" class="form-control brand-input"
+															name="title" id="" required>
+														<label for="" class="floating-label">Project name</label>
+													</div>
+													<div class="form-group conInput">
+														<input placeholder=" " type="text" minlength="4" class="form-control brand-input"
+															name="description" id="" required>
+														<label for="" class="floating-label">Add a short description</label>
+													</div>
+													<div>
+														<h5 class="my-2">Milestones take you one step closer to completing your project</h5>
+														<!-- <div class="form-group conInput">
+																																			<input placeholder=" " type="text" minlength="4" class="form-control brand-input"
+																																					name="title" id="" required>
+																																			<label for="" class="floating-label">Milestone</label>
+																																	</div> -->
+														<h6>Time to milestone</h6>
+														<!-- <div class="d-flex">
+																																			<input class="border-dark" type="date" name="" id="">
+																																			<input class="border-dark" type="date" name="" id="">
+																																	</div> -->
+													</div>
+													<div class="my-2 border p-3">
+														<h6>Upgrade for unlimited milestones</h6>
+														<p><a href="#">See paid plans</a></p>
+														<div></div>
+													</div>
+											</form>
+										</div>
+										<div class="col-4 mx-auto modal-footer">
+											<button id="btn-create-project" type="submit" class="btn btn-primary">Create project</button>
+										</div>
+										</form>
+									</div>
+								</div>
 
-                <div class="col-12 col-lg-9 scroller dashboard-content root" id="home"></div>
-                <div class="col-12 col-lg-9 scroller dashboard-content root" id="activity"></div>
-                <div class="col-12 col-lg-9 scroller dashboard-content root" id="messages"></div>
-                <div class="col-12 col-lg-9 scroller dashboard-content root" id="profile"></div>
-            </div>
-        </div>
-    </div>
+							</div>
+						</div>
+					</div>
+					<div data-project="project-true" data-nav-controlled class="tab-pane tab-body">
+						<div class="d-flex col-12 border-bottom">
+							<h3>Project Milestones</h3>
+							<button id="project-info" type="button">i</button>
+							<button>New <i class="fas fa-sort-down"></i></button>
+						</div>
+						<div class="con-milestones py-3">
+							<div class="d-flex milestone">
+								<div class="col-1 border milestone-logo"></div>
+								<div class="col-10 milestone-name">Product roadmap</div>
+								<button data-id="view-milestone" class="col-1">View</button>
+							</div>
+						</div>
+					</div>
+					<div data-id="milestone" data-nav-controlled class="tab-pane tab-body">
+						<div class="d-flex flex-wrap">
+							<div class="con-milestone-title col-11 p-0">
+								<div class="milestone-logo"></div>
+								<div class="milestone-name">Product roadmap</div>
+							</div>
+							<div class="switch-view col-1 d-flex align-items-baseline">
+								<label for="">View</label>
+								<input type="checkbox">
+							</div>
+							<p class="">Last edited by Uzor Ruzor</p>
+						</div>
+						<div class="d-flex">
+							<input type="text" placeholder="Quick Search">
+							<input type="text" placeholder="People">
+							<button class="d-flex align-items-centre">New <i class="fa fa-sort-down"></i></button>
+						</div>
+					</div>
+					<div data-id="library" data-nav-controlled class="tab-pane tab-body show active">
+						This is ye library
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+
+		<aside id="main-aside">
+			<header class="d-flex flex-nowrap justify-content-between">
+				<h3>About this project</h3>
+				<button>xxx</button>
+			</header>
+			<section class="">
+				<div class="col-12 con-about-project">
+					<div class="d-flex flex-nowrap align-items-center">
+						<span></span>
+						<div>Project details</div>
+						<button class="get-about-project-details" data-project-detail="project">arr</button>
+					</div>
+					<div class="about-project-details" data-project-detail="project">
+						<div>
+							<div class="d-flex w-100">
+								<h6 id="projectDetailsName">Name</h6>
+								<a href="" data-toggle="modal" data-target="#editProjectName">edit</a>
+								<!-- modal to edit project name -->
+								<div class="modal" id="editProjectName" tabindex="-1" role="dialog" aria-labelledby="updateProjectName"
+									aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="col-12 modal-content">
+											<div class="d-flex modal-header border-0">
+												<h4 class="modal-title" id="updateProjectName">Update project name</h4>
+												<button type="button" class="border rounded-circle close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													<p>esc</p>
+												</button>
+											</div>
+											<form id="editProjectNameForm">
+												<div class="col-12 mx-auto modal-body">
+													<div class="form-group conInput">
+														<input placeholder="" type="text" minlength="4" class="form-control brand-input"
+															name="title" id="" required>
+													</div>
+												</div>
+												<div class="col-12 d-flex align-items-center mx-auto modal-footer">
+													<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+													<button data-project-name="" id="btnEditProjectName" type="submit" class="btn btn-primary">Update name</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div aria-labelledby="projectDetailsName" data-store-project-name>Projection</div>
+						</div>
+						<div>
+							<div class="d-flex w-100">
+								<h6 id="projectDetailsDescription">Purpose</h6>
+								<a href="" data-toggle="modal" data-target="#editProjectPurpose">edit</a>
+								<!-- modal to edit project purpose -->
+								<div class="modal" id="editProjectPurpose" tabindex="-1" role="dialog"
+									aria-labelledby="updateProjectPurpose" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="col-12 modal-content">
+											<div class="d-flex modal-header border-0">
+												<h4 class="modal-title my-2" id="updateProjectPurpose">Edit project purpose</h4>
+												<button type="button" class="border rounded-circle close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													<p>esc</p>
+												</button>
+											</div>
+											<form id="editProjectPurposeForm">
+												<div class="col-12 mx-auto modal-body">
+													<div class="form-group conInput">
+														<input placeholder="" type="text" minlength="4" class="form-control brand-input"
+															name="description" id="" required>
+													</div>
+												</div>
+												<div class="col-12 d-flex align-items-center mx-auto modal-footer">
+													<p>Describe what this project is for...</p>
+													<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+													<button data-project-purpose="" id="btnEditProjectPurpose" type="submit" class="btn btn-primary">Update purpose</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div aria-labelledby="#projectDetailsDescription" data-store-project-desc></div>
+						</div>
+						<div data-store-project-creation></div>
+						<div id="thesePeopleCanAnswerYourQuestions"></div>
+						<div data-store-project-updated></div>
+					</div>
+				</div>
+
+				<div class="col-12 con-about-project">
+					<div class="d-flex align-items-center">
+						<span></span>
+						<div>Company</div>
+						<button class="get-about-project-details" data-project-detail="company">arr</button>
+					</div>
+					<div class="about-project-details" data-project-detail="company">
+						<div class="about-company-logo"></div>
+						<div class="d-flex flex-column">
+							<a href="" class="about-company-name col-12">Andela</a>
+							<small class="about-company-email">company@email.com</small>
+							<div>
+								<h6 id="projectDetailsCompanyTime">Local Time</h6>
+								<h5 aria-labelledby="projectDetailsCompanyTime">3:45 PM</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 con-about-project">
+					<div class="d-flex flex-nowrap align-items-center">
+						<span></span>
+						<div>1,200 Members</div>
+						<button class="get-about-project-details" data-project-detail="members">arr</button>
+					</div>
+					<div class="about-project-details" data-project-detail="members">
+						<div class="d-flex flex-nowrap">
+							<div class="about-member-pic"></div>
+							<h5>Member</h5>
+							<div data-online-status=""></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 con-about-project">
+					<div class="d-flex align-items-center">
+						<span></span>
+						<div>Shared files</div>
+						<button class="get-about-project-details" data-project-detail="sharedFiles">arr</button>
+					</div>
+					<div class="about-project-details" data-project-detail="sharedFiles">
+						wut wut wut wut wut
+					</div>
+				</div>
+
+				<button data-toggle="modal" data-target="#deleteProject" type="button"
+					class="btn btn-danger">End project</button>
+
+				<!-- modal to confirm project deletion -->
+				<div class="modal" id="deleteProject" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteProject"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="col-12 modal-content">
+							<div class="d-flex modal-header border-0">
+								<h4 class="modal-title" id="confirmDeleteProject">Are you sure you want to end project?</h4>
+								<button type="button" class="border rounded-circle close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									<p>esc</p>
+								</button>
+							</div>
+								<div class="col-12 mx-auto d-flex align-items-center modal-body">
+									<h6>This action cannot be reversed!</h6>
+									<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+									<button id="btnDeleteProject" type="submit" class="btn btn-primary">Confirm delete</button>
+								</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</aside>
+	</main>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+		</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+		</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+		</script>
+	<script src="js/wow.min.js"></script>
+	<script>
+		new WOW().init();
+	</script>
 </body>
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-    </script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
-<script src="js/wow.min.js"></script>
-<script>
-new WOW().init();
-</script>
-<script src="../js/dashboardJS/home.js"></script>
-<script src="../js/dashboardJS/activity.js" defer></script>
-<script src="../js/dashboardJS/messages.js" defer></script>
-<script src="../js/dashboardJS/profile.js" defer></script>
-<script>
-    let key = 0;
-    let sidebarKey;
-    const roots = [...document.querySelectorAll('.root')];
-    const homeInput = document.querySelector('div#home');
-    const activityInput = document.querySelector('div#activity');
-    const messagesInput = document.querySelector('div#messages');
-    const profileInput = document.querySelector('div#profile');
-    let sidebar = document.getElementById('sidebar');
-    let openSlide = document.querySelector('#open-slide');
-    let dashCon = document.getElementsByClassName('dashboard-content');
-    document.querySelector('#dashHome').addEventListener('click', function () {
-        key = 0;
-        manageView(homeInput);
-    });
-    document.querySelector('#dashActivity').addEventListener('click', function () {
-        key = 1;
-        manageView(activityInput);
-    });
-    document.querySelector('#dashMessages').addEventListener('click', function () {
-        key = 2;
-        manageView(messagesInput);
-    });
-    document.querySelector('#dashProfile').addEventListener('click', function () {
-        key = 3;
-        manageView(profileInput);
-    });
-    const manageView = (bed) => {
-        roots.map((root) => root.style.display = 'none')
-        bed.style.display = 'block';
-        sidebarWatch();
-        return true;
-
-    }
-    const sidebarWatch = () => {
-        if (sidebarKey == 'small') {
-            sidebar.style.display = "none";
-            openSlide.style.display = "block";
-        }
-    };
-
-    function openSlideMenu() {
-        document.getElementById('sidebar').style.display = 'block';
-        document.getElementById('open-slide').style.display = 'none';
-        // document.getElementsByClassName('dashboard-content').style.display = 'none';
-        roots.map((root, i) => {
-            if (i == key) {
-                root.style.display = 'none';
-            }
-        });
-    }
-
-    function closeSlideMenu() {
-        document.getElementById('sidebar').style.display = 'none';
-        document.getElementById('open-slide').style.display = 'block';
-        // document.getElementsByClassName('dashboard-content').style.display = 'block';
-        roots.map((root, i) => {
-            if (i == key) {
-                root.style.display = 'block';
-            }
-        });
-    }
-    function sidebarControl(bigWindow) {
-        if (bigWindow.matches) {
-            sidebar.style.display = 'block';
-            openSlide.style.display = 'none';
-        }
-    }
-
-    var bigWindow = window.matchMedia("(min-width: 992px)")
-    sidebarControl(bigWindow)
-    bigWindow.addListener(sidebarControl)
-
-    function sidebarControl2(smallWindow) {
-
-        if (smallWindow.matches) {
-            roots.map((root) => root.style.display = 'none')
-            sidebarKey = 'small';
-            openSlide.style.display = "none";
-        } else {
-            sidebarKey = 'big';
-            roots.map((root, i) => {
-                if (i == key) {
-                    root.style.display = 'block'
-                }
-            });
-        }
-    }
-
-    var smallWindow = window.matchMedia("(max-width: 992px)")
-    sidebarControl2(smallWindow)
-    smallWindow.addListener(sidebarControl2)
-</script>
 
 </html>

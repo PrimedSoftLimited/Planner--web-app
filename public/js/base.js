@@ -20,8 +20,6 @@ const mailMap = {
 };
 const proceed = _("#proceedToMail");
 
-// a coder walks into a bar
-
 function assignLocation(str) {
     location.assign(str);
 }
