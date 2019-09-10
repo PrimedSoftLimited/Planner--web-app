@@ -69,18 +69,18 @@ body:not(nav) {
     scrollbar-color: white black;
 }
 .scroller::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
     display: none;
 }
- 
+
 .scroller::-webkit-scrollbar-thumb {
     color: black;
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px #343a40;
 }
 .white-scroller{
-    
+
 }
 .box-shadow-0:focus{
     box-shadow: none;
@@ -147,7 +147,7 @@ body:not(nav) {
     font-variant: normal;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
-    font-family: "Font Awesome 5 Free"; 
+    font-family: "Font Awesome 5 Free";
     font-weight: 900;
     color: rgb(32, 30, 30);
     position: absolute;
@@ -178,7 +178,7 @@ body:not(nav) {
     border-color: red;
 }
 
-.brand-input:focus ~ .floating-label, 
+.brand-input:focus ~ .floating-label,
 .conInput > div:focus-within ~ .floating-label {
     color: deepskyblue;
 }
@@ -194,8 +194,8 @@ body:not(nav) {
 }
 
 input:focus ~ .floating-label,
-input:not(:focus):valid ~ .floating-label, 
-.conInput > div:focus-within ~ .floating-label, 
+input:not(:focus):valid ~ .floating-label,
+.conInput > div:focus-within ~ .floating-label,
 .conInput > div.valid ~ .floating-label,
 .floating-label.stay  {
   /* top: -6px; */
@@ -249,14 +249,14 @@ input:not(:focus):valid ~ .floating-label,
     width: 40px;
     height: 24px;
   }
-    
+
   /* Hide default HTML checkbox */
   .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
+
   /* The slider */
   .slider {
     position: absolute;
@@ -269,7 +269,7 @@ input:not(:focus):valid ~ .floating-label,
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   .slider:before {
     position: absolute;
     content: "";
@@ -281,26 +281,26 @@ input:not(:focus):valid ~ .floating-label,
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   input:checked + .slider {
     background-color: deepskyblue;
   }
-  
+
   input:focus + .slider {
     box-shadow: 0 0 1px deepskyblue;
   }
-  
+
   input:checked + .slider:before {
     -webkit-transform: translateX(16px);
     -ms-transform: translateX(16px);
     transform: translateX(16px);
   }
-  
+
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
-  
+
   .slider.round:before {
     border-radius: 50%;
   }

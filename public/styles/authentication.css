@@ -1,7 +1,21 @@
 body {
     position: relative;
     overflow-x: hidden;
-    height: 100vh;
+		height: 100vh;
+		/* background-color: white !important; */
+}
+
+header {
+	height: 10vh;
+	font-variant: small-caps;
+	font-size: 2em;
+	font-weight: 300;
+	line-height: 3.5rem;
+	font-family: 'Red Hat Display', sans-serif;
+	letter-spacing: 5px;
+	background-color: white;
+	/* background-color: rgba(164, 227, 245, 0); */
+	color: #2e3d49;
 }
 
 .signup-container {
@@ -21,7 +35,7 @@ body {
 .email-sent-con img{
     width:8vw;
     margin-top: 5vh;
-} 
+}
 
 .conInput {
     position: relative;

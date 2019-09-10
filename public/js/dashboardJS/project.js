@@ -1,7 +1,7 @@
 const userData = JSON.parse(localStorage.getItem("userData"));
 const workspaceId = localStorage.getItem("workspaceId");
 const companyId = localStorage.getItem("companyId");
-let projectId = 6, projectData, status;
+let projectId = 12, projectData, status;
 const { token } = userData;
 const createProjectUrl = `${api_link}/api/project/${workspaceId}/${companyId}/create`;
 const editProjectUrl = `${api_link}/api/project/${projectId}/edit`;
@@ -28,7 +28,7 @@ const createProject = e => {
 			console.log(projectData);
 		})
 		.catch(error => console.log(error));
-}
+};
 
 const editProject = function (e) {
 	console.log("editing project");
@@ -53,7 +53,7 @@ const editProject = function (e) {
 		console.log(response);
 		status = response.status;
 		return response.json();
-	}
+	};
 
 	fetch(editProjectUrl, {
 		method: 'PUT',
@@ -70,7 +70,7 @@ const editProject = function (e) {
 			console.log(projectData);
 		})
 		.catch(error => console.log(error));
-}
+};
 
 const deleteProject = e => {
 	console.log("deleting project...");
@@ -89,7 +89,7 @@ const deleteProject = e => {
 			console.log(data);
 		})
 		.catch(error => console.log(error));
-}
+};
 
 _("#btn-create-project").addEventListener("click", createProject);
 _("#btnEditProjectName").addEventListener("click", editProject);

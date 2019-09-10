@@ -1,0 +1,153 @@
+<!--
+Copyright 2016 Google Inc. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<style>
+  .demo {
+    margin-left: 80px;
+  }
+  radio-button {
+    position: relative;
+    display: block;
+    font-size: 18px;
+  }
+  radio-button:focus {
+    outline: none;
+  }
+  radio-button::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    position: absolute;
+    left: -18px;
+    top: 7px;
+    border-radius: 50%;
+  }
+  radio-button:focus::before {
+    box-shadow: 0 0 3px 3px #83BEFF;
+  }
+  radio-button[aria-checked="true"]::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: red;
+    position: absolute;
+    left: -18px;
+    top: 7px;
+    border-radius: 50%;
+  }
+</style>
+
+<div class="demo">
+  <radio-group>
+    <radio-button>Water</radio-button>
+    <radio-button>Coffee</radio-button>
+    <radio-button>Tea</radio-button>
+    <radio-button>Cola</radio-button>
+    <radio-button>Ginger Ale</radio-button>
+  </radio-group>
+</div>
+
+<script src="https://cdn.rawgit.com/webcomponents/custom-elements/master/custom-elements.min.js"></script>
+
+<script>
+  class RadioButton extends HTMLElement {
+    constructor() {
+      super();
+    }
+    connectedCallback() {
+      this.setAttribute('role', 'radio');
+      this.setAttribute('tabindex', -1);
+      this.setAttribute('aria-checked', false);
+    }
+  }
+  window.customElements.define('radio-button', RadioButton);
+  // Define values for keycodes
+  const VK_LEFT       = 37;
+  const VK_UP         = 38;
+  const VK_RIGHT      = 39;
+  const VK_DOWN       = 40;
+  class RadioGroup extends HTMLElement {
+    constructor() {
+      super();
+    }
+    connectedCallback() {
+      this.setAttribute('role', 'radiogroup');
+      this.radios = Array.from(this.querySelectorAll('radio-button'));
+      // Setup initial state
+      if (this.hasAttribute('selected')) {
+        let selected = this.getAttribute('selected');
+        this._selected = selected;
+        this.radios[selected].setAttribute('tabindex', 0);
+        this.radios[selected].setAttribute('aria-checked', true);
+      } else {
+        this._selected = 0;
+        this.radios[0].setAttribute('tabindex', 0);
+      }
+      this.addEventListener('keydown', this.handleKeyDown.bind(this));
+      this.addEventListener('click', this.handleClick.bind(this));
+    }
+    handleKeyDown(e) {
+      switch(e.keyCode) {
+        case VK_UP:
+        case VK_LEFT: {
+          e.preventDefault();
+          if (this.selected === 0) {
+            this.selected = this.radios.length - 1;
+          } else {
+            this.selected--;
+          }
+          break;
+        }
+        case VK_DOWN:
+        case VK_RIGHT: {
+          e.preventDefault();
+          if (this.selected === this.radios.length - 1) {
+            this.selected = 0;
+          } else {
+            this.selected++;
+          }
+          break;
+        }
+      }
+    }
+    handleClick(e) {
+      const idx = this.radios.indexOf(e.target);
+      if (idx === -1) {
+        return;
+      }
+      this.selected = idx;
+    }
+    set selected(idx) {
+      if (isFinite(this.selected)) {
+        // Set the old button to tabindex -1
+        let previousSelected = this.radios[this.selected];
+        previousSelected.tabIndex = -1;
+        previousSelected.removeAttribute('aria-checked', false);
+      }
+      // Set the new button to tabindex 0 and focus it
+      let newSelected = this.radios[idx];
+      newSelected.tabIndex = 0;
+      newSelected.focus();
+      newSelected.setAttribute('aria-checked', true);
+      this.setAttribute('selected', idx);
+      this._selected = idx;
+    }
+    get selected() {
+      return this._selected;
+    }
+  }
+  window.customElements.define('radio-group', RadioGroup);
+ </script>
