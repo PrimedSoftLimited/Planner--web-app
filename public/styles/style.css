@@ -116,12 +116,21 @@ body {
   overflow-y: scroll;
 }
 
-#workspace-tab, #company-tab, #interest-tab {
+#workspace-tab, #company-tab, #interest-tab, #sub-verification-tab {
 	background-color: white;
 	overflow: auto;
 	clear: both;
 	min-height: 40vh;
 	height: auto;
+}
+
+#create-workspace-form {
+	overflow: auto;
+	clear: both;
+}
+
+.plannerr-tab-svg {
+	height: 40vh;
 }
 
 .nav-btn-create {
@@ -184,9 +193,84 @@ body {
 	color: #2e3d49;
 }
 
+.appendage-join{
+	min-height: 10vh;
+	max-height: 40vh;
+	overflow: auto;
+	z-index: 10000;
+	background-color: white;
+}
+
+.inactive {
+    height: 0;
+    min-height: 0vh;
+    max-height: 0vh;
+    position: relative;
+    z-index: 0;
+    display: none;
+}
+
+.append-join {
+	height: 10vh;
+	background-color: inherit;
+	padding: .35rem;
+	overflow: hidden;
+}
+
+.append-name > span:first-child {
+	font-size: 1.3em;
+	text-overflow: ellipsis;
+	line-height: 1.3rem;
+	font-weight: 400;
+}
+
+.smoll-text {
+	font-size: .9em;
+	font-weight: 400;
+}
+
+.append-img {
+	width: 50px;
+	height: 45px;
+	margin-right: 10px;
+}
+
+[data-loader] {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	width: 30px;
+	height: 30px;
+	transform: translateY(-55%);
+}
+
+.btn-join-workspace, .btn-join-workspace, [data-store-submit-name] {
+	font-size: 1.3em;
+	background-color: white;
+	/* border-radius: 3px; */
+	/* border: 1px solid var(--color26); */
+	font-weight: lighter;
+	line-height: 70%;
+	cursor: pointer;
+	height: 80%;
+}
+
+.btn-join-workspace:hover, .btn-join-workspace:hover {
+	border: 1px solid var(--color4);
+}
+
+.add-append-btn {
+    display: none;
+    cursor: pointer;
+}
+
 #interest-tab {
 	height: 75vh;
 	position: relative;
+}
+
+#interests {
+	height: 100%;
 }
 
 #btn-follow-interests1 {
@@ -219,12 +303,12 @@ body {
 	height: 70%;
 }
 
-#sub-interest-tab > div:first-child > div {
+#sub-interest-tab > div:first-child > div > div {
 	flex: 1 0 auto;
 	cursor: pointer;
 }
 
-#sub-interest-tab > div:first-child > div:hover {
+#sub-interest-tab > div:first-child > div > div:hover {
 	background-color: var(--color25, #B9CAD6);
 }
 
@@ -242,56 +326,28 @@ body {
 	background-color: var(--color23, #2EB67D);
 }
 
-.select-interest {
-	height: 20vh;
-	width: 20vh;
-	border-radius: 50%;
-	overflow: hidden;
+[data-interest-id] {
+	height: fit-content;
 }
 
-.select-interest.clicked {
-	border: 1px solid #95E7E7;
+.clicked {
+	background-color: var(--color1, #24A4A3);
 }
 
-.select-interest.clicked div:first-child {
+.clicked:hover {
 	filter: brightness(80%);
 }
 
-.select-interest div:first-child {
-	height: 70%;
-	width: 100%;
-	position: relative;
-	background-image: url("../Images/interests/analytics.svg");
-	background-size: cover;
+div.showfirst {
+	display: flex;
+	height: inherit;
 }
 
-.select-interest div:first-child:hover {
-	cursor: pointer;
-	filter: brightness(80%);
+li.showfirst a {
+	color: rgba(0, 0, 0, 0.685);
+	text-decoration: none;
 }
 
-.select-interest div:last-child {
-	height: 30%;
-	font-size: 2vh;
-	background-color: white;
-	font-family: 'Source Sans Pro', sans-serif;
-	overflow-y: auto;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-}
-
-.select-interest div:last-child::-webkit-scrollbar {
-	width: 0 !important;
-}
-
-.con-bottom-lg {
-	/* height: 10%;
-	position: absolute;
-	bottom: 0; */
-	border-top: 1px solid silver;
-}
-
-#btn-follow-interests {
-	/* position: relative;
-	color: black; */
+li.active {
+	background-color: var(--color23, #2EB67D);
 }

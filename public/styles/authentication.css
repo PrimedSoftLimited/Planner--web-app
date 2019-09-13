@@ -80,14 +80,7 @@ header {
 .signup-container .breadcrumb{
     color: lightgrey;
 }
-.company-form{
-    min-height: 40vh;
-    height: 40vh;
-}
-.workspace-form{
-    min-height: 40vh;
-    height: auto;
-}
+
 .no-before::before{
     color: white !important;
 }
@@ -101,73 +94,3 @@ header {
     filter: opacity(0.8);
 }
 
-.con-appendage-join {
-    height: auto;
-    /* border: 1px solid red; */
-    overflow: auto;
-}
-
-.appendage-join{
-    min-height: 60px;
-    max-height: 35vh;
-    /* height: 60px; */
-    overflow: auto;
-    /* position: absolute; */
-    z-index: 10000;
-    /* border: 1px solid red; */
-    border-radius: 4px;
-    background-color: white;
-    box-shadow: 0 0.5rem 2rem rgba(0,0,0,.1);
-}
-
-.inactive {
-    height: 0;
-    min-height: 0vh;
-    max-height: 0vh;
-    position: relative;
-    z-index: 0;
-    display: none;
-}
-
-.append-join{
-    height: 50px;
-    background-color: inherit;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.append-join:hover {
-    background-color: var(--color5);
-    border: none;
-}
-
-.append-join.clicked {
-    background-color: lightgray;
-}
-
-.skip-step span{
-    font-size: 14px;
-    color: grey;
-}
-
-#con-append-join .append-join {
-    border-radius: .25rem;
-    width: 100%;
-    height: 50px;
-    top: -4px;
-    cursor: default;
-}
-
-.append-join:hover .add-append-btn.show {
-    display: block;
-}
-
-.add-append-btn {
-    display: none;
-    cursor: pointer;
-}
-
-#join-workspace--submit-btn {
-    position: relative;
-
-}

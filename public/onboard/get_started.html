@@ -19,31 +19,24 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 	<title>plannerr</title>
 	<script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+	<script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
 	<script src="../js/base.js" defer></script>
 	<script src="../js/get_started.js" defer></script>
 </head>
 
 <body>
 	<div class="preloader">
-		<svg width="120" height="30" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="#222">
-			<circle cx="15" cy="15" r="15">
-				<animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear"
-					repeatCount="indefinite" />
-				<animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear"
-					repeatCount="indefinite" />
-			</circle>
-			<circle cx="60" cy="15" r="9" fill-opacity="0.3">
-				<animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear"
-					repeatCount="indefinite" />
-				<animate attributeName="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5"
-					calcMode="linear" repeatCount="indefinite" />
-			</circle>
-			<circle cx="105" cy="15" r="15">
-				<animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear"
-					repeatCount="indefinite" />
-				<animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear"
-					repeatCount="indefinite" />
-			</circle>
+		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128"
+			xml:space="preserve">
+			<g>
+				<path
+					d="M75.4 126.63a11.43 11.43 0 0 1-2.1-22.65 40.9 40.9 0 0 0 30.5-30.6 11.4 11.4 0 1 1 22.27 4.87h.02a63.77 63.77 0 0 1-47.8 48.05v-.02a11.38 11.38 0 0 1-2.93.37z"
+					fill="#2EB67D" fill-opacity="1" />
+				<animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1400ms"
+					repeatCount="indefinite"></animateTransform>
+			</g>
 		</svg>
 	</div>
 
@@ -52,23 +45,49 @@
 			<header class="col-12 d-flex align-items-center justify-content-center b-shadow-bottom-round-light">
 				plannerr
 			</header>
+			<div class="loader d-none"></div>
 
 			<div class="tab-content col-12 mx-0 px-0 mb-5" id="preset-tab">
-				<div id="error-tab" class="tab-pane b-shadow-slight-right fade col-12 col-lg-6 mx-0 px-0 mx-auto mt-md-5">
 
+				<div id="error-tab" class="tab-pane fade col-12 mx-0 px-0">
+					<div id="sub-error-tab" class="b-shadow-slight-right col-12 col-lg-6 mx-0 px-0 mx-auto mt-md-5">
+						<img class="col-8 d-block plannerr-tab-svg mx-auto p-5" src="../Images/loaders/undraw_upgrade_06a0.svg"
+							alt="Rocket">
+						<h3 class="col-10 preset-heading preset-text3 mx-auto p-1 mb-3 text-center">Your email has been<br>verified!
+						</h3>
+					</div>
+					<p class="text-center mt-5">
+						You'll be redirected to sign-in in a few seconds,<br>
+						<a href="./signin.html">or click here
+							to continue</a>
+					</p>
 				</div>
 
-				<div id="workspace-tab" class="tab-pane b-shadow-slight-right show active fade col-12 col-lg-6 mx-0 px-0 mx-auto mt-md-5">
+				<div id="verification-tab" class="tab-pane fade col-12 mx-0 px-0">
+					<div id="sub-verification-tab" class="b-shadow-slight-right col-12 col-lg-6 mx-0 px-0 mx-auto mt-md-5">
+						<img class="col-8 d-block plannerr-tab-svg mx-auto p-5" src="../Images/loaders/undraw_upgrade_06a0.svg"
+							alt="Rocket">
+						<h3 class="col-10 preset-heading preset-text3 mx-auto p-1 mb-3 text-center">Your email has been<br>verified!
+						</h3>
+					</div>
+					<p class="text-center mt-5">
+						You'll be redirected within a few seconds,<br>
+						<a href="#workspace-tab" data-toggle="tab" aria-controls="workspace-tab" aria-selected="false">or click here
+							to continue</a>
+					</p>
+				</div>
+
+				<div id="workspace-tab" class="tab-pane b-shadow-slight-right fade col-12 col-lg-6 mx-0 px-0 mx-auto mt-md-5">
 					<nav class="nav nav-tabs text-center" role="tablist">
-						<a id="" class="nav-btn-create nav-link nav-item active nav-inactive col-6"
-							href="#nav-create-workspace" data-toggle="tab" role="tab" aria-controls="nav-create-workspace"
-							aria-selected="true">Create</a>
+						<a id="" class="nav-btn-create nav-link nav-item active nav-inactive col-6" href="#nav-create-workspace"
+							data-toggle="tab" role="tab" aria-controls="nav-create-workspace" aria-selected="true">Create</a>
 						<a id="" class="nav-btn-join nav-link nav-item col-6 nav-inactive" href="#nav-join-workspace"
 							data-toggle="tab" role="tab" aria-controls="nav-join-workspace" aria-selected="false">Join</a>
 					</nav>
 
 					<div class="tab-content col-12 mx-0 px-0">
-						<div class="tab-pane fade col-12 m-auto show active" id="nav-create-workspace" role="tabpanel" aria-labelledby="createWorkspaceLabel">
+						<div class="tab-pane fade col-12 m-auto show active" id="nav-create-workspace" role="tabpanel"
+							aria-labelledby="createWorkspaceLabel">
 							<form class="col-12 my-5" id="create-workspace-form">
 								<h3 id="createWorkspaceLabel" class="preset-heading preset-text3 my-3 text-center">Create your workspace
 								</h3>
@@ -76,23 +95,26 @@
 									Collaborate in real-time. Build projects, skills for today, tomorrow, and beyond.
 								</p>
 								<div class="form-group conInput">
-									<input placeholder=" " type="text" min="4" class="form-control brand-input" name="title"
-										id="create-workspace-name" required>
-									<label class="floating-label" for="create-workspace-name">Workspace Name</label>
-									<!-- <span ></span> -->
+									<input placeholder="Search by name or workspace id" type="text" min="4"
+										class="form-control brand-input" name="title" id="create-workspace-name" required>
 								</div>
 								<label class="switch">
-									<input id="switch1" class="input-switch" type="checkbox" name="status">
+									<input id="switch1" class="input-switch" type="checkbox" name="status" required>
 									<span class="slider round"></span>
 								</label>
-								<label id="switch1" class="switch-text my-md-4">Public (*Workspace is visible to everyone upon
-									search)
+								<label id="switch1" class="switch-text my-md-4">Public (*Anyone can join this workspace)
 								</label>
 
 								<button class="plannerr-btn d-inline-block proceed my-4 float-right col-sm-12 col-md-3"
-									id="btnNext1" type="button">
-									Next
+									id="btnCreateWorkspace" type="submit">
+									Create
 								</button>
+
+								<div class="col-12 d-flex justify-content-end p-0 m-0">
+									<button class="plannerr-btn proceed my-4 col-sm-12 col-md-3" id="btnNext1" type="reset">
+										Skip
+									</button>
+								</div>
 							</form>
 						</div>
 						<div class="tab-pane fade col-12 m-auto" id="nav-join-workspace" role="tabpanel"
@@ -100,27 +122,19 @@
 							<form class="col-12 my-5" id="join-workspace-form">
 								<h3 id="joinWorkspaceLabel" class="my-3 preset-heading text-center preset-text3">Join a Plannerr
 									workspace</h3>
-								<p class="preset-heading text-center">Collaborate in real-time. Build projects, skills for today, tomorrow, and
-									beyond.</p>
-								<div id="con-append-join" class="form-group conInput my-4">
-									<input placeholder=" " type="text" min="4" class="form-control brand-input" name="title"
-										id="join-workspace-name" required>
-									<label for="join-workspace-name" class="floating-label">Workspace Name</label>
+								<p class="preset-heading text-center">Collaborate in real-time. Build projects, skills for today,
+									tomorrow, and
+									beyond.
+								</p>
+								<div id="con-join-workspace" class="position-relative form-group conInput my-4">
+									<input placeholder="Search by name or workspace id" type="text" min="4"
+										class="form-control brand-input" name="title" id="join-workspace-input-field" required>
+									<span data-loader></span>
 								</div>
 
-								<button id="search-workspaces" type="submit" class="btn col-12 my-4 btn-brand stroke-white">
-									<i class="fa fa-search"></i>
-								</button>
+								<div id="workspace-appendage" class="d-none appendage-join col-12 p-0 m-0"></div>
 
-								<div class="con-appendage-join col-12 my-4 p-1 d-none">
-									<div id="workspace-appendage" class="appendage-join col-12 p-1">
-									</div>
-									<button id="join-workspaces" class="btn btn-brand proceed col-12 col-md-2 my-1 float-right">Join
-										<span>[]</span></button>
-								</div>
-
-								<button class="plannerr-btn d-block proceed my-4 float-right col-sm-12 col-md-3" id="btnNext2"
-									type="button">
+								<button class="plannerr-btn d-block proceed my-4 float-right col-sm-12 col-md-3" id="btnNext" type="button">
 									Next
 								</button>
 							</form>
@@ -131,9 +145,8 @@
 				<div id="company-tab"
 					class="tab-pane b-shadow-slight-right fade col-12 col-lg-6 mx-0 px-0 mx-auto mt-md-5 mb-md-5">
 					<nav class="nav nav-tabs text-center" role="tablist">
-						<a id="" class="nav-btn-create nav-link nav-item active nav-inactive col-6"
-							href="#nav-create-company" data-toggle="tab" role="tab" aria-controls="nav-create-company"
-							aria-selected="true">Create</a>
+						<a id="" class="nav-btn-create nav-link nav-item active nav-inactive col-6" href="#nav-create-company"
+							data-toggle="tab" role="tab" aria-controls="nav-create-company" aria-selected="true">Create</a>
 						<a id="" class="nav-btn-join nav-link nav-item col-6 nav-inactive" href="#nav-join-company"
 							data-toggle="tab" role="tab" aria-controls="nav-join-company" aria-selected="false">Join</a>
 					</nav>
@@ -321,36 +334,37 @@
 									search)
 								</label>
 
-								<button class="d-block proceed float-right plannerr-btn my-4 col-sm-12 col-md-3" id="btnCreateCompany"
-									type="submit">
-									Next
+								<button class="plannerr-btn d-inline-block proceed my-4 float-right col-sm-12 col-md-3"
+									id="btnCreateCompany" type="submit">
+									Create
 								</button>
+
+								<div class="col-12 d-flex justify-content-end p-0 m-0">
+									<button class="plannerr-btn proceed my-4 col-sm-12 col-md-3" id="btnNext2" type="reset">
+										Skip
+									</button>
+								</div>
 							</form>
 						</div>
 						<div class="tab-pane fade col-12 m-auto" id="nav-join-company" role="tabpanel"
 							aria-labelledby="joinCompanyLabel">
 							<form class="col-12 my-5" id="join-company-form">
-								<h3 id="joinCompanyLabel" class="my-3 preset-heading text-center preset-text3">You can make a request to link an organisation you're a part of to your workspace</h3>
-								<p class="preset-heading text-center">Collaborate in real-time. Build projects, skills for today, tomorrow, and
+								<h3 id="joinCompanyLabel" class="my-3 preset-heading text-center preset-text3">You can make a request to
+									link an organisation you're a part of to your workspace</h3>
+								<p class="preset-heading text-center">Collaborate in real-time. Build projects, skills for today,
+									tomorrow, and
 									beyond.</p>
-								<div class="form-group conInput my-4">
-									<input placeholder=" " type="text" minlength="4" class="form-control brand-input" name="title"
-										id="join-company-name" required>
-									<label for="join-company-name" class="floating-label">Company Name</label>
+								<div class="form-group conInput my-4 position-relative">
+									<input placeholder="Search by name or company id" type="text" minlength="4"
+										class="form-control brand-input" name="title" id="join-company-input-field" required>
+									<span data-loader></span>
 								</div>
 
-								<button id="search-companies" type="submit" class="btn col-12 my-4 btn-brand stroke-white">
-									<i class="fa fa-search"></i>
-								</button>
-
-								<div class="con-appendage-join col-12 my-4 p-1 d-none">
-									<div id="company-appendage" class="appendage-join col-12 p-1">
-									</div>
-									<button id="join-companies"
-										class="btn btn-brand proceed col-12 col-md-2 my-1 float-right">Join</button>
+								<div id="company-appendage" class="d-none appendage-join col-12 p-0 m-0">
+									Companies <span id="no-of-companies" class="smoll-text"></span>
 								</div>
 
-								<button class="plannerr-btn d-block proceed my-4 float-right col-sm-12 col-md-3" id="btnToInterests"
+								<button class="plannerr-btn d-block proceed my-4 float-right col-sm-12 col-md-3" id="btnNext3"
 									type="button">
 									Next
 								</button>
@@ -359,51 +373,15 @@
 					</div>
 				</div>
 
-				<div id="interest-tab" class="tab-pane b-shadow-slight-right fade col-12 col-lg-6 mx-0 px-0 mx-auto mt-md-5" role="tabpanel">
-					<h4 class="d-flex preset-text2 justify-content-center align-items-center preset-heading m-0 p-0">Follow your interests</h4>
+				<div id="interest-tab" class="tab-pane b-shadow-slight-right fade col-12 col-lg-6 mx-0 px-0 mx-auto mt-md-5"
+					role="tabpanel">
+					<h4 class="d-flex preset-text2 justify-content-center align-items-center preset-heading m-0 p-0">Follow your
+						interests</h4>
 					<div id="sub-interest-tab" class="d-flex flex-wrap flex-lg-nowrap col-12 m-0 p-0">
-						<div class="d-flex flex-wrap col-12 col-lg-8 order-1 overflow-auto py-1 pl-2">
-							<div class="d-flex justify-content-center align-items-center border p-2">Python</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Software Development</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">SQL</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Regex</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Javascript</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">C++</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Object Oriented Programming</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Network Engineering</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Systems Architecture</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Systems Design</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Weapons Design</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Functional Programming</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Cybersecurity</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Penetration Testing</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Q&A Testing</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Computation Theory</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Algorithm Design</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">NodeJS</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Web Development</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Web Scraping</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Search Engine Optimization</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">VR Full Immersion</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">VR 360 Design</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Artificial Intelligence</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Machine Learning</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Statistical Analysis</div>
-							<div class="d-flex justify-content-center align-items-center border p-2">Deep Learning</div>
-						</div>
-						<div class="d-flex d-lg-block flex-nowrap col-12 col-lg-4 overflow-auto order-0 py-1 px-2">
-							<ul class="d-flex d-lg-block">
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">Software Engineering</li>
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">Backend Development</li>
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">Frontend Development</li>
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">Statistics</li>
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">Gaming</li>
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">Web Design</li>
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">Photography</li>
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">Hardware</li>
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">Internet of Things</li>
-								<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2">CI/CD</li>
-							</ul>
+						<div id="interests" class="tab-content m-0 py-1 pl-2 col-12 col-lg-8 order-1 overflow-auto"></div>
+						<div id="category-tab"
+							class="d-flex d-lg-block flex-nowrap col-12 col-lg-4 overflow-auto order-0 py-1 px-2">
+							<ul id="categories" class="d-flex d-lg-block"></ul>
 						</div>
 					</div>
 

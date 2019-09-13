@@ -4,7 +4,7 @@
 let project = true;
 
 const UI = ((project) => {
-	// console.log(arguments);
+
 	if (project) {
 		_(`[data-project='project-true']`).dataset.id = 'project';
 	} else {
@@ -41,7 +41,7 @@ const UI = ((project) => {
 				} else {
 					detail.classList.toggle("show");
 				}
-			})
-		})
-	})
+			});
+		});
+	});
 })(project);
