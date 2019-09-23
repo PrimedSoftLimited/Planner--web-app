@@ -66,12 +66,10 @@ const activateUserAccount = () => {
 			if (response.data) {
 				let userData = response.data.data;
 				localStorage.setItem("userData", JSON.stringify(userData));
-				userData = JSON.parse(localStorage.getItem("userData"));
 
 				({ token } = userData);
 				({ user } = userData);
 
-				console.log(response);
 				_(".loader").classList.add("d-none");
 				_("#verification-tab").classList.add("show", "active");
 			}
@@ -89,7 +87,6 @@ const submitCreateData = {
 	submit: async function (formData, url, removeThisTab, showThisTab) {
 		formData = formDataToObject(formData);
 		_(".loader").classList.remove("d-none");
-		console.log(formData);
 
 		try {
 			let response = await axios.post(url, formData, {
@@ -99,8 +96,7 @@ const submitCreateData = {
 			});
 			let data = await response.data;
 			_(".loader").classList.add("d-none");
-			console.log(response);
-			console.log(data);
+
 			if (data) {
 				searchBuffer = {};
 				removeThisTab.classList.remove("show", "active");

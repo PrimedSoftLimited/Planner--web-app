@@ -1,4 +1,5 @@
 :root {
+	--color0: white;
     --color1: #24A4A3;
     --color2: #95E7E7;
     --color3: #0A0F0F;
@@ -6,7 +7,7 @@
     --color5: #EAEAEA;
     --color6: #395E5E;
     --color7: #1D807F;
-    --color8: #698B9D;
+    --color8: #009688;
     --color9: #97A4AC;
     --color10: #091828;
     --color11: #284759;
@@ -19,12 +20,13 @@
     --color18: #3E9CD1;
     --color19: #553F5D;
     --color20: #A895C7;
-    --color21: #F5E09A;
+    --color21: #3F0E40;
     --color22: #ECB22E;
     --color23: #2EB67D;
     --color24: #2980B9;
     --color25: #B9CAD6;
-    --color26: #A7BAC6;
+		--color26: #A7BAC6;
+		--color27: #009688;
 }
 
 *{
@@ -32,7 +34,7 @@
     padding:0;
 }
 body{
-    font-family: 'Nunito', sans-serif;
+		/* font-family: 'Red Hat Display', sans-serif; */
     width: 100vw;
     position: relative;
 }
@@ -109,9 +111,7 @@ body:not(nav) {
     -webkit-box-shadow: inset 0 0 6px #343a40;
 		box-shadow: inset 0 0 6px #343a40;
 }
-.white-scroller{
 
-}
 .box-shadow-0:focus{
     box-shadow: none;
 }
@@ -339,3 +339,132 @@ input:not(:focus):valid ~ .floating-label,
   .grey-out {
       pointer-events: none;
   }
+
+	.b-shadow {
+		box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
+	}
+
+	.b-shadow-bottom-dark {
+		box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 4px 0px;
+	}
+
+	.b-shadow-bottom-round-light {
+		box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
+	}
+
+	.b-shadow-slight-right {
+		box-shadow: 2px 2px 3px 0 rgba(117,124,129,.12);
+		border: 1px solid #dbe2e8;
+	}
+
+	.b-shadow-slight-left {
+		box-shadow: -2px 2px 3px 0 rgba(117,124,129,.12);
+		border: 1px solid #dbe2e8;
+	}
+
+	.flow {
+		overflow-y: scroll;
+	}
+
+	.plannerr-tab {
+		background-color: white;
+		overflow: auto;
+		clear: both;
+		height: 90vh;
+	}
+
+	.tab-header {
+		height: 100%;
+	}
+
+	.preset-svg {
+    background-color: var(--color19);
+}
+
+.plannerr-btn {
+	position: relative;
+	border-radius: 2px;
+	outline: none !important;
+	border: none;
+	font-size: 1.2rem;
+	font-family: 'Red Hat Display', sans-serif;
+}
+
+.plannerr-tab-svg {
+	height: 40vh;
+}
+
+.proceed {
+	border: 1px solid var(--color23, #24A4A3);
+	color: var(--color23, #24A4A3);
+	background-color: white;
+}
+
+.proceed:hover {
+	background-color: var(--color23, #24A4A3);
+	color: white;
+}
+
+.return {
+	border: var(--color4, #919191);
+	color: var(--color4, #919191);
+	background-color: white;
+}
+
+.return:hover {
+	background-color: var(--color4, #919191);
+	color: white;
+}
+
+.grey {
+  filter: grayscale(1);
+}
+
+.preset-text3 {
+	font-display: auto;
+	font-family: 'Red Hat Display', sans-serif;
+	font-size: 2rem;
+	line-height: 1.4em;
+}
+
+.preset-text2 {
+	font-display: auto;
+	font-family: 'Red Hat Display', sans-serif;
+	font-size: 1.5em;
+	line-height: 1.4em;
+}
+
+.preset-nav {
+	position: fixed;
+	bottom: 0;
+	height: 15vh;
+	background-color: #000;
+}
+
+.plannerr-icon {
+	background-color: inherit;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
+.plannerr-sm-icon {
+	background-color: inherit;
+	outline: none;
+	border: none;
+}
+
+.plannerr-icon svg {
+	width: 32px;
+	height: 32px;
+
+}
+
+.plannerr-sm-icon svg {
+	width: 22px;
+	height: 22px;
+}
+
+.no-outline {
+	outline: none;
+}

@@ -1,9 +1,15 @@
-// let projects = require("./main.js");
-// console.log(projects);
+import { search } from './search.js';
+export const { token } = JSON.parse(localStorage.getItem("userData"));
 
-let project = true;
+let project = false;
 
 const UI = ((project) => {
+
+	all(".search-tab").forEach(tab => tab.addEventListener("focus", function () {
+		search.react(this);
+		search.search(this);
+	})
+	);
 
 	if (project) {
 		_(`[data-project='project-true']`).dataset.id = 'project';

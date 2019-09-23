@@ -6,19 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="../styles/global.css">
-	<link rel="stylesheet" href="../styles/style.css">
 	<link rel="stylesheet" href="../styles/dashboard.css">
+	<script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="../js/base.js" defer></script>
 	<!-- <script src="../js/get_started.js" type="module" defer></script> -->
 	<script src="../js/dashboardJS/project.js" defer></script>
-	<script src="../js/dashboardJS/navigation.js" defer></script>
+	<script src="../js/dashboardJS/navigation.js" type="module" defer></script>
+	<script src="../js/dashboardJS/search.js" type="module" defer></script>
 	<title>Plannerr | Dashboard</title>
 </head>
 
@@ -26,19 +27,90 @@
 	<main>
 		<header>
 			<div class="container-fluid">
-				<div class="row">
-					<div class="tab-content">
+				<div class="row h-100">
+					<div class="tab-content col-12 h-100">
 						<div id="project-header" data-id="project" data-nav-controlled class="tab-header tab-pane">
-							<div class="d-flex">
-								<div>
-									<input type="text" placeholder="Search for...">
+							<div class="d-flex h-100 justify-content-between align-items-center">
+								<button class="plannerr-icon" id="main-search" data-toggle="modal" data-target="#search-tab1"
+									type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+										<path
+											d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
+									</svg>Search for...</button>
+
+								<div class="modal search-tab" id="search-tab1" tabindex="-1" role="dialog" aria-labelledby="searchfieldlabel"
+									aria-hidden="true">
+									<div class="modal-dialog modal-75" role="document">
+										<div class="col-12 no-gutters p-0 modal-content">
+											<form class="search-tab-form">
+												<h4 class="d-none" id="searchfieldlabel">Search for anything</h4>
+												<div
+													class="d-flex plannerr-sm-icon col-12 modal-header justify-content-between no-gutters p-2 border-bottom">
+													<svg class="col-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+														<path
+															d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
+													</svg>
+													<input class="border-0 col-11 h-100 w-100 no-outline" data-search-field id="searchfield"
+														type="text" name="generic" placeholder="Search me. No, really.">
+												</div>
+												<div class="col-12 p-1 modal-body">
+												<nav class="col-12 nav nav-tabs text-center border-bottom" role="tablist">
+													<a id="" class="nav-search-filter nav-link nav-item active nav-inactive col-2"
+														href="#nav-search-threads" data-toggle="tab" role="tab" aria-controls="nav-search-threads"
+														aria-selected="true">Threads</a>
+													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+														href="#nav-search-users" data-toggle="tab" role="tab" aria-controls="nav-search-users"
+														aria-selected="false">People</a>
+													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+														href="#nav-search-projects" data-toggle="tab" role="tab" aria-controls="nav-search-projects"
+														aria-selected="false">Projects</a>
+													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+														href="#nav-search-files" data-toggle="tab" role="tab"
+														aria-controls="nav-search-files" aria-selected="false">Files</a>
+													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+														href="#nav-search-workspaces" data-toggle="tab" role="tab"
+														aria-controls="nav-search-workspaces" aria-selected="false">Workspaces</a>
+													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+														href="#nav-search-companies" data-toggle="tab" role="tab"
+														aria-controls="nav-search-companies" aria-selected="false">Companies</a>
+												</nav>
+
+												<div class="col-12 tab-content">
+													<div class="tab-pane show active" id="nav-search-threads" role="tabpanel"
+														aria-labelledby="createCompanyLabel">multithreaded</div>
+													<div class="tab-pane" id="nav-search-users" role="tabpanel"
+														aria-labelledby="createCompanyLabel">useragent</div>
+													<div class="tab-pane" id="nav-search-projects" role="tabpanel"
+														aria-labelledby="createCompanyLabel">projectile</div>
+													<div class="tab-pane" id="nav-search-files" role="tabpanel"
+														aria-labelledby="createCompanyLabel">filereader</div>
+													<div class="tab-pane" id="nav-search-workspaces" role="tabpanel"
+														aria-labelledby="createCompanyLabel">workingspace</div>
+													<div class="tab-pane" id="nav-search-companies" role="tabpanel"
+														aria-labelledby="createCompanyLabel">Kompany</div>
+												</div>
+											</div>
+												<button
+													class="d-none con-data-search-react text-left no-outline plannerr-sm-icon col-12 modal-footer justify-content-between no-gutters p-2" type="submit">
+													<svg class="col-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+														<path
+															d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
+													</svg>
+													<div class="col-11 ml-0" data-search-react>e - <span>Search VISIO</span></div>
+												</button>
+											</form>
+										</div>
+									</div>
 								</div>
-								<div>
+								<div class="d-flex justify-content-between">
 									<div class="header-profile">
 										<div class="profile-pic"></div>
 										<div class="profile-name">Uzor Ruzor</div>
 									</div>
-									<div class="settings"></div>
+									<button id="btn-search-tab" href="" class="plannerr-icon"><svg xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 512 512">
+											<path stroke="#000"
+												d="M416.3 256c0-21 13.1-38.9 31.7-46.1-4.9-20.5-13-39.7-23.7-57.1-6.4 2.8-13.2 4.3-20.1 4.3-12.6 0-25.2-4.8-34.9-14.4-14.9-14.9-18.2-36.8-10.2-55-17.3-10.7-36.6-18.8-57-23.7C295 82.5 277 95.7 256 95.7S217 82.5 209.9 64c-20.5 4.9-39.7 13-57.1 23.7 8.1 18.1 4.7 40.1-10.2 55-9.6 9.6-22.3 14.4-34.9 14.4-6.9 0-13.7-1.4-20.1-4.3C77 170.3 68.9 189.5 64 210c18.5 7.1 31.7 25 31.7 46.1 0 21-13.1 38.9-31.6 46.1 4.9 20.5 13 39.7 23.7 57.1 6.4-2.8 13.2-4.2 20-4.2 12.6 0 25.2 4.8 34.9 14.4 14.8 14.8 18.2 36.8 10.2 54.9 17.4 10.7 36.7 18.8 57.1 23.7 7.1-18.5 25-31.6 46-31.6s38.9 13.1 46 31.6c20.5-4.9 39.7-13 57.1-23.7-8-18.1-4.6-40 10.2-54.9 9.6-9.6 22.2-14.4 34.9-14.4 6.8 0 13.7 1.4 20 4.2 10.7-17.4 18.8-36.7 23.7-57.1-18.4-7.2-31.6-25.1-31.6-46.2zm-159.4 79.9c-44.3 0-80-35.9-80-80s35.7-80 80-80 80 35.9 80 80-35.7 80-80 80z" />
+										</svg></button>
 								</div>
 							</div>
 						</div>
@@ -119,15 +191,18 @@
 		</nav>
 
 		<section>
-			<div class="container-fluid">
+			<div class="container-fluid p-0">
 				<div class="row">
-					<div class="tab-content col-12">
-						<div data-project="project-false" data-nav-controlled class="tab-pane tab-body">
-							<div class="noproject-image"></div>
-							<div>
-								<h3>You're an early bird</h3>
-								<p>
-									Milestones, tasks created by the workspace adminstrators, and all project based activities will appear
+					<div class="tab-content col-12 no-gutters">
+						<div data-project="project-false" data-nav-controlled
+							class="pt-4 mx-auto border-top tab-pane plannerr-tab col-12">
+							<img class="col-8 d-block plannerr-tab-svg mx-auto pb-3" src="../Images/undraw_Lighthouse_frb8.svg"
+								alt="Lighthouse">
+							<div class="col-8 text-center mx-auto mb-3">
+								<h3 class="p-1">You are an early bird!</h3>
+								<p class="mt-2">
+									Milestones, tasks created by the workspace adminstrators, and all project based
+									activities will appear
 									here.
 								</p>
 								<a href="#" data-toggle="modal" data-target="#addProject">Add a project</a>
@@ -145,7 +220,8 @@
 											</div>
 											<form id="projectForm">
 												<div class="col-4 mx-auto modal-body">
-													<h2 class="modal-title my-2" id="addAProject">Add a project to workspace</h2>
+													<h2 class="modal-title my-2" id="addAProject">Add a project to
+														workspace</h2>
 													<div class="form-group conInput">
 														<input placeholder=" " type="text" minlength="4" class="form-control brand-input"
 															name="title" id="" required>
@@ -154,10 +230,12 @@
 													<div class="form-group conInput">
 														<input placeholder=" " type="text" minlength="4" class="form-control brand-input"
 															name="description" id="" required>
-														<label for="" class="floating-label">Add a short description</label>
+														<label for="" class="floating-label">Add a short
+															description</label>
 													</div>
 													<div>
-														<h5 class="my-2">Milestones take you one step closer to completing your project</h5>
+														<h5 class="my-2">Milestones take you one step closer to
+															completing your project</h5>
 														<!-- <div class="form-group conInput">
 																																			<input placeholder=" " type="text" minlength="4" class="form-control brand-input"
 																																					name="title" id="" required>
@@ -177,7 +255,8 @@
 											</form>
 										</div>
 										<div class="col-4 mx-auto modal-footer">
-											<button id="btn-create-project" type="submit" class="btn btn-primary">Create project</button>
+											<button id="btn-create-project" type="submit" class="btn btn-primary">Create
+												project</button>
 										</div>
 										</form>
 									</div>
@@ -265,7 +344,8 @@
 												</div>
 												<div class="col-12 d-flex align-items-center mx-auto modal-footer">
 													<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
-													<button data-project-name="" id="btnEditProjectName" type="submit" class="btn btn-primary">Update name</button>
+													<button data-project-name="" id="btnEditProjectName" type="submit"
+														class="btn btn-primary">Update name</button>
 												</div>
 											</form>
 										</div>
@@ -284,7 +364,8 @@
 									<div class="modal-dialog" role="document">
 										<div class="col-12 modal-content">
 											<div class="d-flex modal-header border-0">
-												<h4 class="modal-title my-2" id="updateProjectPurpose">Edit project purpose</h4>
+												<h4 class="modal-title my-2" id="updateProjectPurpose">Edit project
+													purpose</h4>
 												<button type="button" class="border rounded-circle close" data-dismiss="modal"
 													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
@@ -301,7 +382,8 @@
 												<div class="col-12 d-flex align-items-center mx-auto modal-footer">
 													<p>Describe what this project is for...</p>
 													<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
-													<button data-project-purpose="" id="btnEditProjectPurpose" type="submit" class="btn btn-primary">Update purpose</button>
+													<button data-project-purpose="" id="btnEditProjectPurpose" type="submit"
+														class="btn btn-primary">Update purpose</button>
 												</div>
 											</form>
 										</div>
@@ -361,8 +443,8 @@
 					</div>
 				</div>
 
-				<button data-toggle="modal" data-target="#deleteProject" type="button"
-					class="btn btn-danger">End project</button>
+				<button data-toggle="modal" data-target="#deleteProject" type="button" class="btn btn-danger">End
+					project</button>
 
 				<!-- modal to confirm project deletion -->
 				<div class="modal" id="deleteProject" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteProject"
@@ -370,17 +452,19 @@
 					<div class="modal-dialog" role="document">
 						<div class="col-12 modal-content">
 							<div class="d-flex modal-header border-0">
-								<h4 class="modal-title" id="confirmDeleteProject">Are you sure you want to end project?</h4>
+								<h4 class="modal-title" id="confirmDeleteProject">Are you sure you want to end project?
+								</h4>
 								<button type="button" class="border rounded-circle close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 									<p>esc</p>
 								</button>
 							</div>
-								<div class="col-12 mx-auto d-flex align-items-center modal-body">
-									<h6>This action cannot be reversed!</h6>
-									<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
-									<button id="btnDeleteProject" type="submit" class="btn btn-primary">Confirm delete</button>
-								</div>
+							<div class="col-12 mx-auto d-flex align-items-center modal-body">
+								<h6>This action cannot be reversed!</h6>
+								<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+								<button id="btnDeleteProject" type="submit" class="btn btn-primary">Confirm
+									delete</button>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -19,66 +19,6 @@ body {
 	}
 }
 
-.preset-svg {
-    background-color: var(--color19);
-}
-
-.plannerr-btn {
-	position: relative;
-	border-radius: 2px;
-	outline: none !important;
-	border: none;
-	font-size: 1.2rem;
-	font-family: 'Red Hat Display', sans-serif;
-}
-
-.proceed {
-	border: 1px solid var(--color23, #24A4A3);
-	color: var(--color23, #24A4A3);
-	background-color: white;
-}
-
-.proceed:hover {
-	background-color: var(--color23, #24A4A3);
-	color: white;
-}
-
-.return {
-	border: var(--color4, #919191);
-	color: var(--color4, #919191);
-	background-color: white;
-}
-
-.return:hover {
-	background-color: var(--color4, #919191);
-	color: white;
-}
-
-.grey {
-  filter: grayscale(1);
-}
-
-.preset-text3 {
-	font-display: auto;
-	font-family: 'Red Hat Display', sans-serif;
-	font-size: 2rem;
-	line-height: 1.4em;
-}
-
-.preset-text2 {
-	font-display: auto;
-	font-family: 'Red Hat Display', sans-serif;
-	font-size: 1.5em;
-	line-height: 1.4em;
-}
-
-.preset-nav {
-	position: fixed;
-	bottom: 0;
-	height: 15vh;
-	background-color: #000;
-}
-
 #preset-right {
 	position: relative;
 }
@@ -87,36 +27,7 @@ body {
 	border: none !important;
 }
 
-.preset-nav .nav-item {
-    /* border: 1px solid red;    */
-}
-
-.b-shadow {
-	box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
-}
-
-.b-shadow-top {
-    /* box-shadow:  */
-}
-
-.b-shadow-bottom-dark {
-	box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 4px 0px;
-}
-
-.b-shadow-bottom-round-light {
-	box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
-}
-
-.b-shadow-slight-right {
-	box-shadow: 2px 2px 3px 0 rgba(117,124,129,.12);
-	border: 1px solid #dbe2e8;
-}
-
-.flow {
-  overflow-y: scroll;
-}
-
-#workspace-tab, #company-tab, #interest-tab, #sub-verification-tab {
+#workspace-tab, #company-tab, #interest-tab, #sub-verification-tab, #sub-error-tab {
 	background-color: white;
 	overflow: auto;
 	clear: both;
@@ -127,10 +38,6 @@ body {
 #create-workspace-form {
 	overflow: auto;
 	clear: both;
-}
-
-.plannerr-tab-svg {
-	height: 40vh;
 }
 
 .nav-btn-create {
