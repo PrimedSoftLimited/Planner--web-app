@@ -1,4 +1,4 @@
-// Sign In, Sign Up and Workspace scripts 
+// Sign In, Sign Up and Workspace scripts
 // workspace to be moved to different file
 
 let registerUrl = "/api/signup";
@@ -49,9 +49,9 @@ if (regForm) {
             })
             .catch(err => {
                 console.log(err.response);
-            })
+            });
 
-    })
+    });
 }
 
 // For signIn
@@ -85,6 +85,6 @@ if (loginForm) {
             .catch((err) => {
                 console.log(err.response);
                 handleError(err.response);
-            })
-    })
+            });
+    });
 }

@@ -1,6 +1,8 @@
 import { token } from './navigation.js';
+
 export const search = {
 	react: searchComponent => {
+		console.log(token);
 		searchComponent.querySelector("[data-search-field]").addEventListener("keyup", e => {
 			let elem = e.srcElement || e.target;
 			if (elem.value === "") {

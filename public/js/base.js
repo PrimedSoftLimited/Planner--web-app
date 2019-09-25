@@ -96,7 +96,7 @@ function handleError(error) {
             errorElem.innerText = errorElem.dataset.label;
             errorElem.classList.remove("invalid");
             inputElem.classList.remove("invalid");
-        })
+        });
     }
 }
 
@@ -107,8 +107,8 @@ all(".con-input input").forEach((elem) => {
 
         const parent = elem.parentNode;
         elem.value? parent.classList.add("valid"):parent.classList.remove("valid");
-    })
-})
+    });
+});
 
 // breadcrumb navigation
 try {
@@ -145,5 +145,5 @@ all('.brand-input').forEach(e => {
                 console.log(e);
             }
         }
-    })
-})
+    });
+});
