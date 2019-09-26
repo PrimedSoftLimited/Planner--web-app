@@ -32,6 +32,7 @@
 		--color30:#E4E4E2;
 		--color31: #2E3033;
 		--color32: rgb(234, 241, 238);
+		--color33: rgb(188,171,188);
 }
 
 * {
@@ -42,9 +43,9 @@
 header {
 	height: 10vh;
 	font-variant: small-caps;
-	font-size: 1.1em;
+	font-size: 2em;
 	font-weight: 300;
-	line-height: 1em;
+	line-height: 3.5rem;
 	font-family: 'Red Hat Display', sans-serif;
 	letter-spacing: 5px;
 	background-color: white;
@@ -106,6 +107,10 @@ body:not(nav) {
 
 .c-pointer {
 	cursor: pointer;
+}
+
+.plannerr-text {
+	color: var(--color33);
 }
 
 .scroller{

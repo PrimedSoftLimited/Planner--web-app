@@ -20,7 +20,13 @@ main {
 
 main > header {
   grid-area: header;
-  background-color: white;
+	background-color: white;
+	font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1em;
+	letter-spacing: normal;
+	font-variant: normal;
+
 }
 
 main > header > div {
@@ -33,7 +39,6 @@ main > nav {
   background-color: white;
 	grid-area: sidenav;
 	background-color: var(--color29, white);
-	color: rgb(188,171,188);
 }
 
 main > section {
