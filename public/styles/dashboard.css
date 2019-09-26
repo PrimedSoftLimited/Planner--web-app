@@ -95,10 +95,18 @@ main > aside.show {
 #main-search {
 	outline: none;
 	border-radius: 3px;
-	border: 1px solid var(--color26);
+	border: 1px solid var(--color4);
 	background-color: white;
 	height: 40px;
 }
+
+#main-search:hover .plannerr-text {
+	color: var(--color31);
+}
+
+/* #main-search .plannerr-text:hover {
+	color: var(--color24);
+} */
 
 .con-data-search-react:hover {
 	cursor: pointer;
@@ -156,4 +164,19 @@ ion-icon[name="flame"] {
 
 #nav-btn-invite:hover {
 	background-color: var(--color30, #E4E4E2);
+}
+
+.tab-search-list {
+	min-height: 1px;
+}
+
+.search-item {
+	height: 2.5em;
+	cursor: pointer;
+	/* border: 1px solid red; */
+}
+
+.search-item:hover {
+	color: white;
+	background-color: var(--color24);
 }

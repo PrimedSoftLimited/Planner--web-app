@@ -110,7 +110,7 @@ body:not(nav) {
 }
 
 .plannerr-text {
-	color: var(--color33);
+	color: var(--color4);
 }
 
 .scroller{
@@ -464,6 +464,7 @@ input:not(:focus):valid ~ .floating-label,
 }
 
 .plannerr-icon {
+	color: var(--color31);
 	background-color: inherit;
 	outline: none;
 	border: none;
@@ -480,6 +481,14 @@ input:not(:focus):valid ~ .floating-label,
 	width: 32px;
 	height: 32px;
 
+}
+
+.plannerr-sm-pic {
+	height: 22px;
+	width: 22px;
+	line-height: 20px;
+	border-radius: 3px;
+	border: none;
 }
 
 .plannerr-sm-icon svg {

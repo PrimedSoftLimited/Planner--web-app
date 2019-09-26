@@ -26,6 +26,7 @@ const UI = ((project) => {
 	);
 
 
+	// CRUD Project
 	_("#btn-create-project").addEventListener("click", project.createProject);
 	_("#btnEditProjectName").addEventListener("click", project.editProject);
 	_("#btnEditProjectPurpose").addEventListener("click", project.editProject);
