@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="import" href="./choose-workspace.html" id="choose-workspace">
-	<link href="https://fonts.googleapis.com/css?family=Blinker|Montserrat|Nunito|Red+Hat+Display|Source+Sans+Pro&display=swap"
+	<link
+		href="https://fonts.googleapis.com/css?family=Blinker|Montserrat|Nunito|Red+Hat+Display|Source+Sans+Pro&display=swap"
 		rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -27,21 +28,21 @@
 </head>
 
 <body>
-	<main class="d-none">
+	<main class="">
 		<header>
 			<div class="container-fluid">
 				<div class="row h-100">
 					<div class="tab-content col-12 h-100">
-						<div id="project-header" data-id="project" data-nav-controlled class="tab-header tab-pane">
+						<div id="project-header" data-id="project" data-nav-controlled class="tab-header tab-pane active show">
 							<div class="d-flex h-100 justify-content-between align-items-center">
-								<button class="plannerr-icon" id="main-search" data-toggle="modal" data-target="#search-tab1"
-									type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-										<path
-											d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
-									</svg>Search for...</button>
+								<button class="c-pointer col-2 d-flex m-0 px-2" id="main-search" data-toggle="modal" data-target="#search-tab1"
+									type="button">
+									<ion-icon name="search"></ion-icon>
+									<div class="d-none d-md-block my-auto pl-1">Search</div>
+								</button>
 
-								<div class="modal search-tab" id="search-tab1" tabindex="-1" role="dialog" aria-labelledby="searchfieldlabel"
-									aria-hidden="true">
+								<div class="modal search-tab" id="search-tab1" tabindex="-1" role="dialog"
+									aria-labelledby="searchfieldlabel" aria-hidden="true">
 									<div class="modal-dialog modal-75" role="document">
 										<div class="col-12 no-gutters p-0 modal-content">
 											<form class="search-tab-form">
@@ -56,44 +57,45 @@
 														type="text" name="generic" placeholder="Search me. No, really.">
 												</div>
 												<div class="col-12 p-1 modal-body">
-												<nav class="col-12 nav nav-tabs text-center border-bottom" role="tablist">
-													<a id="" class="nav-search-filter nav-link nav-item active nav-inactive col-2"
-														href="#nav-search-threads" data-toggle="tab" role="tab" aria-controls="nav-search-threads"
-														aria-selected="true">Threads</a>
-													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
-														href="#nav-search-users" data-toggle="tab" role="tab" aria-controls="nav-search-users"
-														aria-selected="false">People</a>
-													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
-														href="#nav-search-projects" data-toggle="tab" role="tab" aria-controls="nav-search-projects"
-														aria-selected="false">Projects</a>
-													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
-														href="#nav-search-files" data-toggle="tab" role="tab"
-														aria-controls="nav-search-files" aria-selected="false">Files</a>
-													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
-														href="#nav-search-workspaces" data-toggle="tab" role="tab"
-														aria-controls="nav-search-workspaces" aria-selected="false">Workspaces</a>
-													<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
-														href="#nav-search-companies" data-toggle="tab" role="tab"
-														aria-controls="nav-search-companies" aria-selected="false">Companies</a>
-												</nav>
+													<nav class="col-12 nav nav-tabs text-center border-bottom" role="tablist">
+														<a id="" class="nav-search-filter nav-link nav-item active nav-inactive col-2"
+															href="#nav-search-threads" data-toggle="tab" role="tab" aria-controls="nav-search-threads"
+															aria-selected="true">Threads</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-users" data-toggle="tab" role="tab" aria-controls="nav-search-users"
+															aria-selected="false">People</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-projects" data-toggle="tab" role="tab"
+															aria-controls="nav-search-projects" aria-selected="false">Projects</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-files" data-toggle="tab" role="tab" aria-controls="nav-search-files"
+															aria-selected="false">Files</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-workspaces" data-toggle="tab" role="tab"
+															aria-controls="nav-search-workspaces" aria-selected="false">Workspaces</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-companies" data-toggle="tab" role="tab"
+															aria-controls="nav-search-companies" aria-selected="false">Companies</a>
+													</nav>
 
-												<div class="col-12 tab-content">
-													<div class="tab-pane show active" id="nav-search-threads" role="tabpanel"
-														aria-labelledby="createCompanyLabel">multithreaded</div>
-													<div class="tab-pane" id="nav-search-users" role="tabpanel"
-														aria-labelledby="createCompanyLabel">useragent</div>
-													<div class="tab-pane" id="nav-search-projects" role="tabpanel"
-														aria-labelledby="createCompanyLabel">projectile</div>
-													<div class="tab-pane" id="nav-search-files" role="tabpanel"
-														aria-labelledby="createCompanyLabel">filereader</div>
-													<div class="tab-pane" id="nav-search-workspaces" role="tabpanel"
-														aria-labelledby="createCompanyLabel">workingspace</div>
-													<div class="tab-pane" id="nav-search-companies" role="tabpanel"
-														aria-labelledby="createCompanyLabel">Kompany</div>
+													<div class="col-12 tab-content">
+														<div class="tab-pane show active" id="nav-search-threads" role="tabpanel"
+															aria-labelledby="createCompanyLabel">multithreaded</div>
+														<div class="tab-pane" id="nav-search-users" role="tabpanel"
+															aria-labelledby="createCompanyLabel">useragent</div>
+														<div class="tab-pane" id="nav-search-projects" role="tabpanel"
+															aria-labelledby="createCompanyLabel">projectile</div>
+														<div class="tab-pane" id="nav-search-files" role="tabpanel"
+															aria-labelledby="createCompanyLabel">filereader</div>
+														<div class="tab-pane" id="nav-search-workspaces" role="tabpanel"
+															aria-labelledby="createCompanyLabel">workingspace</div>
+														<div class="tab-pane" id="nav-search-companies" role="tabpanel"
+															aria-labelledby="createCompanyLabel">Kompany</div>
+													</div>
 												</div>
-											</div>
 												<button
-													class="d-none con-data-search-react text-left no-outline plannerr-sm-icon col-12 modal-footer justify-content-between no-gutters p-2" type="submit">
+													class="d-none con-data-search-react text-left no-outline plannerr-sm-icon col-12 modal-footer justify-content-between no-gutters p-2"
+													type="submit">
 													<svg class="col-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 														<path
 															d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
@@ -130,7 +132,7 @@
 						<div id="chat-header" data-id="chat" data-nav-controlled class="tab-header tab-pane">
 							#VISIO
 						</div>
-						<div id="library-header" data-id="library" data-nav-controlled class="tab-header tab-pane active show">
+						<div id="library-header" data-id="library" data-nav-controlled class="tab-header tab-pane">
 							Library Header
 						</div>
 					</div>
@@ -138,40 +140,41 @@
 			</div>
 		</header>
 
-		<nav>
-			<div class="plannerr-logo">
-				<div class="loading" id="text">
-					<span class="">Plannerr</span>
-					<div id="ball"></div>
+		<nav class="border-right">
+			<div class="d-flex border-bottom nav-tab-head">
+				<div class="col-3 m-auto">
+					<ion-icon class="d-block mx-auto" role="" name="flame"></ion-icon>
 				</div>
-				<div>
-					<button></button>
-				</div>
+				<span class="d-none d-md-block col-9 px-0 my-auto">VISIO</span>
 			</div>
 
-			<div class="nav-search">
-				<input type="text" placeholder="Search">
-			</div>
-
-			<div data-id="project" data-nav-controlled class="nav-tab-link">
-				<div class="nav-tab-icon"></div>
-				<span class="nav-tab">Project</span>
-			</div>
-			<div data-id="threads" data-nav-controlled class="nav-tab-link">
-				<div class="nav-tab-icon"></div>
-				<span class="nav-tab">Threads</span>
-			</div>
-			<div data-id="library" data-nav-controlled class="nav-tab-link active">
-				<div class="nav-tab-icon"></div>
-				<span class="nav-tab">Library</span>
-			</div>
-
-			<div>
-				<div>
-					<div>Direct Messages</div>
-					<div></div>
+			<div data-id="project" data-nav-controlled class="d-flex nav-tab-link">
+				<div class="col-3 m-auto nav-tab-icon">
+					<ion-icon class="d-block mx-auto " name="analytics"></ion-icon>
 				</div>
-				<div>
+				<span class="d-none d-md-block col-9 px-0 my-auto nav-tab">Project</span>
+			</div>
+			<div data-id="threads" data-nav-controlled class="d-flex nav-tab-link">
+				<div class="col-3 m-auto nav-tab-icon">
+					<ion-icon class="d-block mx-auto " name="chatbubbles"></ion-icon>
+				</div>
+				<span class="d-none d-md-block col-9 px-0 my-auto nav-tab">Threads</span>
+			</div>
+			<div data-id="library" data-nav-controlled class="d-flex nav-tab-link active">
+				<div class="col-3 m-auto nav-tab-icon">
+					<ion-icon class="d-block mx-auto " name="fastforward"></ion-icon>
+				</div>
+				<span class="d-none d-md-block col-9 px-0 my-auto nav-tab">Library</span>
+			</div>
+
+			<div class="d-none d-md-block py-2">
+				<div class="d-flex col-12 m-auto">
+					<div class="col-11 px-1 m-0">Direct Messages</div>
+					<div class="col-1 p-0 m-0 c-pointer">
+						<ion-icon class="align-middle m-auto" role="button" name="add-circle-outline"></ion-icon>
+					</div>
+				</div>
+				<div class="flow">
 					<div class="dm-chat">
 						<div class="dm-status"></div>
 						<div class="dm-name"></div>
@@ -181,13 +184,14 @@
 				</div>
 			</div>
 
-			<footer class="nav-footer">
-				<div>
-					<div>VISIO</div>
-					<div></div>
+			<footer class="d-none d-md-block nav-footer">
+				<div id="nav-btn-invite" class="d-flex m-auto c-pointer py-2">
+					<div class="col-2 m-auto">
+						<ion-icon class="d-block mx-auto" name="add"></ion-icon>
+					</div>
+					<div class="col-10 px-0 my-auto">Invite People</div>
 				</div>
-				<div>Invite People</div>
-				<div>
+				<div class="col-12 py-2">
 					<a href="#">Open the Plannerr App</a>
 				</div>
 			</footer>
@@ -308,7 +312,7 @@
 			</div>
 		</section>
 
-		<aside id="main-aside">
+		<aside id="main-aside" class="">
 			<header class="d-flex flex-nowrap justify-content-between">
 				<h3>About this project</h3>
 				<button>xxx</button>
@@ -369,8 +373,7 @@
 											<div class="d-flex modal-header border-0">
 												<h4 class="modal-title my-2" id="updateProjectPurpose">Edit project
 													purpose</h4>
-												<button type="button" class="border rounded-circle close" data-dismiss="modal"
-													aria-label="Close">
+												<button type="button" class="border rounded close" data-dismiss="modal" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 													<p>esc</p>
 												</button>

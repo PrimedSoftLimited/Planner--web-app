@@ -32,7 +32,7 @@ main > nav {
   flex-flow: column nowrap;
   background-color: white;
 	grid-area: sidenav;
-	background-color: var(--color0, white);
+	background-color: var(--color29, white);
 	color: rgb(188,171,188);
 }
 
@@ -91,6 +91,8 @@ main > aside.show {
 	outline: none;
 	border-radius: 3px;
 	border: 1px solid var(--color26);
+	background-color: white;
+	height: 40px;
 }
 
 .con-data-search-react:hover {
@@ -103,5 +105,50 @@ main > aside.show {
 	fill: white;
 }
 
+.nav-tab-head {
+	height: 10%;
+}
 
+.nav-tab-link {
+	height: 8%;
 
+}
+
+.nav-tab-link.active {
+	color: var(--color23, #2EB67D);
+	background-color: var(--color32, rgb(234, 241, 238));
+}
+
+.nav-tab-link:hover {
+	background-color: var(--color32, rgb(234, 241, 238));
+	cursor: pointer;
+}
+
+.nav-tab-link:hover .nav-tab-icon > * {
+	/* color:  */
+}
+
+.nav-tab {
+	/* border: 1px solid red; */
+}
+
+.nav-tab-icon {
+	/* width: 100%; */
+	/* border: 1px solid gold; */
+}
+
+.nav-tab-icon ion-icon {
+	transform: scale(1.5);
+}
+
+button ion-icon {
+	/* transform: scale(1.2); */
+}
+
+ion-icon[name="flame"] {
+	color: var(--color12);
+}
+
+#nav-btn-invite:hover {
+	background-color: var(--color30, #E4E4E2);
+}

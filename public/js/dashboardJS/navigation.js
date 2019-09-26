@@ -18,26 +18,35 @@ const multipleWorkspaces = (async () => {
 
 const UI = ((project) => {
 
+	// search component functionality
 	all(".search-tab").forEach(tab => tab.addEventListener("focus", function () {
 		search.react(this);
 		search.search(this);
 	})
 	);
 
+
 	_("#btn-create-project").addEventListener("click", project.createProject);
 	_("#btnEditProjectName").addEventListener("click", project.editProject);
 	_("#btnEditProjectPurpose").addEventListener("click", project.editProject);
 	_("#btnDeleteProject").addEventListener("click", project.deleteProject);
 
-	if (project.id) {
+
+	if (true) {
 		_(`[data-project='project-true']`).dataset.id = 'project';
 	} else {
 		_(`[data-project='project-false']`).dataset.id = 'project';
 	}
 
-	all(".nav-tab-link").forEach(link => {
-		link.addEventListener("click", () => {
 
+	// sidebar controls
+	all(".nav-tab-link").forEach((link, i, links) => {
+		link.addEventListener("click", () => {
+			links.forEach(link => {
+				link.classList.remove("active");
+				console.log("WORKS");
+			});
+			link.classList.add("active");
 			all("[data-nav-controlled]").forEach(tab => {
 				if (tab.dataset.id !== link.dataset.id) {
 					tab.classList.remove("active", "show");
@@ -55,6 +64,8 @@ const UI = ((project) => {
 		// 	`;
 	});
 
+
+	// aside.main controls
 	all(".get-about-project-details").forEach(btn => {
 		btn.addEventListener('click', e => {
 			e.preventDefault();
