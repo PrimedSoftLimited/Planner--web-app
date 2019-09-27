@@ -27,7 +27,6 @@ export const search = {
 
 				const params = new URLSearchParams([['t', searchTerm], ['q', searchValue]]);
 				const url = `${api_link}/api/search?${params}`;
-				console.log(url);
 
 				fetch(url, {
 					method: 'GET',
@@ -39,10 +38,71 @@ export const search = {
 					.then(data => {
 						if (data.success) {
 							console.log(data);
-							let { search_result } = data;
+							let { message, search_result } = data;
+
+							// if no search result, do nothing
 							if (!Array.isArray(search_result) || !search_result.length) return;
+
+							// matches search response with appropriate populating HTML
 							_('#searchTabs').classList.remove('d-none');
-							// search_result.map()
+							if (message.includes('Users')) {
+								search_result.forEach(result => {
+									let { name, username, user_image } = result;
+									_('#nav-search-users .tab-search-list').innerHTML += `
+										<div class="d-flex search-item m-0 align-items-center pl-4 py-2 col-12">
+											<button class="plannerr-sm-pic" aria-label="">
+												<img src="" alt="">
+											</button>
+											<div class="d-flex col-11">
+												<span>${username}</span>
+												<div class="online-status"></div>
+												<span class="pl-1">- ${name}</span>
+											</div>
+										</div>
+									`;
+								});
+							} else if (message.includes('Company')) {
+								search_result.forEach(result => {
+									let { name, username, user_image } = result;
+									_('#nav-search-companies .tab-search-list').innerHTML += `
+											<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12">
+											<button class="plannerr-sm-pic" aria-label="">
+												<img src="" alt="">
+											</button>
+											<div class="d-flex col-11">
+												<span>Primedsoft LLC - </span>
+												<span>IT Hub</span>
+											</div>
+										</div>
+									`;
+								});
+							} else if (message.includes('Workspace')) {
+								search_result.forEach(result => {
+									let { name, username, user_image } = result;
+									_('#nav-search-workspaces .tab-search-list').innerHTML += `
+										<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12">
+											<button class="plannerr-sm-pic" aria-label="">
+												<img src="" alt="">
+											</button>
+											<div class="d-flex col-11">
+												<span>Apache - </span>
+												<span>This is it!</span>
+											</div>
+										</div>
+									`;
+								});
+							} else if (message.includes('Project')) {
+								search_result.forEach(result => {
+									let { title, description } = result;
+									_('#nav-search-projects .tab-search-list').innerHTML += `
+										<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12" aria-label="">
+											<ion-icon class="plannerr-sm-pic" name="git-merge"></ion-icon>
+											<span class=col-11>${title}</span>
+											<span class="pl-1">- ${description}</span>
+										</div>
+									`;
+								});
+							}
 						}
 					})
 					.catch(error => console.log(error.data));

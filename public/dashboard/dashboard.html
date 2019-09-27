@@ -66,7 +66,7 @@
 														type="text" name="generic" placeholder="Search me. No, really.">
 												</div>
 												<button
-													class="d-none con-data-search-react no-outline plannerr-sm-icon col-12 modal-body justify-content-between no-gutters pl-4 py-2"
+													class="d-none con-data-search-react no-outline plannerr-sm-icon col-12 modal-footer justify-content-between no-gutters pl-4 py-2"
 													type="submit">
 													<svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 														<path
@@ -74,7 +74,7 @@
 													</svg>
 													<div class="text-left w-100 pl-2" data-search-react></div>
 												</button>
-												<div id="searchTabs" class="d-none col-12 p-0 m-0 modal-footer">
+												<div id="searchTabs" class="d-none col-12 p-0 m-0 modal-body">
 													<nav class="col-12 nav nav-tabs text-center border-bottom" role="tablist">
 														<a id="" class="nav-search-filter nav-link nav-item active nav-inactive col-2"
 															href="#nav-search-threads" data-toggle="tab" role="tab" aria-controls="nav-search-threads"
@@ -97,61 +97,25 @@
 													</nav>
 
 													<div class="col-12 m-0 p-0 tab-content">
-														<div class="tab-pane show active" id="nav-search-threads" role="tabpanel"
-															aria-labelledby="createCompanyLabel">multithreaded</div>
-														<div class="tab-pane" id="nav-search-users" role="tabpanel"
-															aria-labelledby="createCompanyLabel">
-															<div class="col-12 m-0 p-0 tab-search-list">
-																<div class="d-flex search-item m-0 align-items-center pl-4 py-2 col-12">
-																	<button class="plannerr-sm-pic" aria-label="">
-																		<img src="" alt="">
-																	</button>
-																	<div class="d-flex col-11">
-																		<span>rUser</span>
-																		<div class="online-status"></div>
-																		<span>Randy User</span>
-																	</div>
-																</div>
-															</div>
+														<div class="tab-pane show active" data-search-param id="nav-search-threads" role="tabpanel"
+															aria-label="">multithreaded</div>
+														<div class="tab-pane" data-search-param="Users" id="nav-search-users" role="tabpanel"
+															aria-label="" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
-														<div class="tab-pane" id="nav-search-projects" role="tabpanel"
-															aria-labelledby="createCompanyLabel">
-															<div class="col-12 m-0 p-0 tab-search-list">
-																<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12" aria-label="">
-																	<ion-icon class="plannerr-sm-pic" name="git-merge"></ion-icon>
-																	<span class=col-11>Projectile</span>
-																</div>
-															</div>
+														<div class="tab-pane" data-search-param="Project" id="nav-search-projects" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
-														<div class="tab-pane" id="nav-search-files" role="tabpanel"
-															aria-labelledby="createCompanyLabel">filereader</div>
-														<div class="tab-pane" id="nav-search-workspaces" role="tabpanel"
-															aria-labelledby="createCompanyLabel">
-															<div class="col-12 m-0 p-0 tab-search-list">
-																<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12">
-																	<button class="plannerr-sm-pic" aria-label="">
-																		<img src="" alt="">
-																	</button>
-																	<div class="d-flex col-11">
-																		<span>Apache - </span>
-																		<span>This is it!</span>
-																	</div>
-																</div>
-															</div>
+														<div class="tab-pane" data-search-param id="nav-search-files" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">filereader</div>
+														<div class="tab-pane" data-search-param="Workspace" id="nav-search-workspaces" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
-														<div class="tab-pane" id="nav-search-companies" role="tabpanel"
-															aria-labelledby="createCompanyLabel">
-															<div class="col-12 m-0 p-0 tab-search-list">
-																<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12">
-																	<button class="plannerr-sm-pic" aria-label="">
-																		<img src="" alt="">
-																	</button>
-																	<div class="d-flex col-11">
-																		<span>Primedsoft LLC - </span>
-																		<span>IT Hub</span>
-																	</div>
-																</div>
-															</div>
+														<div class="tab-pane" data-search-param="Company" id="nav-search-companies" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
 													</div>
 												</div>
@@ -227,7 +191,7 @@
 						<ion-icon class="align-middle m-auto" role="button" name="add-circle-outline"></ion-icon>
 					</div>
 				</div>
-				<div class="flow">
+				<div class="d-none flow">
 					<div class="dm-chat">
 						<div class="online-status"></div>
 						<div class="dm-name"></div>

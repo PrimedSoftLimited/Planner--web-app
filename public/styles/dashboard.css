@@ -180,3 +180,10 @@ ion-icon[name="flame"] {
 	color: white;
 	background-color: var(--color24);
 }
+
+.online-status {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 1px solid var(--color15);
+}
