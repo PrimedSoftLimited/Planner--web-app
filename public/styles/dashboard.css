@@ -26,7 +26,15 @@ main > header {
 	line-height: 1em;
 	letter-spacing: normal;
 	font-variant: normal;
+}
 
+aside > header {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.1em;
+	font-weight: 600;
+	line-height: 1em;
+	letter-spacing: normal;
+	font-variant: normal;
 }
 
 main > header > div {
@@ -49,6 +57,7 @@ main > section {
 
 main > aside {
 	width: 0;
+	display: none;
   background-color: white;
   display: flex;
   flex-flow: column nowrap;
@@ -56,11 +65,8 @@ main > aside {
 }
 
 main > aside.show {
-	width: 30vw;
-}
-
-.con-about-project {
-	min-height: 10vh;
+	width: 28vw;
+	display: block;
 }
 
 .about-project-details {
@@ -92,15 +98,15 @@ main > aside.show {
 	min-height: 80px;
 }
 
-#main-search {
-	outline: none;
+.main-search {
+	outline: none !important;
 	border-radius: 3px;
 	border: 1px solid var(--color4);
 	background-color: white;
 	height: 40px;
 }
 
-#main-search:hover .plannerr-text {
+.main-search:hover .plannerr-text {
 	color: var(--color31);
 }
 
@@ -119,12 +125,15 @@ main > aside.show {
 }
 
 .nav-tab-head {
+	font-family: 'Source Sans Pro', sans-serif;
 	height: 10%;
+	font-size: 1.5em;
+	font-weight: 600;
+	letter-spacing: 3px;
 }
 
 .nav-tab-link {
 	height: 8%;
-
 }
 
 .nav-tab-link.active {
@@ -186,4 +195,14 @@ ion-icon[name="flame"] {
 	height: 10px;
 	border-radius: 50%;
 	border: 1px solid var(--color15);
+}
+
+#main-aside header {
+	height: 8vh;
+	background-color: var(--color32, white);
+}
+
+.con-about-project {
+	min-height: 8vh;
+	height: auto;
 }

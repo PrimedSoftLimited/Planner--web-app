@@ -9,6 +9,7 @@ export const search = {
 				searchComponent.querySelector(".con-data-search-react").classList.add("d-none");
 				searchComponent.querySelector(".con-data-search-react").classList.remove("d-flex");
 			} else {
+				searchComponent.querySelector(".con-data-search-react").classList.remove("d-none");
 				searchComponent.querySelector(".con-data-search-react").classList.add("d-flex");
 				searchComponent.querySelector("[data-search-react]").textContent = elem.value;
 			}
@@ -17,6 +18,11 @@ export const search = {
 	search: searchComponent => {
 		searchComponent.querySelector(".search-tab-form").addEventListener("submit", function (e) {
 			e.preventDefault();
+
+			// empty search results before making new search
+			searchComponent.querySelector('.searchTabs').classList.add('d-none');
+			searchComponent.querySelectorAll('.tab-search-list').forEach(list => list.innerHTML = ``);
+			console.log('cleared');
 
 			console.log("searching...");
 			const searchValue = new FormData(this).get("generic");
@@ -38,19 +44,24 @@ export const search = {
 					.then(data => {
 						if (data.success) {
 							console.log(data);
+
 							let { message, search_result } = data;
 
 							// if no search result, do nothing
 							if (!Array.isArray(search_result) || !search_result.length) return;
 
+							// remove search button
+							searchComponent.querySelector(".con-data-search-react").classList.add("d-none");
+							searchComponent.querySelector(".con-data-search-react").classList.remove("d-flex");
+
 							// matches search response with appropriate populating HTML
-							_('#searchTabs').classList.remove('d-none');
+							searchComponent.querySelector('.searchTabs').classList.remove('d-none');
 							if (message.includes('Users')) {
 								search_result.forEach(result => {
 									let { name, username, user_image } = result;
-									_('#nav-search-users .tab-search-list').innerHTML += `
+									searchComponent.querySelector('[data-search-param="Users"] .tab-search-list').innerHTML += `
 										<div class="d-flex search-item m-0 align-items-center pl-4 py-2 col-12">
-											<button class="plannerr-sm-pic" aria-label="">
+											<button type="button" class="plannerr-sm-pic" aria-label="">
 												<img src="" alt="">
 											</button>
 											<div class="d-flex col-11">
@@ -64,9 +75,9 @@ export const search = {
 							} else if (message.includes('Company')) {
 								search_result.forEach(result => {
 									let { name, username, user_image } = result;
-									_('#nav-search-companies .tab-search-list').innerHTML += `
+									searchComponent.querySelector('[data-search-param="Companies"] .tab-search-list').innerHTML += `
 											<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12">
-											<button class="plannerr-sm-pic" aria-label="">
+											<button type="button" class="plannerr-sm-pic" aria-label="">
 												<img src="" alt="">
 											</button>
 											<div class="d-flex col-11">
@@ -79,9 +90,9 @@ export const search = {
 							} else if (message.includes('Workspace')) {
 								search_result.forEach(result => {
 									let { name, username, user_image } = result;
-									_('#nav-search-workspaces .tab-search-list').innerHTML += `
+									searchComponent.querySelector('[data-search-param="Workspaces"] .tab-search-list').innerHTML += `
 										<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12">
-											<button class="plannerr-sm-pic" aria-label="">
+											<button type="button" class="plannerr-sm-pic" aria-label="">
 												<img src="" alt="">
 											</button>
 											<div class="d-flex col-11">
@@ -94,10 +105,10 @@ export const search = {
 							} else if (message.includes('Project')) {
 								search_result.forEach(result => {
 									let { title, description } = result;
-									_('#nav-search-projects .tab-search-list').innerHTML += `
+									searchComponent.querySelector('[data-search-param="Projects"] .tab-search-list').innerHTML += `
 										<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12" aria-label="">
-											<ion-icon class="plannerr-sm-pic" name="git-merge"></ion-icon>
-											<span class=col-11>${title}</span>
+											<ion-icon class="plannerr-sm-icon" name="git-merge"></ion-icon>
+											<span class="pl-3">${title}</span>
 											<span class="pl-1">- ${description}</span>
 										</div>
 									`;
