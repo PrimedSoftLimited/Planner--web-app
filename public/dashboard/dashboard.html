@@ -2,232 +2,498 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="../styles/dashboard.css">
-    <script src="../js/base.js" defer></script>
-    <script src="../js/dashboardJS/main.js"></script>
-    <title>Plannerr | Dashboard</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="import" href="./choose-workspace.html" id="choose-workspace">
+	<link
+		href="https://fonts.googleapis.com/css?family=Blinker|Montserrat|Nunito|Red+Hat+Display|Source+Sans+Pro&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="../styles/global.css">
+	<link rel="stylesheet" href="../styles/dashboard.css">
+	<script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+		</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+		</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+		</script>
+	<script src="../js/base.js" defer></script>
+	<!-- <script src="../js/dashboardJS/imports.js" defer></script> -->
+	<!-- <script src="../js/get_started.js" type="module" defer></script> -->
+	<!-- <script src="../js/dashboardJS/project.js" type defer></script> -->
+	<script src="../js/dashboardJS/navigation.js" type="module" defer></script>
+	<!-- <script src="../js/dashboardJS/search.js" type="module" defer></script> -->
+	<title>Plannerr | Dashboard</title>
 </head>
 
-<body class="authentication-body">
-    <nav class="navbar navbar-expand-lg navbar-light bg-brand our-nav">
-        <span id="open-slide">
-            <a href="#" onclick="openSlideMenu()">
-                <svg width="30" height="30">
-                    <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
-                    <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
-                    <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
-                </svg>
-            </a>
-        </span>
-        <button onclick="location.reload()" class="btn btn-default logo-btn">plannerr</button>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body>
+	<main class="">
+		<header>
+			<div class="container-fluid">
+				<div class="row h-100">
+					<div class="tab-content col-12 h-100">
+						<div id="project-header" data-id="project" data-nav-controlled class="tab-header tab-pane active show">
+							<div class="d-flex h-100 justify-content-between align-items-center">
+								<button class="c-pointer col-2 d-flex m-0 px-2" id="main-search" data-toggle="modal"
+									data-target="#search-tab1" type="button">
+									<ion-icon class="plannerr-icon" name="search"></ion-icon>
+									<div class="d-none d-md-block plannerr-text my-auto pl-1">Search</div>
+								</button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
-            <ul class="navbar-nav ml-auto">
-                <li class="add-project-nav mr-5 mt-2"><i style="color: lightgrey"
-                        class="add-project-icon fa fas fa-plus fa-lg"></i></li>
-                <li class="mr-5 mt-2"><i style="color: lightgrey"
-                        class="projects-icon fa fas fa-folder fa-lg"></i></li>
-                <li class="notifs-nav mr-5 mt-2"><i style="color: lightgrey"
-                        class="notifs-icon fa fas fa-bell fa-lg"></i></li>
-                <li class="nav-item dropdown mx-2">
-                    <a style="color: lightgrey" class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Dashboard</a>
-                        <a class="dropdown-item" href="#">Projects</a>
-                        <a class="dropdown-item" href="#">Settings</a>
-                    </div>
-                </li>
-                <div class="user-image-nav border mx-2 mr-5 ml-4">
+								<div class="modal search-tab" id="search-tab1" tabindex="-1" role="dialog"
+									aria-labelledby="searchfieldlabel" aria-hidden="true">
+									<div class="modal-dialog modal-75" role="document">
+										<div class="col-12 no-gutters p-0 modal-content">
+											<form class="search-tab-form">
+												<h4 class="d-none" id="searchfieldlabel">Search for anything</h4>
+												<div
+													class="d-flex plannerr-sm-icon col-12 modal-header justify-content-between no-gutters pl-4 py-2 border-bottom">
+													<svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+														<path
+															d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
+													</svg>
+													<input class="border-0 w-100 pl-3 h-100 no-outline" data-search-field id="searchfield"
+														type="text" name="generic" placeholder="Search me. No, really.">
+												</div>
+												<button
+													class="d-none con-data-search-react no-outline plannerr-sm-icon col-12 modal-footer justify-content-between no-gutters pl-4 py-2"
+													type="submit">
+													<svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+														<path
+															d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
+													</svg>
+													<div class="text-left w-100 pl-2" data-search-react></div>
+												</button>
+												<div id="searchTabs" class="d-none col-12 p-0 m-0 modal-body">
+													<nav class="col-12 nav nav-tabs text-center border-bottom" role="tablist">
+														<a id="" class="nav-search-filter nav-link nav-item active nav-inactive col-2"
+															href="#nav-search-threads" data-toggle="tab" role="tab" aria-controls="nav-search-threads"
+															aria-selected="true">Threads</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-users" data-toggle="tab" role="tab" aria-controls="nav-search-users"
+															aria-selected="false">People</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-projects" data-toggle="tab" role="tab"
+															aria-controls="nav-search-projects" aria-selected="false">Projects</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-files" data-toggle="tab" role="tab" aria-controls="nav-search-files"
+															aria-selected="false">Files</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-workspaces" data-toggle="tab" role="tab"
+															aria-controls="nav-search-workspaces" aria-selected="false">Workspaces</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-companies" data-toggle="tab" role="tab"
+															aria-controls="nav-search-companies" aria-selected="false">Companies</a>
+													</nav>
 
-                </div>
-            </ul>
-        </div>
-    </nav>
+													<div class="col-12 m-0 p-0 tab-content">
+														<div class="tab-pane show active" data-search-param id="nav-search-threads" role="tabpanel"
+															aria-label="">multithreaded</div>
+														<div class="tab-pane" data-search-param="Users" id="nav-search-users" role="tabpanel"
+															aria-label="" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
+														</div>
+														<div class="tab-pane" data-search-param="Project" id="nav-search-projects" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
+														</div>
+														<div class="tab-pane" data-search-param id="nav-search-files" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">filereader</div>
+														<div class="tab-pane" data-search-param="Workspace" id="nav-search-workspaces" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
+														</div>
+														<div class="tab-pane" data-search-param="Company" id="nav-search-companies" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between">
+									<div class="header-profile">
+										<div class="profile-pic"></div>
+										<div class="profile-name">Uzor Ruzor</div>
+									</div>
+									<button id="btn-search-tab" href="" class="plannerr-icon"><svg xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 512 512">
+											<path stroke="#000"
+												d="M416.3 256c0-21 13.1-38.9 31.7-46.1-4.9-20.5-13-39.7-23.7-57.1-6.4 2.8-13.2 4.3-20.1 4.3-12.6 0-25.2-4.8-34.9-14.4-14.9-14.9-18.2-36.8-10.2-55-17.3-10.7-36.6-18.8-57-23.7C295 82.5 277 95.7 256 95.7S217 82.5 209.9 64c-20.5 4.9-39.7 13-57.1 23.7 8.1 18.1 4.7 40.1-10.2 55-9.6 9.6-22.3 14.4-34.9 14.4-6.9 0-13.7-1.4-20.1-4.3C77 170.3 68.9 189.5 64 210c18.5 7.1 31.7 25 31.7 46.1 0 21-13.1 38.9-31.6 46.1 4.9 20.5 13 39.7 23.7 57.1 6.4-2.8 13.2-4.2 20-4.2 12.6 0 25.2 4.8 34.9 14.4 14.8 14.8 18.2 36.8 10.2 54.9 17.4 10.7 36.7 18.8 57.1 23.7 7.1-18.5 25-31.6 46-31.6s38.9 13.1 46 31.6c20.5-4.9 39.7-13 57.1-23.7-8-18.1-4.6-40 10.2-54.9 9.6-9.6 22.2-14.4 34.9-14.4 6.8 0 13.7 1.4 20 4.2 10.7-17.4 18.8-36.7 23.7-57.1-18.4-7.2-31.6-25.1-31.6-46.2zm-159.4 79.9c-44.3 0-80-35.9-80-80s35.7-80 80-80 80 35.9 80 80-35.7 80-80 80z" />
+										</svg></button>
+								</div>
+							</div>
+						</div>
+						<div id="milestone-header" data-id="milestone" data-nav-controlled class="px-3 tab-header tab-pane">
+							<div class="d-flex">
+								<a href="#">&#8592;Back to project dashboard</a>
+								<div class="header-profile">
+									<div class="profile-pic"></div>
+									<div class="profile-name">Uzor Ruzor</div>
+								</div>
+								<div class="settings"></div>
+							</div>
+						</div>
+						<div id="chat-header" data-id="chat" data-nav-controlled class="tab-header tab-pane">
+							#VISIO
+						</div>
+						<div id="library-header" data-id="library" data-nav-controlled class="tab-header tab-pane">
+							Library Header
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="company col-12">
-                <h4 class="mt-2">Primedsoft</h4>
-            </div>
-            <div class="col-12 row dashboard-full">
-                <div id="sidebar" class="col-12 col-lg-3">
-                    <ul class="list-group list-group-flush col-12 px-0">
-                        <a href="#" class="btn-close col-12 text-right mt-3" onclick="closeSlideMenu()">
-                            <i class="fas fa fa-window-close"></i>
-                        </a>
-                        <li id="dashHome" class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">My Projects</span>
-                        </li>
-                        <li id="dashActivity" class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Activity</span>
-                        </li>
-                        <li id="dashMessages" class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Messages</span>
-                        </li>
-                        <li class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Dashboards</span>
-                        </li>
-                        <li class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Unread Comments</span>
-                        </li>
-                        <li class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Unread Messages</span>
-                        </li>
-                        <li id="dashProfile" class="list-group-item sidenav-links col-12 px-3 border-0">
-                            <span class="">Profile</span>
-                        </li>
+		<nav class="border-right">
+			<div class="d-flex border-bottom nav-tab-head">
+				<div class="col-3 m-auto">
+					<ion-icon class="d-block mx-auto" role="" name="flame"></ion-icon>
+				</div>
+				<span class="d-none d-md-block col-9 px-0 my-auto">VISIO</span>
+			</div>
 
-                    </ul>
-                </div>
+			<div data-id="project" data-nav-controlled class="d-flex nav-tab-link">
+				<div class="col-3 m-auto nav-tab-icon">
+					<ion-icon class="d-block mx-auto " name="analytics"></ion-icon>
+				</div>
+				<span class="d-none d-md-block col-9 px-0 my-auto nav-tab">Project</span>
+			</div>
+			<div data-id="threads" data-nav-controlled class="d-flex nav-tab-link">
+				<div class="col-3 m-auto nav-tab-icon">
+					<ion-icon class="d-block mx-auto " name="chatbubbles"></ion-icon>
+				</div>
+				<span class="d-none d-md-block col-9 px-0 my-auto nav-tab">Threads</span>
+			</div>
+			<div data-id="library" data-nav-controlled class="d-flex nav-tab-link active">
+				<div class="col-3 m-auto nav-tab-icon">
+					<ion-icon class="d-block mx-auto " name="fastforward"></ion-icon>
+				</div>
+				<span class="d-none d-md-block col-9 px-0 my-auto nav-tab">Library</span>
+			</div>
 
-                <style>
-                    #activity,
-                    #messages,
-                    #profile {
-                        display: none;
-                    }
+			<div class="d-none d-md-block py-2">
+				<div class="d-flex col-12 m-auto c-pointer">
+					<div class="col-11 px-1 m-0">Direct Messages</div>
+					<div class="col-1 p-0 m-0">
+						<ion-icon class="align-middle m-auto" role="button" name="add-circle-outline"></ion-icon>
+					</div>
+				</div>
+				<div class="d-none flow">
+					<div class="dm-chat">
+						<div class="online-status"></div>
+						<div class="dm-name"></div>
+						<div class="dm-number"></div>
+						<div class="dm-remove"></div>
+					</div>
+				</div>
+			</div>
 
-                    #home {
-                        display: block;
-                    }
-                </style>
+			<footer class="d-none d-md-block nav-footer">
+				<div id="nav-btn-invite" class="d-flex m-auto c-pointer py-2">
+					<div class="col-2 m-auto">
+						<ion-icon class="d-block mx-auto" name="add"></ion-icon>
+					</div>
+					<div class="col-10 px-0 my-auto">Invite People</div>
+				</div>
+				<div class="col-12 py-2">
+					<a href="#">Open the Plannerr App</a>
+				</div>
+			</footer>
+		</nav>
 
-                <div class="col-12 col-lg-9 scroller dashboard-content root" id="home"></div>
-                <div class="col-12 col-lg-9 scroller dashboard-content root" id="activity"></div>
-                <div class="col-12 col-lg-9 scroller dashboard-content root" id="messages"></div>
-                <div class="col-12 col-lg-9 scroller dashboard-content root" id="profile"></div>
-            </div>
-        </div>
-    </div>
+		<section>
+			<div class="container-fluid p-0">
+				<div class="row">
+					<div class="tab-content col-12 no-gutters">
+						<div data-project="project-false" data-nav-controlled
+							class="pt-4 mx-auto border-top tab-pane plannerr-tab col-12">
+							<img class="col-8 d-block plannerr-tab-svg mx-auto pb-3" src="../Images/undraw_Lighthouse_frb8.svg"
+								alt="Lighthouse">
+							<div class="col-8 text-center mx-auto mb-3">
+								<h3 class="p-1">You are an early bird!</h3>
+								<p class="mt-2">
+									Milestones, tasks created by the workspace adminstrators, and all project based
+									activities will appear
+									here.
+								</p>
+								<a href="#" data-toggle="modal" data-target="#addProject">Add a project</a>
+								<!-- modal to add project to workspace -->
+								<div class="modal" id="addProject" tabindex="-1" role="dialog" aria-labelledby="addAProject"
+									aria-hidden="true">
+									<div class="modal-dialog modal-full" role="document">
+										<div class="col-12 modal-content">
+											<div class="modal-header border-0">
+												<button type="button" class="border rounded-circle close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													<p>esc</p>
+												</button>
+											</div>
+											<form id="projectForm">
+												<div class="col-4 mx-auto modal-body">
+													<h2 class="modal-title my-2" id="addAProject">Add a project to
+														workspace</h2>
+													<div class="form-group conInput">
+														<input placeholder=" " type="text" minlength="4" class="form-control brand-input"
+															name="title" id="" required>
+														<label for="" class="floating-label">Project name</label>
+													</div>
+													<div class="form-group conInput">
+														<input placeholder=" " type="text" minlength="4" class="form-control brand-input"
+															name="description" id="" required>
+														<label for="" class="floating-label">Add a short
+															description</label>
+													</div>
+													<div>
+														<h5 class="my-2">Milestones take you one step closer to
+															completing your project</h5>
+														<!-- <div class="form-group conInput">
+																																			<input placeholder=" " type="text" minlength="4" class="form-control brand-input"
+																																					name="title" id="" required>
+																																			<label for="" class="floating-label">Milestone</label>
+																																	</div> -->
+														<h6>Time to milestone</h6>
+														<!-- <div class="d-flex">
+																																			<input class="border-dark" type="date" name="" id="">
+																																			<input class="border-dark" type="date" name="" id="">
+																																	</div> -->
+													</div>
+													<div class="my-2 border p-3">
+														<h6>Upgrade for unlimited milestones</h6>
+														<p><a href="#">See paid plans</a></p>
+														<div></div>
+													</div>
+											</form>
+										</div>
+										<div class="col-4 mx-auto modal-footer">
+											<button id="btn-create-project" type="submit" class="btn btn-primary">Create
+												project</button>
+										</div>
+										</form>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div data-project="project-true" data-nav-controlled class="tab-pane tab-body">
+						<div class="d-flex col-12 border-bottom">
+							<h3>Project Milestones</h3>
+							<button id="project-info" type="button">i</button>
+							<button>New <i class="fas fa-sort-down"></i></button>
+						</div>
+						<div class="con-milestones py-3">
+							<div class="d-flex milestone">
+								<div class="col-1 border milestone-logo"></div>
+								<div class="col-10 milestone-name">Product roadmap</div>
+								<button data-id="view-milestone" class="col-1">View</button>
+							</div>
+						</div>
+					</div>
+					<div data-id="milestone" data-nav-controlled class="tab-pane tab-body">
+						<div class="d-flex flex-wrap">
+							<div class="con-milestone-title col-11 p-0">
+								<div class="milestone-logo"></div>
+								<div class="milestone-name">Product roadmap</div>
+							</div>
+							<div class="switch-view col-1 d-flex align-items-baseline">
+								<label for="">View</label>
+								<input type="checkbox">
+							</div>
+							<p class="">Last edited by Uzor Ruzor</p>
+						</div>
+						<div class="d-flex">
+							<input type="text" placeholder="Quick Search">
+							<input type="text" placeholder="People">
+							<button class="d-flex align-items-centre">New <i class="fa fa-sort-down"></i></button>
+						</div>
+					</div>
+					<div data-id="library" data-nav-controlled class="tab-pane tab-body show active">
+						This is ye library
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+
+		<aside id="main-aside" class="">
+			<header class="d-flex flex-nowrap justify-content-between">
+				<h3>About this project</h3>
+				<button>xxx</button>
+			</header>
+			<section class="">
+				<div class="col-12 con-about-project">
+					<div class="d-flex flex-nowrap align-items-center">
+						<span></span>
+						<div>Project details</div>
+						<button class="get-about-project-details" data-project-detail="project">arr</button>
+					</div>
+					<div class="about-project-details" data-project-detail="project">
+						<div>
+							<div class="d-flex w-100">
+								<h6 id="projectDetailsName">Name</h6>
+								<a href="" data-toggle="modal" data-target="#editProjectName">edit</a>
+								<!-- modal to edit project name -->
+								<div class="modal" id="editProjectName" tabindex="-1" role="dialog" aria-labelledby="updateProjectName"
+									aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="col-12 modal-content">
+											<div class="d-flex modal-header border-0">
+												<h4 class="modal-title" id="updateProjectName">Update project name</h4>
+												<button type="button" class="border rounded-circle close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													<p>esc</p>
+												</button>
+											</div>
+											<form id="editProjectNameForm">
+												<div class="col-12 mx-auto modal-body">
+													<div class="form-group conInput">
+														<input placeholder="" type="text" minlength="4" class="form-control brand-input"
+															name="title" id="" required>
+													</div>
+												</div>
+												<div class="col-12 d-flex align-items-center mx-auto modal-footer">
+													<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+													<button data-project-name="" id="btnEditProjectName" type="submit"
+														class="btn btn-primary">Update name</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div aria-labelledby="projectDetailsName" data-store-project-name>Projection</div>
+						</div>
+						<div>
+							<div class="d-flex w-100">
+								<h6 id="projectDetailsDescription">Purpose</h6>
+								<a href="" data-toggle="modal" data-target="#editProjectPurpose">edit</a>
+								<!-- modal to edit project purpose -->
+								<div class="modal" id="editProjectPurpose" tabindex="-1" role="dialog"
+									aria-labelledby="updateProjectPurpose" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="col-12 modal-content">
+											<div class="d-flex modal-header border-0">
+												<h4 class="modal-title my-2" id="updateProjectPurpose">Edit project
+													purpose</h4>
+												<button type="button" class="border rounded close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													<p>esc</p>
+												</button>
+											</div>
+											<form id="editProjectPurposeForm">
+												<div class="col-12 mx-auto modal-body">
+													<div class="form-group conInput">
+														<input placeholder="" type="text" minlength="4" class="form-control brand-input"
+															name="description" id="" required>
+													</div>
+												</div>
+												<div class="col-12 d-flex align-items-center mx-auto modal-footer">
+													<p>Describe what this project is for...</p>
+													<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+													<button data-project-purpose="" id="btnEditProjectPurpose" type="submit"
+														class="btn btn-primary">Update purpose</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div aria-labelledby="#projectDetailsDescription" data-store-project-desc></div>
+						</div>
+						<div data-store-project-creation></div>
+						<div id="thesePeopleCanAnswerYourQuestions"></div>
+						<div data-store-project-updated></div>
+					</div>
+				</div>
+
+				<div class="col-12 con-about-project">
+					<div class="d-flex align-items-center">
+						<span></span>
+						<div>Company</div>
+						<button class="get-about-project-details" data-project-detail="company">arr</button>
+					</div>
+					<div class="about-project-details" data-project-detail="company">
+						<div class="about-company-logo"></div>
+						<div class="d-flex flex-column">
+							<a href="" class="about-company-name col-12">Andela</a>
+							<small class="about-company-email">company@email.com</small>
+							<div>
+								<h6 id="projectDetailsCompanyTime">Local Time</h6>
+								<h5 aria-labelledby="projectDetailsCompanyTime">3:45 PM</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 con-about-project">
+					<div class="d-flex flex-nowrap align-items-center">
+						<span></span>
+						<div>1,200 Members</div>
+						<button class="get-about-project-details" data-project-detail="members">arr</button>
+					</div>
+					<div class="about-project-details" data-project-detail="members">
+						<div class="d-flex flex-nowrap">
+							<div class="about-member-pic"></div>
+							<h5>Member</h5>
+							<div data-online-status=""></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 con-about-project">
+					<div class="d-flex align-items-center">
+						<span></span>
+						<div>Shared files</div>
+						<button class="get-about-project-details" data-project-detail="sharedFiles">arr</button>
+					</div>
+					<div class="about-project-details" data-project-detail="sharedFiles">
+						wut wut wut wut wut
+					</div>
+				</div>
+
+				<button data-toggle="modal" data-target="#deleteProject" type="button" class="btn btn-danger">End
+					project</button>
+
+				<!-- modal to confirm project deletion -->
+				<div class="modal" id="deleteProject" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteProject"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="col-12 modal-content">
+							<div class="d-flex modal-header border-0">
+								<h4 class="modal-title" id="confirmDeleteProject">Are you sure you want to end project?
+								</h4>
+								<button type="button" class="border rounded-circle close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									<p>esc</p>
+								</button>
+							</div>
+							<div class="col-12 mx-auto d-flex align-items-center modal-body">
+								<h6>This action cannot be reversed!</h6>
+								<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+								<button id="btnDeleteProject" type="submit" class="btn btn-primary">Confirm
+									delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</aside>
+	</main>
 </body>
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-    </script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-    </script>
-<script src="js/wow.min.js"></script>
-<script>
-new WOW().init();
-</script>
-<script src="../js/dashboardJS/home.js"></script>
-<script src="../js/dashboardJS/activity.js" defer></script>
-<script src="../js/dashboardJS/messages.js" defer></script>
-<script src="../js/dashboardJS/profile.js" defer></script>
-<script>
-    let key = 0;
-    let sidebarKey;
-    const roots = [...document.querySelectorAll('.root')];
-    const homeInput = document.querySelector('div#home');
-    const activityInput = document.querySelector('div#activity');
-    const messagesInput = document.querySelector('div#messages');
-    const profileInput = document.querySelector('div#profile');
-    let sidebar = document.getElementById('sidebar');
-    let openSlide = document.querySelector('#open-slide');
-    let dashCon = document.getElementsByClassName('dashboard-content');
-    document.querySelector('#dashHome').addEventListener('click', function () {
-        key = 0;
-        manageView(homeInput);
-    });
-    document.querySelector('#dashActivity').addEventListener('click', function () {
-        key = 1;
-        manageView(activityInput);
-    });
-    document.querySelector('#dashMessages').addEventListener('click', function () {
-        key = 2;
-        manageView(messagesInput);
-    });
-    document.querySelector('#dashProfile').addEventListener('click', function () {
-        key = 3;
-        manageView(profileInput);
-    });
-    const manageView = (bed) => {
-        roots.map((root) => root.style.display = 'none')
-        bed.style.display = 'block';
-        sidebarWatch();
-        return true;
-
-    }
-    const sidebarWatch = () => {
-        if (sidebarKey == 'small') {
-            sidebar.style.display = "none";
-            openSlide.style.display = "block";
-        }
-    };
-
-    function openSlideMenu() {
-        document.getElementById('sidebar').style.display = 'block';
-        document.getElementById('open-slide').style.display = 'none';
-        // document.getElementsByClassName('dashboard-content').style.display = 'none';
-        roots.map((root, i) => {
-            if (i == key) {
-                root.style.display = 'none';
-            }
-        });
-    }
-
-    function closeSlideMenu() {
-        document.getElementById('sidebar').style.display = 'none';
-        document.getElementById('open-slide').style.display = 'block';
-        // document.getElementsByClassName('dashboard-content').style.display = 'block';
-        roots.map((root, i) => {
-            if (i == key) {
-                root.style.display = 'block';
-            }
-        });
-    }
-    function sidebarControl(bigWindow) {
-        if (bigWindow.matches) {
-            sidebar.style.display = 'block';
-            openSlide.style.display = 'none';
-        }
-    }
-
-    var bigWindow = window.matchMedia("(min-width: 992px)")
-    sidebarControl(bigWindow)
-    bigWindow.addListener(sidebarControl)
-
-    function sidebarControl2(smallWindow) {
-
-        if (smallWindow.matches) {
-            roots.map((root) => root.style.display = 'none')
-            sidebarKey = 'small';
-            openSlide.style.display = "none";
-        } else {
-            sidebarKey = 'big';
-            roots.map((root, i) => {
-                if (i == key) {
-                    root.style.display = 'block'
-                }
-            });
-        }
-    }
-
-    var smallWindow = window.matchMedia("(max-width: 992px)")
-    sidebarControl2(smallWindow)
-    smallWindow.addListener(sidebarControl2)
-</script>
 
 </html>

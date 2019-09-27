@@ -2,8 +2,6 @@
 
 const urlParams = new URLSearchParams(window.location.search);
 const cToken = urlParams.get('confirm_token') ? urlParams.get('confirm_token') : null;
-let createWorkspaceUrl = "/api/workspace/create";
-createWorkspaceUrl = `${api_link}${createWorkspaceUrl}`;
 let createCompanyUrl = "/api/company/create";
 createCompanyUrl = `${api_link}${createCompanyUrl}`;
 let joinWorkspaceUrl = "/api/workspace/request";
@@ -14,8 +12,9 @@ let allInterestUrl = `/api/user/categories`;
 allInterestUrl = `${api_link}${allInterestUrl}`;
 let submitInterestUrl = "/api/interest/select";
 submitInterestUrl = `${api_link}${submitInterestUrl}`;
-const activateAccUrl = `${api_link}/api/confirmation/${cToken}`
-let btn, companyBuffer = [], workspaceBuffer = [], interestBuffer = [], formData, token, user, url, request, status = "Public";
+const activateAccUrl = `${api_link}/api/confirmation/${cToken}`;
+let btn, interestBuffer = [], searchBuffer = {}, formData, token, user, url, request, status = "Public";
+
 
 // (async function () {
 //     const req = await fetch('https://randomapi.com/api/006b08a801d82d0c9824dcfdfdfa3b3c');
@@ -30,360 +29,426 @@ let btn, companyBuffer = [], workspaceBuffer = [], interestBuffer = [], formData
 
 const helperScript = () => {
 
-    // helper function to set option values corresponding to their textcontent
-    all("#industryChooser option").forEach(option => {
-        option.value = option.textContent;
-    })
+	// helper function to set option values corresponding to their textcontent
+	all("#industryChooser option").forEach(option => {
+		option.value = option.textContent;
+	});
 
-    // helper function to switch text for input[type="checkbox"] in create workspace and company form 
-    const textAccordingToCheckbox = all(".switch-text");
+	// helper function to switch text for input[type="checkbox"] in create workspace and company form
+	const textAccordingToCheckbox = all(".switch-text");
 
-    Array.from(all(".input-switch")).forEach((checkbox, i) => {
-        checkbox.addEventListener('click', function () {
-            if (this.checked) {
-                textAccordingToCheckbox[i].textContent = `${"Private"}`;
-                status = "Private";
-            } else {
-                textAccordingToCheckbox[i].textContent = `${"Public (*Workspace is visible to everyone on search)"}`;
-                status = "Public";
-            }
-        })
-    });
+	Array.from(all(".input-switch")).forEach((checkbox, i) => {
+		checkbox.addEventListener('click', function () {
+			if (this.checked) {
+				textAccordingToCheckbox[i].textContent = `${"Private"}`;
+				status = "Private";
+			} else {
+				textAccordingToCheckbox[i].textContent = `${"Public (*Workspace is visible to everyone on search)"}`;
+				status = "Public";
+			}
+		});
+	});
 };
 helperScript();
 
 
 // do acc. activation i.e confirmation
 const activateUserAccount = () => {
-    const config = {
-        method: "GET",
-        url: activateAccUrl
-        // url: "https://randomapi.com/api/006b08a801d82d0c9824dcfdfdfa3b3c"
-    }
+	_(".loader").classList.remove("d-none");
+	const config = {
+		method: "GET",
+		url: activateAccUrl
+		// url: "https://randomapi.com/api/006b08a801d82d0c9824dcfdfdfa3b3c"
+	};
 
-    let percentCompleted = 1;
+	axios(config)
+		.then(response => {
+			if (response.data) {
+				let userData = response.data.data;
+				localStorage.setItem("userData", JSON.stringify(userData));
 
-    axios(config)
-        .then(response => {
-            if (response.data) {
-                const z = setInterval(() => {
-                    if (percentCompleted>=100) {
-                        clearInterval(z);
-                        _("#loading > div").classList.add("animated", "fadeOut");
-                        _("#loading").classList.add("animated", "delay-1s", "slideOutUp");
-                        setTimeout(() => _("#preset").classList.add("animated", "slideInUp", "try"), 1100);
-                    } 
-                    const elem = _("#progress");
-                    elem.style.width = `${percentCompleted}%`;
-                    percentCompleted+=1;
-                }, 50)
-                let userData = response.data.data;
-                localStorage.setItem("userData", JSON.stringify(userData));
-                userData = JSON.parse(localStorage.getItem("userData"));
-                ({ token } = userData);
-                ({ user } = userData);
-                _("#putName").textContent = `${"You\'re almost there, "}${user.name}`
-                window.location.hash = "#onboard";
-                console.log(response);   
-            }
-        })
-        .catch(error => {
-            // handleError(error.response);
-            console.log(error);
-        });
-}
+				({ token } = userData);
+				({ user } = userData);
+
+				_(".loader").classList.add("d-none");
+				_("#verification-tab").classList.add("show", "active");
+			}
+		})
+		.catch(error => {
+			_(".loader").classList.add("d-none");
+			_("#error-tab").classList.add("show", "active");
+			_("#verification-tab").classList.remove("show", "active");
+			console.log(error);
+		});
+};
 activateUserAccount();
 
-const submitCreateData = async (formData, url) => {
-    formData = formDataToObject(formData);
-    btn = _("#preset-btn3b");
+const submitCreateData = {
+	submit: async function (formData, url, removeThisTab, showThisTab) {
+		formData = formDataToObject(formData);
+		_(".loader").classList.remove("d-none");
 
-    try {
-        let response = await axios.post(url, formData, {
-            headers: {
-                Authorization: token
-            }
-        });
-        let data = await response.data;
+		try {
+			let response = await axios.post(url, formData, {
+				headers: {
+					Authorization: token
+				}
+			});
+			let data = await response.data;
+			_(".loader").classList.add("d-none");
 
-        return data;
+			if (data) {
+				searchBuffer = {};
+				removeThisTab.classList.remove("show", "active");
+				showThisTab.classList.add("show", "active");
+			}
+			return data;
 
-    } catch (error) {
-        btn.disabled = false;
-        btn.classList.remove("grey");
-        console.log(error);
-        return Promise.reject(error);
-    }
-}
+		} catch (error) {
+			_(".loader").classList.add("d-none");
+			this.disabled = false;
+			this.classList.remove("grey");
+			console.log(error);
+			return Promise.reject(error);
+		}
+	}
+};
 
+const getJoinData = {
+	getData: async function (formData, url) {
+		try {
+			this.nextElementSibling.innerHTML = loader;
 
-const getJoinData = async (formData, url) => {
-    try {
-        let response = await axios.post(url, formData, {
-            headers: {
-                Authorization: token
-            }
-        })
-        let data = await response.data;
+			let response = await axios.post(url, formData, {
+				headers: {
+					Authorization: token
+				}
+			});
+			let data = await response.data;
+			this.nextElementSibling.innerHTML = ``;
 
-        return data;
-        
-    } catch (error) {
-        console.log(error);
-    }
-}
+			return data;
 
-const submitJoinData = async (formData, url) => {
-    axios.post(url, formData, {
-        headers: {
-            Authorization: token
-        }
-    })
-        .then(response => {
-            if (response.data) {
-                _("#join-workspace-tab").classList.remove("show", "active");
-                _("#join-company-tab").classList.add("show", "active");
-                console.log(response);
-                return Promise.resolve(response);
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            return Promise.reject(error);
-        });
-}
+		} catch (error) {
+			this.nextElementSibling.innerHTML = ``;
+			console.log(error);
+		}
+	}
+};
 
-const loopOutData = (response, buffer, parent) => {
+const submitJoinData = {
+	submit: async function (formData, url) {
+		this.setAttribute('name', 'xx');
+		this.innerHTML = loader;
+		axios.post(url, formData, {
+			headers: {
+				Authorization: token
+			}
+		})
+			.then(response => {
+				if (response.data) {
+					console.log(response);
+					this.disabled = true;
+					this.setAttribute('name', 'checkmark');
+					return Promise.resolve(response);
+				}
+			})
+			.catch(error => {
+				this.setAttribute('name', 'paper-plane');
+				console.error(error);
+				return Promise.reject(error);
+			});
+	}
+};
 
-    let choices, title, unique_name, wallpaper;
-    console.log(response);
-    choices = response.data.choose_workspace? response.data.choose_workspace:response.data.choose_company;
+const loopOutData = (response, parent, searchKey) => {
 
-    parent.innerHTML = ``;
-    parent.closest(".con-appendage-join").classList.remove("d-none");
+	let btn, choices, title, unique_name, wallpaper;
+	searchBuffer[searchKey] = Object.assign({}, response);
 
-    choices.forEach((choice, index) => {
-        ({ title, unique_name, wallpaper } = choice);
+	if (response.data.choose_workspace) {
+		choices = response.data.choose_workspace;
+		btn = "btn-join-workspace";
+		parent.innerHTML = `Workspaces <span id="no-of-workspaces" class="smoll-text"></span>`;
+		_("#no-of-workspaces").textContent = `(${choices.length})`;
 
-        let child = new DOMParser().parseFromString(`<div data-index="${index}" class="append-join border col-12 d-flex">
-            <div class="append-img col-1"></div>
-            <div class="append-title col-11 p-1">
-                <div class="col-12 append-name">
-                    <span class="">${title}</span>
-                </div>
-                <div class="col-12 append-id">
-                    <span class="append-unique-name">${unique_name}</span>
-                </div>
-            </div>
-        </div>`, 'text/html');
+	} else {
+		choices = response.data.choose_company;
+		btn = "btn-join-company";
+		parent.innerHTML = `Companies <span id="no-of-companies" class="smoll-text"></span>`;
+		_("#no-of-companies").textContent = `(${choices.length})`;
+	}
 
-        child = child.body.firstElementChild;
-        child.querySelector(".append-img").style.backgroundColor = `${wallpaper}`;
+	parent.classList.remove("d-none");
 
-        // select workspace/company
-        (() => {
-            child.addEventListener('click', function(e) {
-                e.preventDefault();
+	choices.forEach((choice, index) => {
 
-                if (child.classList.contains("clicked")) {
-                    child.classList.remove("clicked");
-                    delete buffer[this.dataset.index];
+		({ title, unique_name, wallpaper } = choice);
 
-                } else {
-                    child.classList.add("clicked");
-                    let uniqueName = this.querySelector(".append-unique-name").textContent;
-                    buffer[this.dataset.index] = uniqueName;
-                }
-            });
-        })();
+		let child = new DOMParser().parseFromString(`<div data-index="${index}" class="append-join border-top col-12 d-flex m-0">
+			<img src="" alt="" class="my-auto append-img">
+			<div class="append-title p-0 m-0 my-auto">
+				<div class="append-name p-0 ml-1">
+					<span>${title}</span>
+				</div>
+				<span class="smoll-text">${unique_name}</span>
+			</div>
 
-        parent.appendChild(child);
-    });
+			<ion-icon data-store-submit-name="${unique_name}" class="col-1 my-auto ml-auto" name="paper-plane" role="button"></ion-icon>
+
+		</div>`, 'text/html');
+
+		child = child.body.firstElementChild;
+		child.querySelector("[data-store-submit-name]").classList.add(btn);
+		child.querySelector(".append-img").style.backgroundColor = `${wallpaper}`;
+
+		parent.appendChild(child);
+	});
+
+	if (response.data.choose_workspace) {
+		all(".btn-join-workspace").forEach(button => {
+			button.addEventListener("click", function (e) {
+				e.preventDefault();
+				let workspaceTitle = this.dataset.storeSubmitName;
+				let data = submitJoinData.submit;
+				data.bind(this, { title: workspaceTitle }, joinWorkspaceUrl)();
+			});
+		});
+	} else {
+		all(".btn-join-company").forEach(button => {
+			button.addEventListener("click", function (e) {
+				e.preventDefault();
+				let companyTitle = this.dataset.storeSubmitName;
+				let data = submitJoinData.submit;
+				data.bind(this, { title: companyTitle }, joinCompanyUrl)();
+			});
+		});
+	}
 };
 
 const getInterests = async () => {
-    try {
-        let response = await axios.get(allInterestUrl, {
-            headers: {
-                Authorization: token
-            }
-        })
-        let data = await response.data;
-        console.log(data);
-        return data;
+	try {
+		_(".loader").classList.remove("d-none");
+		let response = await axios.get(allInterestUrl, {
+			headers: {
+				Authorization: token
+			}
+		});
+		let data = await response.data;
+		console.log(data);
+		_(".loader").classList.add("d-none");
+		return data;
 
-    } catch (error) {
-        console.log(error)
-    }
-}
+	} catch (error) {
+		_(".loader").classList.add("d-none");
+		console.log(error);
+	}
+};
+
+const loadInterestsOntoTab = () => {
+	getInterests()
+		.then(data => {
+			let { categories } = data, index = 0;
+			categories.forEach(category => {
+				_("#categories").innerHTML += `
+					<li class="mx-2 mx-lg-0 p-1 p-lg-0 my-lg-1 pl-lg-2 showfirst">
+						<a data-category-id="${category.id}" href="#category${category.id}-tab" data-toggle="tab" aria-controls="category${category.id}-interests" aria-selected="false">
+							${category.title}
+						</a>
+					</li>`;
+
+				_("#interests").innerHTML += `<div id="category${category.id}-tab" data-category-tab data-category-id="${category.id}" class="tab-pane showfirst flex-wrap m-0 p-0 col-12"></div>`;
+
+				// show first tab
+				if (index == 0) {
+					_("div.showfirst").classList.add("show", "active");
+					_("li.showfirst").classList.add("active");
+					_("li.showfirst a").setAttribute("aria-selected", "true");
+				}
+
+				category.interests.forEach(interest => {
+					let node = `<div class="d-flex justify-content-center align-items-center border p-2 m-1" data-category-id="${category.id}" data-interest-id="${interest.id}" data-index="${index}">${interest.title}</div>`;
+
+					_(`#category${category.id}-tab`).innerHTML += node;
+					index++;
+				});
+			});
+
+			all("li.showfirst").forEach((category, index, array) => {
+				category.addEventListener('click', () => {
+
+					// remove active state from all category links and give state to clicked
+					array.forEach(elem => {
+						elem.classList.remove("active");
+						console.log(elem.querySelector("a"));
+						elem.querySelector("a").setAttribute("aria-selected", "false");
+					});
+					category.classList.add("active");
+					category.querySelector("a").setAttribute("aria-selected", "true");
+
+					// remove active state from all category tabs and give state to clicked
+					all("[data-category-tab]").forEach(tab => {
+						if (category.querySelector("a").dataset.categoryId !== tab.dataset.categoryId) {
+							tab.classList.remove("active", "show");
+						} else {
+							tab.classList.add("active", "show");
+						}
+					});
+				});
+			});
+
+			all(`[data-interest-id]`).forEach(interest => {
+				interest.addEventListener("click", function () {
+
+					if (this.classList.contains("clicked")) {
+						this.classList.remove("clicked");
+						delete interestBuffer[this.dataset.index];
+
+					} else {
+						this.classList.add("clicked");
+						interestBuffer[this.dataset.index] = [Number(this.dataset.categoryId), Number(this.dataset.interestId)];
+					}
+				});
+			});
+		})
+		.catch(error => console.log(error));
+};
+
+const addInterest = e => {
+	e.preventDefault();
+	let user_interests = interestBuffer.filter(idArray => idArray instanceof Array);
+	console.log(user_interests, token);
+
+	_(".loader").classList.remove("d-none");
+
+	fetch(submitInterestUrl, {
+		method: 'POST',
+		mode: 'cors',
+		headers: {
+			Authorization: token,
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ user_interests })
+	})
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+			localStorage.setItem("interestData", data);
+			_(".loader").classList.add("d-none");
+			assignLocation("../dashboard/dashboard.html");
+		})
+		.catch(error => {
+			console.log(error.response);
+			_(".loader").classList.add("d-none");
+		});
+};
 
 const UI = () => {
-    _("#preset-btn1").addEventListener("click", e => {
-        e.preventDefault();
-        _("#preset-right").classList.remove("show", "active");
-        _("#join-workspace-tab").classList.add("show", "active");
-    })
+	_("#btnCreateWorkspace").addEventListener("click", async function (e) {
+		e.preventDefault();
 
-    _("#preset-btn2").addEventListener("click", e => {
-        e.preventDefault();
-        _("#preset-right").classList.remove("show", "active");
-        _("#create-tab").classList.add("show", "active");
-    })
+		this.disabled = true;
+		this.classList.add("grey");
+		const workspaceFormData = new FormData(_("#create-workspace-form"));
+		const randomHsl = () => `hsla(${Math.floor(Math.random() * 360)}, 100%, 50%, 1)`;
+		const wallpaper = randomHsl();
+		workspaceFormData.append("status", status);
+		workspaceFormData.append("wallpaper", wallpaper);
 
-    _("#preset-btn3a").addEventListener("click", e => {
-        e.preventDefault();
-        _("#create-tab").classList.remove("show", "active");
-        _("#preset-right").classList.add("show", "active");
-    })
+		let companyId = 0;
+		createWorkspaceUrl = `${api_link}/api/workspace/${companyId}/create`;
+		let data = submitCreateData.submit;
+		data.bind(this, workspaceFormData, createWorkspaceUrl, _("#workspace-tab"), _("#company-tab"))();
+		// let { data: { new_workspace: { id: workspaceId } } } = data;
+		// localStorage.setItem("workspaceId", workspaceId);
+	});
 
-    _("#preset-btn3b").addEventListener("click", e => {
-        e.preventDefault();
-        btn = e.target || e.srcElement;
-        btn.disabled = true;
-        btn.classList.add("grey");
-        const companyFormData = new FormData(_("#create-company-form"));
-        const workspaceFormData = new FormData(_("#create-workspace-form"));
-        const randomHsl = () => `hsla(${Math.floor(Math.random() * 360)}, 100%, 50%, 1)`;
-        const wallpaper = randomHsl();
-        workspaceFormData.append("status", status);
-        workspaceFormData.append("wallpaper", wallpaper);
-        companyFormData.append("status", status);
-        companyFormData.append("wallpaper", wallpaper);
-        submitCreateData(workspaceFormData, createWorkspaceUrl)
-        .then(() => submitCreateData(companyFormData, createCompanyUrl))
-        .then((data) => {
-            if (data) {
-                console.log(data);
-                _("#create-tab").classList.remove("show", "active");
-                _("#interest-tab").classList.add("show", "active");
-            }
-        })
-        .catch(error => console.log(error));
+	_("#btnNext").addEventListener("click", e => {
+		e.preventDefault();
+		searchBuffer = {};
+		_("#workspace-tab").classList.remove("show", "active");
+		_("#company-tab").classList.add("show", "active");
+	});
 
-    })
+	_("#btnNext1").addEventListener("click", e => {
+		e.preventDefault();
+		searchBuffer = {};
+		_("#workspace-tab").classList.remove("show", "active");
+		_("#company-tab").classList.add("show", "active");
+	});
 
-    _("#search-workspaces").addEventListener("click", e => {
-        e.preventDefault();
-        formData = new FormData(_("#join-workspace-form"));
-        formData = formDataToObject(formData);
-        workspaceBuffer = [];
-        getJoinData(formData, joinWorkspaceUrl)
-        .then(response => loopOutData(response, workspaceBuffer, _("#workspace-appendage")))
-        .catch(error => console.log(error));
-    });
+	_("#btnCreateCompany").addEventListener("click", async function (e) {
+		e.preventDefault();
 
-    _("#join-workspaces").addEventListener("click", e => {
-        e.preventDefault();
-        return Promise.all(workspaceBuffer.map(workspaceTitle => submitJoinData({title: workspaceTitle}, joinWorkspaceUrl)));
-    });
+		this.disabled = true;
+		this.classList.add("grey");
+		const companyFormData = new FormData(_("#create-company-form"));
+		const randomHsl = () => `hsla(${Math.floor(Math.random() * 360)}, 100%, 50%, 1)`;
+		const wallpaper = randomHsl();
+		companyFormData.append("status", status);
+		companyFormData.append("wallpaper", wallpaper);
 
-    _("#preset-btn4a").addEventListener("click", e => {
-        e.preventDefault();
-        _("#join-workspace-tab").classList.remove("show", "active");
-        _("#preset-right").classList.add("show", "active");
-    });
+		let data = submitCreateData.submit;
+		data.bind(this, companyFormData, createCompanyUrl, _("#company-tab"), _("#interest-tab"))();
+		loadInterestsOntoTab();
+	});
 
-    _("#preset-btn4b").addEventListener("click", e => {
-        e.preventDefault();
-        _("#join-workspace-tab").classList.remove("show", "active");
-        _("#join-company-tab").classList.add("show", "active");
-    });
+	_("#join-workspace-input-field").addEventListener("keyup", function (e) {
+		e.preventDefault();
+		// check if user input is a letter i.e valid search
+		if (!(/6[5-9]|[7-8][0-9]|90/.test(e.keyCode))) return;
+		formData = new FormData(_("#join-workspace-form"));
+		let searchKey = formData.get('title').substr(0, 1);
+		console.log(searchKey);
 
-    _("#search-companies").addEventListener("click", e => {
-        e.preventDefault();
-        formData = new FormData(_("#join-company-form"));
-        formData = formDataToObject(formData);
-        companyBuffer = [];
-        getJoinData(formData, joinCompanyUrl)
-        .then(response => loopOutData(response, companyBuffer, _("#company-appendage")))
-        .catch(error => console.log(error));
-    })
+		if (searchBuffer.hasOwnProperty(searchKey)) {
+			loopOutData(searchBuffer[searchKey], _("#workspace-appendage"), searchKey);
+		} else {
+			formData.set("title", searchKey);
+			formData = formDataToObject(formData);
+			let data = getJoinData.getData;
+			data.bind(this, formData, joinWorkspaceUrl)()
+				.then(response => loopOutData(response, _("#workspace-appendage"), searchKey))
+				.catch(error => console.log(error));
+		}
+	});
 
-    _("#join-companies").addEventListener("click", e => {
-        e.preventDefault();
-        return Promise.all(companyBuffer.map(companyTitle => submitJoinData({title: companyTitle}, joinCompanyUrl)));
-    });
+	_("#join-company-input-field").addEventListener("keyup", function (e) {
+		e.preventDefault();
+		// check if user input is a letter i.e valid search
+		if (!(/6[5-9]|[7-8][0-9]|90/.test(e.keyCode))) return;
+		formData = new FormData(_("#join-company-form"));
+		let searchKey = formData.get('title').substr(0, 1);
 
-    _("#preset-btn5").addEventListener("click", e => {
-        e.preventDefault();
-        _("#join-company-tab").classList.remove("show", "active");
-        _("#interest-tab").classList.add("show", "active");
-        getInterests()
-        .then(data => {
-            let {categories} = data, index = 0;
-            categories.forEach(category => {
-                _("#sub-interest-tab").innerHTML += `
-                    <div data-category-id="${category.id}" class="category mb-5 d-flex flex-wrap col-12">
-                        <h4 class="category-name d-flex col-12 pb-1">${category.title}</h4>
-                    </div>`;
-                category.interests.forEach(interest => {
-                    _(`[data-category-id="${category.id}"]`).innerHTML += `
-                        <div data-category-id="${category.id}" data-interest-id="${interest.id}" data-index="${index}" class="select-interest b-shadow mx-2 my-2 p-0">
-                            <div></div>
-                            <div class="text-center col-12 overflow-auto p-2">${interest.title}</div>
-                        </div>`;
+		if (searchBuffer.hasOwnProperty(searchKey)) {
+			loopOutData(searchBuffer[searchKey], _("#company-appendage"), searchKey);
+		} else {
+			formData.set("title", searchKey);
+			formData = formDataToObject(formData);
 
-                    index++;
-                });
-            });
-            all(`[data-interest-id]`).forEach(interest => {
-                interest.addEventListener("click", function() {
+			let data = getJoinData.getData;
+			data.bind(this, formData, joinCompanyUrl)()
+				.then(response => loopOutData(response, _("#company-appendage"), searchKey))
+				.catch(error => console.log(error));
+		}
+	});
 
-                    if (this.classList.contains("clicked")) {
-                        this.classList.remove("clicked");
-                        delete interestBuffer[this.dataset.index];
-                        if (!(interestBuffer.some(e => e instanceof Array))) {
-                            _(".con-bottom-lg").classList.remove("animated", "slideInUp", "d-flex");
-                            _(".con-bottom-lg").classList.add("d-none");
-                        }
-                    } else {
-                        this.classList.add("clicked");
-                        _(".con-bottom-lg").classList.add("animated", "slideInUp", "d-flex");
-                        _(".con-bottom-lg").classList.remove("d-none");
-                        interestBuffer[this.dataset.index] = [Number(this.dataset.categoryId), Number(this.dataset.interestId)];
-                    }
-                });
-            });
-        })
-        .catch(error => console.log(error));
-    });
+	_("#btnNext2").addEventListener("click", e => {
+		e.preventDefault();
+		_("#company-tab").classList.remove("show", "active");
+		_("#interest-tab").classList.add("show", "active");
+		loadInterestsOntoTab();
+	});
 
-    _("#btn-follow-interests").addEventListener("click", e => {
-        e.preventDefault();
-        let user_interests = interestBuffer.filter(idArray => idArray instanceof Array);
-        console.log(user_interests, token);
+	_("#btnNext3").addEventListener("click", e => {
+		e.preventDefault();
+		_("#company-tab").classList.remove("show", "active");
+		_("#interest-tab").classList.add("show", "active");
+		loadInterestsOntoTab();
+	});
 
-        // axios.post(submitInterestUrl, {
-        //     headers: {
-        //         Authorization: token,
-        //         'Content-Type': 'application/json'
-        //     },
-        //     data: {"user_interests": user_interests}
-        // })
-        // .then(response => console.log(response.data))
-        // .catch(error => console.log(error.response));
-        _(".preloader").style.visibility = "visible";
-
-        fetch(submitInterestUrl, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                Authorization: token,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({user_interests})
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            localStorage.setItem("interestData", data);
-            assignLocation("../dashboard/dashboard.html");
-        })
-        .catch(error => {
-            console.log(error.response);
-            _(".preloader").display.visibility = "hidden";
-        });
-    })
+	_("#btn-follow-interests1").addEventListener("click", addInterest);
+	_("#btn-follow-interests2").addEventListener("click", addInterest);
 };
 UI();
 

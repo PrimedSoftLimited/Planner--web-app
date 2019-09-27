@@ -1,16 +1,7 @@
 const api_link = "https://goalsetterapi.herokuapp.com";
 const regForm = _(".signup-form");
 const loginForm = _(".signin-form");
-const loader = `${"<svg width='38' height='38' viewBox='0 0 38 38' xmlns='http://www.w3.org/2000/svg' stroke='#efefef'>"}
-${"<g fill='none' fill-rule='evenodd'>"}
-    ${"<g transform='translate(1 1)' stroke-width='2'>"}
-        ${"<circle stroke-opacity='.5' cx='18' cy='18' r='18'/>"}
-        ${"<path d='M36 18c0-9.94-8.06-18-18-18'>"}
-            ${"<animateTransform attributeName='transform' type='rotate' from='0 18 18' to='360 18 18' dur='1s' repeatCount='indefinite'/>"}
-        ${"</path>"}
-    ${"</g>"}
-${"</g>"}
-${"</svg>"}`;
+const loader = `<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="5vh" height="5vh" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M59.6 0h8v40h-8V0z" fill="#000000" fill-opacity="1"/><path d="M59.6 0h8v40h-8V0z" fill="#cccccc" fill-opacity="0.2" transform="rotate(30 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#cccccc" fill-opacity="0.2" transform="rotate(60 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#cccccc" fill-opacity="0.2" transform="rotate(90 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#cccccc" fill-opacity="0.2" transform="rotate(120 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#b2b2b2" fill-opacity="0.3" transform="rotate(150 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#999999" fill-opacity="0.4" transform="rotate(180 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#7f7f7f" fill-opacity="0.5" transform="rotate(210 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#666666" fill-opacity="0.6" transform="rotate(240 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#4c4c4c" fill-opacity="0.7" transform="rotate(270 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#333333" fill-opacity="0.8" transform="rotate(300 64 64)"/><path d="M59.6 0h8v40h-8V0z" fill="#191919" fill-opacity="0.9" transform="rotate(330 64 64)"/><animateTransform attributeName="transform" type="rotate" values="0 64 64;30 64 64;60 64 64;90 64 64;120 64 64;150 64 64;180 64 64;210 64 64;240 64 64;270 64 64;300 64 64;330 64 64" calcMode="discrete" dur="840ms" repeatCount="indefinite"></animateTransform></g></svg>`;
 const mailMap = {
     "gmail": "https://mail.google.com/mail/u/0/#inbox",
     "ymail": "https://login.yahoo.com",
@@ -18,9 +9,8 @@ const mailMap = {
     "outlook": "https://login.live.com",
     "aol": "https://login.aol.com}"
 };
-const proceed = _("#proceedToMail");
 
-// a coder walks into a bar
+const proceed = _("#proceedToMail");
 
 function assignLocation(str) {
     location.assign(str);
@@ -41,11 +31,11 @@ function all(str) {
 function formDataToObject(formData) {
     return new Object(Array.from(formData.entries()).reduce((old, pair) => ({
         ...old, [pair[0]]: pair[1]
-    }), {}))
+    }), {}));
 }
 
 // toggle password reveal (&#xf06e;) ==> illuminati 👁
-// x - string id of clicked element, y - string id of input[type="password"] 
+// x - string id of clicked element, y - string id of input[type="password"]
 function showPwd(x, y) {
     if (_(x).classList.contains('active')) {
         _(x).innerHTML = '&#xf070;';
@@ -57,7 +47,7 @@ function showPwd(x, y) {
         _(x).classList.add('active');
     }
 }
-// 
+//
 function handleError(error) {
     if (error == undefined) {
         $("#myToast").toast('show');
@@ -93,20 +83,20 @@ function handleError(error) {
 
         if (regForm) {
             errorElem.innerText = error.data[data][0];
-        } 
-        
+        }
+
         if (loginForm) {
             errorElem.innerText = error.data.data.message;
         }
-        
+
         errorElem.classList.add("invalid");
         inputElem.classList.add("invalid");
-        
+
         inputElem.addEventListener("input", () => {
             errorElem.innerText = errorElem.dataset.label;
             errorElem.classList.remove("invalid");
             inputElem.classList.remove("invalid");
-        })
+        });
     }
 }
 
@@ -114,11 +104,11 @@ function handleError(error) {
 all(".con-input input").forEach((elem) => {
     elem.addEventListener("blur", e => {
         e.preventDefault();
-        
+
         const parent = elem.parentNode;
         elem.value? parent.classList.add("valid"):parent.classList.remove("valid");
-    })
-})
+    });
+});
 
 // breadcrumb navigation
 try {
@@ -128,7 +118,7 @@ try {
         _("[data-roll='1']").style.display = "block";
         _("[data-roll='1']").style.opacity = "1";
     });
-    
+
     _("#right-btn").addEventListener("click", e => {
         e.preventDefault();
         _("[data-roll='1']").style.display = "none";
@@ -136,7 +126,7 @@ try {
         _("[data-roll='2']").style.opacity = "1";
     });
 } catch (e) {
-    
+
 }
 
 // To keep label up when input has text (on validation)
@@ -150,10 +140,10 @@ all('.brand-input').forEach(e => {
         } catch (e) {
             if (e instanceof TypeError) {
                 // console.clear();
-                
+
             } else {
                 console.log(e);
             }
         }
-    })
-})
+    });
+});
