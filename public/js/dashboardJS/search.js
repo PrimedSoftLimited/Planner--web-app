@@ -41,6 +41,7 @@ export const search = {
 							console.log(data);
 							let { search_result } = data;
 							if (!Array.isArray(search_result) || !search_result.length) return;
+							_('#searchTabs').classList.remove('d-none');
 							// search_result.map()
 						}
 					})
