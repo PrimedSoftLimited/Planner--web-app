@@ -1,9 +1,20 @@
 import { token } from './navigation.js';
 
 export const search = {
+	clear: tab => {
+		tab.innerHTML = ``;
+	},
+	clearAll: searchComponent => {
+		console.log('cleared!');
+		searchComponent.querySelector(".con-data-search-react").classList.add("d-none");
+		searchComponent.querySelector(".con-data-search-react").classList.remove("d-flex");
+
+		searchComponent.querySelector('.searchTabs').classList.add('d-none');
+		searchComponent.querySelectorAll('.tab-search-list').forEach(list => list.innerHTML = ``);
+	},
 	react: searchComponent => {
-		console.log(token);
-		searchComponent.querySelector("[data-search-field]").addEventListener("keyup", e => {
+		const react = function (e) {
+			e.stopImmediatePropagation();
 			let elem = e.srcElement || e.target;
 			if (elem.value === "") {
 				searchComponent.querySelector(".con-data-search-react").classList.add("d-none");
@@ -13,16 +24,15 @@ export const search = {
 				searchComponent.querySelector(".con-data-search-react").classList.add("d-flex");
 				searchComponent.querySelector("[data-search-react]").textContent = elem.value;
 			}
-		});
+		};
+		searchComponent.querySelector("[data-search-field]").addEventListener("keyup", react);
 	},
 	search: searchComponent => {
-		searchComponent.querySelector(".search-tab-form").addEventListener("submit", function (e) {
+		const submit = function (e) {
 			e.preventDefault();
 
 			// empty search results before making new search
-			searchComponent.querySelector('.searchTabs').classList.add('d-none');
-			searchComponent.querySelectorAll('.tab-search-list').forEach(list => list.innerHTML = ``);
-			console.log('cleared');
+			search.clearAll(searchComponent);
 
 			console.log("searching...");
 			const searchValue = new FormData(this).get("generic");
@@ -57,6 +67,8 @@ export const search = {
 							// matches search response with appropriate populating HTML
 							searchComponent.querySelector('.searchTabs').classList.remove('d-none');
 							if (message.includes('Users')) {
+								alert('waow');
+								search.clear(searchComponent.querySelector('[data-search-param="Users"] .tab-search-list'));
 								search_result.forEach(result => {
 									let { name, username, user_image } = result;
 									searchComponent.querySelector('[data-search-param="Users"] .tab-search-list').innerHTML += `
@@ -73,6 +85,7 @@ export const search = {
 									`;
 								});
 							} else if (message.includes('Company')) {
+								search.clear(searchComponent.querySelector('[data-search-param="Companies"] .tab-search-list'));
 								search_result.forEach(result => {
 									let { name, username, user_image } = result;
 									searchComponent.querySelector('[data-search-param="Companies"] .tab-search-list').innerHTML += `
@@ -88,6 +101,7 @@ export const search = {
 									`;
 								});
 							} else if (message.includes('Workspace')) {
+								search.clear(searchComponent.querySelector('[data-search-param="Workspaces"] .tab-search-list'));
 								search_result.forEach(result => {
 									let { name, username, user_image } = result;
 									searchComponent.querySelector('[data-search-param="Workspaces"] .tab-search-list').innerHTML += `
@@ -103,9 +117,10 @@ export const search = {
 									`;
 								});
 							} else if (message.includes('Project')) {
+								search.clear(searchComponent.querySelector('[data-search-param="Project"] .tab-search-list'));
 								search_result.forEach(result => {
 									let { title, description } = result;
-									searchComponent.querySelector('[data-search-param="Projects"] .tab-search-list').innerHTML += `
+									searchComponent.querySelector('[data-search-param="Project"] .tab-search-list').innerHTML += `
 										<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12" aria-label="">
 											<ion-icon class="plannerr-sm-icon" name="git-merge"></ion-icon>
 											<span class="pl-3">${title}</span>
@@ -116,8 +131,19 @@ export const search = {
 							}
 						}
 					})
-					.catch(error => console.log(error.data));
+					.catch(error => console.log(error));
 			});
+		};
+		searchComponent.querySelector('[data-search-field]').addEventListener('focus', e => {
+			e.stopImmediatePropagation();
+			searchComponent.querySelector(".search-tab-form").addEventListener("submit", submit);
+			console.log("{ADDED SUBMIT EVENT}");
 		});
+
+		// searchComponent.querySelector('[data-search-field]').addEventListener('blur', e => {
+		// 	e.stopImmediatePropagation();
+		// 	searchComponent.querySelector(".search-tab-form").removeEventListener("submit", submit);
+		// 	console.log("{REMOVED SUBMIT EVENT}");
+		// });
 	}
 };

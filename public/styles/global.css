@@ -377,6 +377,11 @@ input:not(:focus):valid ~ .floating-label,
 
 	.flow {
 		overflow-y: scroll;
+		height: auto;
+	}
+
+	.no-flow {
+		overflow-y: hidden;
 	}
 
 	.plannerr-tab {

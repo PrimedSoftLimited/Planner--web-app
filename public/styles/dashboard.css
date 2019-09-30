@@ -28,9 +28,9 @@ main > header {
 	font-variant: normal;
 }
 
-aside > header {
+aside header, .plannerr-bold {
 	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 1.1em;
+	font-size: 1.1rem;
 	font-weight: 600;
 	line-height: 1em;
 	letter-spacing: normal;
@@ -198,11 +198,51 @@ ion-icon[name="flame"] {
 }
 
 #main-aside header {
-	height: 8vh;
+	height: 10vh;
 	background-color: var(--color32, white);
+}
+
+#main-aside section {
+	height: 90vh;
 }
 
 .con-about-project {
 	min-height: 8vh;
 	height: auto;
+}
+
+.plannerr-xbold {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.6em;
+	font-weight: 600;
+	line-height: 1em;
+	letter-spacing: normal;
+	font-variant: normal;
+}
+
+.plannerr-btn-dash {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1em;
+	letter-spacing: normal;
+	font-variant: normal;
+	border-radius: 3px;
+	line-height: 2.5rem;
+	height: 40px;
+	background-color: white;
+	border: 1px solid var(--color4, #919191) !important;
+}
+
+.plannerr-btn-dash:hover {
+	border: 1px solid var(--color31, #2E3033) !important;
+}
+
+.info-height {
+	height: 60px;
+}
+
+.plannerr-lg-pic {
+	background-color: red;
+	height: 60%;
 }

@@ -3,6 +3,8 @@ import { search } from './search.js';
 import { workspaces } from './get-workspaces.js';
 export const { token } = JSON.parse(localStorage.getItem("userData"));
 
+
+// prompts user to choose workspace if user belongs to multiple workspaces
 const multipleWorkspaces = (async () => {
 	const { data: userWorkspaces } = await workspaces.getUserWorkspaces();
 	console.log(userWorkspaces);
@@ -19,11 +21,34 @@ const multipleWorkspaces = (async () => {
 const UI = ((project) => {
 
 	// search component functionality
-	all(".search-tab").forEach(tab => tab.addEventListener("focus", function () {
-		search.react(this);
-		search.search(this);
-	})
-	);
+	_('[data-target="#search-tab1"].main-search').addEventListener('click', e => {
+		search.clearAll(_("#search-tab1"));
+		search.react(_("#search-tab1"));
+		_('#search-tab1 [data-search-field]').focus();
+		search.search(_("#search-tab1"));
+	});
+
+	_('[data-target="#search-tab2"].main-search').addEventListener('click', e => {
+		search.clearAll(_("#search-tab2"));
+		search.react(_("#search-tab2"));
+		_('#search-tab2 [data-search-field]').focus();
+		search.search(_("#search-tab2"));
+	});
+
+	// all(".search-tab").forEach(tab => tab.addEventListener("focus", function searchEvents() {
+	// 	console.log("focused!");
+	// 	search.clearAll(this);
+	// 	search.react(this);
+	// 	search.search(this);
+	// 	this.addEventListener("click", e => {
+	// 		e.preventDefault();
+	// 		// return false;
+	// 	});
+	// 	this.addEventListener('blur', e => {
+	// 		// this.removeEventListener('focus', searchEvents);
+	// 	});
+	// })
+	// );
 
 
 	// CRUD Project
