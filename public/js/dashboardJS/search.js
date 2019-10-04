@@ -1,6 +1,8 @@
 import { token } from './navigation.js';
+import { join } from './join-workspace-company.js';
 
-// const gsjs = false; //constant used to check if module is in file being exported wherever it's in use
+let joinWorkspaceUrl = `${api_link}/api/workspace/request`;
+let joinCompanyUrl = `${api_link}/api/company/request`;
 
 export const search = {
 	clear: tab => {
@@ -209,6 +211,11 @@ export const search = {
 								<div class="d-flex col-12 px-0 my-2 py-2">
 									<span class="plannerr-xbold">${this.querySelector('[data-save-company-name]').dataset.saveCompanyName}</span>
 								</div>
+								<div class="d-flex info-height justify-content-between col-12 p-0 mx-0 my-2">
+									<button id="btnJoinCompany" data-save-company-unique-name="${this.querySelector('[data-save-company-unique-name]').dataset.saveCompanyUniqueName}" class="col-auto my-auto c-pointer border text-center plannerr-btn-dash">Join
+										Company
+									</button>
+								</div>
 							</div>
 							<div class="col-12 d-flex py-2 flex-column justify-content-center info-height border-bottom">
 								<small class="plannerr-text">
@@ -268,6 +275,13 @@ export const search = {
 
 					});
 				});
+
+				child.querySelector('#btnJoinCompany').addEventListener('click', function() {
+					let title = _('#btnJoinCompany').dataset.saveCompanyUniqueName;
+					let btn = join.request;
+					btn.bind(this, {title}, joinCompanyUrl)();
+				});
+
 			} else if (this.dataset.searchWorkspaceClass) {
 				let child = new DOMParser().parseFromString(`
 				<div class="h-100 w-100">
@@ -288,7 +302,7 @@ export const search = {
 								<span class="plannerr-xbold">${this.querySelector('[data-save-workspace-name]').dataset.saveWorkspaceName}</span>
 							</div>
 							<div class="d-flex info-height justify-content-between col-12 p-0 mx-0 my-2">
-								<button class="col-auto my-auto c-pointer border text-center plannerr-btn-dash">Join
+								<button id="btnJoinWorkspace" data-save-workspace-unique-name="${this.querySelector('[data-save-workspace-unique-name]').dataset.saveWorkspaceUniqueName}" class="col-auto my-auto c-pointer border text-center plannerr-btn-dash">Join
 									workspace
 								</button>
 							</div>
@@ -309,7 +323,7 @@ export const search = {
 								<button type="button" class="plannerr-md-pic" aria-label="">
 									<img src="" alt="">
 								</button>
-								<span class="ml-2 plannerr-bold">Capt. John Nsikak</span>
+								<span class="ml-2 plannerr-bold">Sgt. John Nsikak</span>
 							</div>
 						</div>
 					</section>
@@ -338,14 +352,19 @@ export const search = {
 
 					});
 				});
+
+				child.querySelector('#btnJoinWorkspace').addEventListener('click', () => {
+					let title = _('#btnJoinWorkspace').dataset.saveWorkspaceUniqueName;
+					let btn = join.request;
+					btn.bind(this, {title}, joinWorkspaceUrl)();
+				});
+
 			} else {
 				console.log("null");
 			}
 		});
 	},
 	search: searchComponent => {
-		let joinWorkspaceUrl = `${api_link}/api/workspace/request`;
-		let joinCompanyUrl = `${api_link}/api/company/request`;
 		const getJoinData = {
 			getData: async function (formData, url) {
 				try {
@@ -373,6 +392,7 @@ export const search = {
 			const searchValue = new FormData(this).get("generic");
 
 			const searchTerms = ['u', 'p'];
+			console.log("searching");
 
 			searchTerms.map(searchTerm => {
 
@@ -468,7 +488,7 @@ export const search = {
 										<img src="" alt="" style="background-color:${wallpaper};">
 									</button>
 									<div class="d-flex col-11">
-										<span data-save-workspace-name="${title}">${title} - </span>
+										<span data-save-workspace-unique-name="${unique_name}" data-save-workspace-name="${title}">${title} - </span>
 										<span data-save-workspace-description="${description}">${description}</span>
 									</div>
 								</div>
@@ -494,14 +514,14 @@ export const search = {
 
 						search.clear(searchComponent.querySelector('[data-search-param="Companies"] .tab-search-list'));
 						choose_company.forEach(company => {
-							let { title, description, industry, wallpaper } = company;
+							let { title, description, industry, wallpaper, unique_name } = company;
 							searchComponent.querySelector('[data-search-param="Companies"] .tab-search-list').innerHTML += `
 								<div class="d-flex search-item align-items-center m-0 pl-4 py-2 col-12" data-search-item data-search-company-class="focus">
 									<button type="button" class="plannerr-sm-pic" aria-label="">
 										<img src="" alt="" style="background-color:${wallpaper};">
 									</button>
 									<div class="d-flex col-11" data-save-company-industry="${industry}">
-										<span data-save-company-name="${title}">${title} - </span>
+										<span data-save-company-unique-name="${unique_name}" data-save-company-name="${title}">${title} - </span>
 										<span data-save-company-description="${description}">${description}</span>
 									</div>
 								</div>

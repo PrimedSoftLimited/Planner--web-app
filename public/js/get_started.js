@@ -103,9 +103,7 @@ const submitCreateData = {
 const getJoinData = {
 	getData: async function (formData, url) {
 		try {
-			if (gsjs) {
-				this.nextElementSibling.innerHTML = loader;
-			}
+			this.nextElementSibling.innerHTML = loader;
 
 			let response = await axios.post(url, formData, {
 				headers: {
@@ -113,16 +111,13 @@ const getJoinData = {
 				}
 			});
 			let data = await response.data;
-			if (gsjs) {
-				this.nextElementSibling.innerHTML = ``;
-			}
+
+			this.nextElementSibling.innerHTML = ``;
 
 			return data;
 
 		} catch (error) {
-			if (gsjs) {
-				this.nextElementSibling.innerHTML = ``;
-			}
+			this.nextElementSibling.innerHTML = ``;
 			console.log(error);
 		}
 	}
