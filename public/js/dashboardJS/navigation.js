@@ -35,21 +35,6 @@ const UI = ((project) => {
 		search.search(_("#search-tab2"));
 	});
 
-	// all(".search-tab").forEach(tab => tab.addEventListener("focus", function searchEvents() {
-	// 	console.log("focused!");
-	// 	search.clearAll(this);
-	// 	search.react(this);
-	// 	search.search(this);
-	// 	this.addEventListener("click", e => {
-	// 		e.preventDefault();
-	// 		// return false;
-	// 	});
-	// 	this.addEventListener('blur', e => {
-	// 		// this.removeEventListener('focus', searchEvents);
-	// 	});
-	// })
-	// );
-
 
 	// CRUD Project
 	_("#btn-create-project").addEventListener("click", project.createProject);
@@ -85,7 +70,7 @@ const UI = ((project) => {
 
 	// aside.main controls
 	all(".get-about-project-details").forEach(btn => {
-		btn.addEventListener('click', function(e) {
+		btn.addEventListener('click', function (e) {
 			e.preventDefault();
 
 			// toggle dropdown arrow
@@ -101,16 +86,31 @@ const UI = ((project) => {
 		});
 	});
 
-	_("#project-info").addEventListener("click", () => {
-		_("#main-aside").classList.toggle("show");
+	all(".btn-show-aside").forEach(btn => {
+		btn.addEventListener("click", e => {
+			e.preventDefault();
+			_("#main-aside").classList.toggle("show");
+			_("#main-aside .main-content").classList.add('show', 'active');
+		});
 
 		// _("#main-aside").innerHTML = `
 		// 	`;
 	});
 
-	_("#btn-close-aside").addEventListener("click", () => {
-		_("#main-aside").classList.toggle("show");
+	all(".btn-return-main-aside").forEach(btn => {
+		btn.addEventListener("click", e => {
+			e.preventDefault();
+			_("#main-aside .main-content").classList.add('show', 'active');
+			_("#main-aside .content").classList.remove('show', 'active');
+		});
+	});
 
+	all(".btn-close-aside").forEach(btn => {
+		btn.addEventListener("click", e => {
+			e.preventDefault();
+			_("#main-aside").classList.remove("show");
+
+		});
 	});
 
 

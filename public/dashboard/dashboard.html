@@ -28,11 +28,7 @@
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
 		</script>
 	<script src="../js/base.js" defer></script>
-	<!-- <script src="../js/dashboardJS/imports.js" defer></script> -->
-	<!-- <script src="../js/get_started.js" type="module" defer></script> -->
-	<!-- <script src="../js/dashboardJS/project.js" type defer></script> -->
 	<script src="../js/dashboardJS/navigation.js" type="module" defer></script>
-	<!-- <script src="../js/dashboardJS/search.js" type="module" defer></script> -->
 	<title>Plannerr | Dashboard</title>
 </head>
 
@@ -104,17 +100,17 @@
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
 														<div class="tab-pane" data-search-param="Project" id="nav-search-projects" role="tabpanel"
-															aria-label="createCompanyLabel" aria-atomic="true">
+															aria-label="" aria-atomic="true">
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
 														<div class="tab-pane" data-search-param id="nav-search-files" role="tabpanel"
-															aria-label="createCompanyLabel" aria-atomic="true">filereader</div>
-														<div class="tab-pane" data-search-param="Workspace" id="nav-search-workspaces"
+															aria-label="" aria-atomic="true">filereader</div>
+														<div class="tab-pane" data-search-param="Workspaces" id="nav-search-workspaces"
 															role="tabpanel" aria-label="createCompanyLabel" aria-atomic="true">
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
-														<div class="tab-pane" data-search-param="Company" id="nav-search-companies" role="tabpanel"
-															aria-label="createCompanyLabel" aria-atomic="true">
+														<div class="tab-pane" data-search-param="Companies" id="nav-search-companies" role="tabpanel"
+															aria-label="" aria-atomic="true">
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
 													</div>
@@ -216,11 +212,11 @@
 														</div>
 														<div class="tab-pane" data-search-param id="nav-search-files2" role="tabpanel"
 															aria-label="createCompanyLabel" aria-atomic="true">filereader</div>
-														<div class="tab-pane" data-search-param="Workspace" id="nav-search-workspaces2"
+														<div class="tab-pane" data-search-param="Workspaces" id="nav-search-workspaces2"
 															role="tabpanel" aria-label="createCompanyLabel" aria-atomic="true">
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
-														<div class="tab-pane" data-search-param="Company" id="nav-search-companies2" role="tabpanel"
+														<div class="tab-pane" data-search-param="Companies" id="nav-search-companies2" role="tabpanel"
 															aria-label="createCompanyLabel" aria-atomic="true">
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
@@ -294,7 +290,7 @@
 			</footer>
 		</nav>
 
-		<section>
+		<section class="border-right">
 			<div class="container-fluid p-0">
 				<div class="row">
 					<div class="tab-content col-12 no-gutters">
@@ -372,7 +368,7 @@
 					<div data-project="project-true" data-nav-controlled class="tab-pane tab-body">
 						<div class="d-flex col-12 border-bottom">
 							<h3>Project Milestones</h3>
-							<button id="project-info" type="button">
+							<button class="btn-show-aside" type="button">
 								<ion-icon name="information-circle-outline"></ion-icon>
 							</button>
 							<button>New <i class="fas fa-sort-down"></i></button>
@@ -411,11 +407,11 @@
 			</div>
 		</section>
 
-		<aside id="main-aside" class="no-flow border-left tab-content show">
-			<div class="tab-pane">
+		<aside id="main-aside" class="no-flow tab-content">
+			<div class="tab-pane main-content">
 				<header class="d-flex px-3 pt-2 border-bottom align-items-center flex-nowrap justify-content-between">
-					<h4 class="">About this workspace</h4>
-					<button class="plannerr-sm-icon c-pointer" id="btn-close-aside">
+					<h4 class="">Workspace directory</h4>
+					<button class="plannerr-sm-icon c-pointer btn-close-aside">
 						<ion-icon name="close"></ion-icon>
 					</button>
 				</header>
@@ -592,32 +588,7 @@
 					</div>
 				</section>
 			</div>
-			<div class="tab-pane show active">
-				<header class="d-flex col-12 px-3 pt-2 border-bottom align-items-center flex-nowrap justify-content-between">
-					<button class="plannerr-sm-icon c-pointer" id="">
-						<ion-icon name="arrow-dropleft"></ion-icon>
-					</button>
-					<h4 class="">disclosure search</h4>
-					<button class="plannerr-sm-icon c-pointer" id="">
-						<ion-icon name="close"></ion-icon>
-					</button>
-				</header>
-
-				<section class="flow">
-					<div class="col-12 m-0 p-0 plannerr-lg-pic">
-
-					</div>
-					<div class="col-12 border-bottom">
-						<div class="d-flex info-height justify-content-between col-12 p-0 m-0">
-							<button class="col-5 my-auto c-pointer border text-center plannerr-btn-dash">Message</button>
-							<button class="col-5 my-auto c-pointer border text-center plannerr-btn-dash">Call</button>
-						</div>
-						<div class="col-12 plannerr-xbold px-0 m-0 py-2">Alex Ekubo</div>
-					</div>
-					<div class="col-12 plannerr-bold p-0 m-0">
-					</div>
-				</section>
-			</div>
+			<div class="tab-pane content"></div>
 		</aside>
 	</main>
 </body>
