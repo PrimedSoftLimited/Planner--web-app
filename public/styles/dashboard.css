@@ -3,7 +3,7 @@ body {
   box-sizing: border-box;
   margin: 0;
 	padding: 0;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 main {
@@ -26,7 +26,15 @@ main > header {
 	line-height: 1em;
 	letter-spacing: normal;
 	font-variant: normal;
+}
 
+aside header, .plannerr-bold {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.1rem;
+	font-weight: 600;
+	line-height: 1em;
+	letter-spacing: normal;
+	font-variant: normal;
 }
 
 main > header > div {
@@ -49,6 +57,7 @@ main > section {
 
 main > aside {
 	width: 0;
+	display: none;
   background-color: white;
   display: flex;
   flex-flow: column nowrap;
@@ -56,11 +65,8 @@ main > aside {
 }
 
 main > aside.show {
-	width: 30vw;
-}
-
-.con-about-project {
-	min-height: 10vh;
+	width: 28vw;
+	display: block;
 }
 
 .about-project-details {
@@ -92,15 +98,15 @@ main > aside.show {
 	min-height: 80px;
 }
 
-#main-search {
-	outline: none;
+.main-search {
+	outline: none !important;
 	border-radius: 3px;
 	border: 1px solid var(--color4);
 	background-color: white;
 	height: 40px;
 }
 
-#main-search:hover .plannerr-text {
+.main-search:hover .plannerr-text {
 	color: var(--color31);
 }
 
@@ -119,12 +125,15 @@ main > aside.show {
 }
 
 .nav-tab-head {
+	font-family: 'Source Sans Pro', sans-serif;
 	height: 10%;
+	font-size: 1.5em;
+	font-weight: 600;
+	letter-spacing: 3px;
 }
 
 .nav-tab-link {
 	height: 8%;
-
 }
 
 .nav-tab-link.active {
@@ -185,5 +194,59 @@ ion-icon[name="flame"] {
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	border: 1px solid var(--color15);
+	border: 1px solid var(--color15, #0A0F0F);
+}
+
+#main-aside header {
+	height: 10%;
+	background-color: var(--color32, white);
+}
+
+#main-aside > div {
+	height: 100%;
+}
+
+#main-aside section {
+	height: 90%;
+}
+
+.con-about-project {
+	min-height: 8vh;
+	height: auto;
+}
+
+.plannerr-xbold {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.6em;
+	font-weight: 600;
+	line-height: 1em;
+	letter-spacing: normal;
+	font-variant: normal;
+}
+
+.plannerr-btn-dash {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1em;
+	letter-spacing: normal;
+	font-variant: normal;
+	border-radius: 3px;
+	line-height: 2.5rem;
+	height: 40px;
+	background-color: white;
+	border: 1px solid var(--color4, #919191) !important;
+}
+
+.plannerr-btn-dash:hover {
+	border: 1px solid var(--color31, #2E3033) !important;
+}
+
+.info-height {
+	min-height: 60px;
+}
+
+.plannerr-lg-pic {
+	background-color: red;
+	height: 60%;
 }

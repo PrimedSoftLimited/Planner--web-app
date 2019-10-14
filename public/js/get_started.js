@@ -1,13 +1,12 @@
 // add preloader while activating account
+let joinWorkspaceUrl = `${api_link}/api/workspace/request`;
+let joinCompanyUrl = `${api_link}/api/company/request`;
 
+const gsjs = true; //constant used to check if module is in file being exported wherever it's in use
 const urlParams = new URLSearchParams(window.location.search);
 const cToken = urlParams.get('confirm_token') ? urlParams.get('confirm_token') : null;
 let createCompanyUrl = "/api/company/create";
 createCompanyUrl = `${api_link}${createCompanyUrl}`;
-let joinWorkspaceUrl = "/api/workspace/request";
-joinWorkspaceUrl = `${api_link}${joinWorkspaceUrl}`;
-let joinCompanyUrl = "/api/company/request";
-joinCompanyUrl = `${api_link}${joinCompanyUrl}`;
 let allInterestUrl = `/api/user/categories`;
 allInterestUrl = `${api_link}${allInterestUrl}`;
 let submitInterestUrl = "/api/interest/select";
@@ -15,17 +14,6 @@ submitInterestUrl = `${api_link}${submitInterestUrl}`;
 const activateAccUrl = `${api_link}/api/confirmation/${cToken}`;
 let btn, interestBuffer = [], searchBuffer = {}, formData, token, user, url, request, status = "Public";
 
-
-// (async function () {
-//     const req = await fetch('https://randomapi.com/api/006b08a801d82d0c9824dcfdfdfa3b3c');
-//     const total = Number(req.headers.get('content-length'));
-//     let loaded = 0;
-//     for await (const { length } of req.body.getReader()) {
-//         loaded += length;
-//         const progress = ((loaded / total) * 100).toFixed(2); // toFixed(2) means two digits after floating point
-//         console.log(`${progress}%`); // or yourDiv.textContent = `${progress}%`;
-//     }
-// })();
 
 const helperScript = () => {
 
@@ -51,9 +39,8 @@ const helperScript = () => {
 };
 helperScript();
 
-
 // do acc. activation i.e confirmation
-const activateUserAccount = () => {
+const activateUserAccount = (() => {
 	_(".loader").classList.remove("d-none");
 	const config = {
 		method: "GET",
@@ -80,8 +67,7 @@ const activateUserAccount = () => {
 			_("#verification-tab").classList.remove("show", "active");
 			console.log(error);
 		});
-};
-activateUserAccount();
+})();
 
 const submitCreateData = {
 	submit: async function (formData, url, removeThisTab, showThisTab) {
@@ -125,6 +111,7 @@ const getJoinData = {
 				}
 			});
 			let data = await response.data;
+
 			this.nextElementSibling.innerHTML = ``;
 
 			return data;

@@ -3,6 +3,8 @@ import { search } from './search.js';
 import { workspaces } from './get-workspaces.js';
 export const { token } = JSON.parse(localStorage.getItem("userData"));
 
+
+// prompts user to choose workspace if user belongs to multiple workspaces
 const multipleWorkspaces = (async () => {
 	const { data: userWorkspaces } = await workspaces.getUserWorkspaces();
 	console.log(userWorkspaces);
@@ -19,11 +21,19 @@ const multipleWorkspaces = (async () => {
 const UI = ((project) => {
 
 	// search component functionality
-	all(".search-tab").forEach(tab => tab.addEventListener("focus", function () {
-		search.react(this);
-		search.search(this);
-	})
-	);
+	_('[data-target="#search-tab1"].main-search').addEventListener('click', e => {
+		search.clearAll(_("#search-tab1"));
+		search.react(_("#search-tab1"));
+		_('#search-tab1 [data-search-field]').focus();
+		search.search(_("#search-tab1"));
+	});
+
+	_('[data-target="#search-tab2"].main-search').addEventListener('click', e => {
+		search.clearAll(_("#search-tab2"));
+		search.react(_("#search-tab2"));
+		_('#search-tab2 [data-search-field]').focus();
+		search.search(_("#search-tab2"));
+	});
 
 
 	// CRUD Project
@@ -58,18 +68,13 @@ const UI = ((project) => {
 		});
 	});
 
-	_("#project-info").addEventListener("click", () => {
-		_("#main-aside").classList.toggle("show");
-
-		// _("#main-aside").innerHTML = `
-		// 	`;
-	});
-
-
 	// aside.main controls
 	all(".get-about-project-details").forEach(btn => {
-		btn.addEventListener('click', e => {
+		btn.addEventListener('click', function (e) {
 			e.preventDefault();
+
+			// toggle dropdown arrow
+			this.querySelectorAll('.btn-toggle').forEach(btn => btn.classList.toggle('d-none'));
 
 			all(".about-project-details").forEach(detail => {
 				if (detail.dataset.projectDetail !== btn.dataset.projectDetail) {
@@ -80,4 +85,33 @@ const UI = ((project) => {
 			});
 		});
 	});
+
+	all(".btn-show-aside").forEach(btn => {
+		btn.addEventListener("click", e => {
+			e.preventDefault();
+			_("#main-aside").classList.toggle("show");
+			_("#main-aside .main-content").classList.add('show', 'active');
+		});
+
+		// _("#main-aside").innerHTML = `
+		// 	`;
+	});
+
+	all(".btn-return-main-aside").forEach(btn => {
+		btn.addEventListener("click", e => {
+			e.preventDefault();
+			_("#main-aside .main-content").classList.add('show', 'active');
+			_("#main-aside .content").classList.remove('show', 'active');
+		});
+	});
+
+	all(".btn-close-aside").forEach(btn => {
+		btn.addEventListener("click", e => {
+			e.preventDefault();
+			_("#main-aside").classList.remove("show");
+
+		});
+	});
+
+
 })(project);

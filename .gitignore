@@ -63,3 +63,9 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# js linter
+.jshintrc
+
+#editor rc file
+.editorconfig

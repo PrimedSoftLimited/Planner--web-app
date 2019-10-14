@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="import" href="./choose-workspace.html" id="choose-workspace">
+	<link type="module" href="./choose-workspace.html" id="choose-workspace">
 	<link
 		href="https://fonts.googleapis.com/css?family=Blinker|Montserrat|Nunito|Red+Hat+Display|Source+Sans+Pro&display=swap"
 		rel="stylesheet">
@@ -28,23 +28,19 @@
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
 		</script>
 	<script src="../js/base.js" defer></script>
-	<!-- <script src="../js/dashboardJS/imports.js" defer></script> -->
-	<!-- <script src="../js/get_started.js" type="module" defer></script> -->
-	<!-- <script src="../js/dashboardJS/project.js" type defer></script> -->
 	<script src="../js/dashboardJS/navigation.js" type="module" defer></script>
-	<!-- <script src="../js/dashboardJS/search.js" type="module" defer></script> -->
 	<title>Plannerr | Dashboard</title>
 </head>
 
 <body>
 	<main class="">
-		<header>
+		<header class="border-bottom">
 			<div class="container-fluid">
 				<div class="row h-100">
 					<div class="tab-content col-12 h-100">
-						<div id="project-header" data-id="project" data-nav-controlled class="tab-header tab-pane active show">
+						<div id="project-header" data-id="project" data-nav-controlled class="tab-header tab-pane">
 							<div class="d-flex h-100 justify-content-between align-items-center">
-								<button class="c-pointer col-2 d-flex m-0 px-2" id="main-search" data-toggle="modal"
+								<button class="c-pointer col-2 d-flex m-0 px-2 main-search" data-toggle="modal"
 									data-target="#search-tab1" type="button">
 									<ion-icon class="plannerr-icon" name="search"></ion-icon>
 									<div class="d-none d-md-block plannerr-text my-auto pl-1">Search</div>
@@ -54,7 +50,7 @@
 									aria-labelledby="searchfieldlabel" aria-hidden="true">
 									<div class="modal-dialog modal-75" role="document">
 										<div class="col-12 no-gutters p-0 modal-content">
-											<form class="search-tab-form">
+											<form class="search-tab-form" id="searchForm1">
 												<h4 class="d-none" id="searchfieldlabel">Search for anything</h4>
 												<div
 													class="d-flex plannerr-sm-icon col-12 modal-header justify-content-between no-gutters pl-4 py-2 border-bottom">
@@ -62,19 +58,19 @@
 														<path
 															d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
 													</svg>
-													<input class="border-0 w-100 pl-3 h-100 no-outline" data-search-field id="searchfield"
-														type="text" name="generic" placeholder="Search me. No, really.">
+													<input class="border-0 w-100 pl-3 h-100 no-outline" data-search-field id="" type="text"
+														name="generic" placeholder="Search me. No, really.">
 												</div>
 												<button
 													class="d-none con-data-search-react no-outline plannerr-sm-icon col-12 modal-footer justify-content-between no-gutters pl-4 py-2"
-													type="submit">
+													type="submit" form="searchForm1">
 													<svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 														<path
 															d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
 													</svg>
 													<div class="text-left w-100 pl-2" data-search-react></div>
 												</button>
-												<div id="searchTabs" class="d-none col-12 p-0 m-0 modal-body">
+												<div id="" class="searchTabs d-none col-12 p-0 m-0 modal-body">
 													<nav class="col-12 nav nav-tabs text-center border-bottom" role="tablist">
 														<a id="" class="nav-search-filter nav-link nav-item active nav-inactive col-2"
 															href="#nav-search-threads" data-toggle="tab" role="tab" aria-controls="nav-search-threads"
@@ -104,17 +100,17 @@
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
 														<div class="tab-pane" data-search-param="Project" id="nav-search-projects" role="tabpanel"
-															aria-label="createCompanyLabel" aria-atomic="true">
+															aria-label="" aria-atomic="true">
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
 														<div class="tab-pane" data-search-param id="nav-search-files" role="tabpanel"
-															aria-label="createCompanyLabel" aria-atomic="true">filereader</div>
-														<div class="tab-pane" data-search-param="Workspace" id="nav-search-workspaces" role="tabpanel"
-															aria-label="createCompanyLabel" aria-atomic="true">
+															aria-label="" aria-atomic="true">filereader</div>
+														<div class="tab-pane" data-search-param="Workspaces" id="nav-search-workspaces"
+															role="tabpanel" aria-label="createCompanyLabel" aria-atomic="true">
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
-														<div class="tab-pane" data-search-param="Company" id="nav-search-companies" role="tabpanel"
-															aria-label="createCompanyLabel" aria-atomic="true">
+														<div class="tab-pane" data-search-param="Companies" id="nav-search-companies" role="tabpanel"
+															aria-label="" aria-atomic="true">
 															<div class="col-12 m-0 p-0 tab-search-list"></div>
 														</div>
 													</div>
@@ -149,8 +145,88 @@
 						<div id="chat-header" data-id="chat" data-nav-controlled class="tab-header tab-pane">
 							#VISIO
 						</div>
-						<div id="library-header" data-id="library" data-nav-controlled class="tab-header tab-pane">
-							Library Header
+						<div id="library-header" data-id="library" data-nav-controlled class="tab-header tab-pane active show">
+							<div class="d-flex h-100 justify-content-between align-items-center">
+								<button class="c-pointer col-2 d-flex m-0 px-2 main-search" data-toggle="modal"
+									data-target="#search-tab2" type="button">
+									<ion-icon class="plannerr-icon" name="search"></ion-icon>
+									<div class="d-none d-md-block plannerr-text my-auto pl-1">Search</div>
+								</button>
+
+								<div class="modal search-tab" id="search-tab2" tabindex="-1" role="dialog"
+									aria-labelledby="searchfieldlabel2" aria-hidden="true">
+									<div class="modal-dialog modal-75" role="document">
+										<div class="col-12 no-gutters p-0 modal-content">
+											<form class="search-tab-form" id="searchForm2">
+												<h4 class="d-none" id="searchfieldlabel2">Search for anything</h4>
+												<div
+													class="d-flex plannerr-sm-icon col-12 modal-header justify-content-between no-gutters pl-4 py-2 border-bottom">
+													<svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+														<path
+															d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
+													</svg>
+													<input class="border-0 w-100 pl-3 h-100 no-outline" data-search-field id="" type="text"
+														name="generic" placeholder="Search me. No, really.">
+												</div>
+												<button
+													class="d-none con-data-search-react no-outline plannerr-sm-icon col-12 modal-footer justify-content-between no-gutters pl-4 py-2"
+													type="submit" form="searchForm2">
+													<svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+														<path
+															d="M443.5 420.2L336.7 312.4c20.9-26.2 33.5-59.4 33.5-95.5 0-84.5-68.5-153-153.1-153S64 132.5 64 217s68.5 153 153.1 153c36.6 0 70.1-12.8 96.5-34.2l106.1 107.1c3.2 3.4 7.6 5.1 11.9 5.1 4.1 0 8.2-1.5 11.3-4.5 6.6-6.3 6.8-16.7.6-23.3zm-226.4-83.1c-32.1 0-62.3-12.5-85-35.2-22.7-22.7-35.2-52.9-35.2-84.9 0-32.1 12.5-62.3 35.2-84.9 22.7-22.7 52.9-35.2 85-35.2s62.3 12.5 85 35.2c22.7 22.7 35.2 52.9 35.2 84.9 0 32.1-12.5 62.3-35.2 84.9-22.7 22.7-52.9 35.2-85 35.2z" />
+													</svg>
+													<div class="text-left w-100 pl-2" data-search-react></div>
+												</button>
+												<div id="" class="searchTabs d-none col-12 p-0 m-0 modal-body">
+													<nav class="col-12 nav nav-tabs text-center border-bottom" role="tablist">
+														<a id="" class="nav-search-filter nav-link nav-item active nav-inactive col-2"
+															href="#nav-search-threads2" data-toggle="tab" role="tab"
+															aria-controls="nav-search-threads" aria-selected="true">Threads</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-users2" data-toggle="tab" role="tab" aria-controls="nav-search-users"
+															aria-selected="false">People</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-projects2" data-toggle="tab" role="tab"
+															aria-controls="nav-search-projects" aria-selected="false">Projects</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-files2" data-toggle="tab" role="tab" aria-controls="nav-search-files"
+															aria-selected="false">Files</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-workspaces2" data-toggle="tab" role="tab"
+															aria-controls="nav-search-workspaces" aria-selected="false">Workspaces</a>
+														<a id="" class="nav-search-filter nav-link nav-item col-2 nav-inactive"
+															href="#nav-search-companies2" data-toggle="tab" role="tab"
+															aria-controls="nav-search-companies" aria-selected="false">Companies</a>
+													</nav>
+
+													<div class="col-12 m-0 p-0 tab-content">
+														<div class="tab-pane show active" data-search-param id="nav-search-threads2" role="tabpanel"
+															aria-label="">multithreaded</div>
+														<div class="tab-pane" data-search-param="Users" id="nav-search-users2" role="tabpanel"
+															aria-label="" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
+														</div>
+														<div class="tab-pane" data-search-param="Project" id="nav-search-projects2" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
+														</div>
+														<div class="tab-pane" data-search-param id="nav-search-files2" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">filereader</div>
+														<div class="tab-pane" data-search-param="Workspaces" id="nav-search-workspaces2"
+															role="tabpanel" aria-label="createCompanyLabel" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
+														</div>
+														<div class="tab-pane" data-search-param="Companies" id="nav-search-companies2" role="tabpanel"
+															aria-label="createCompanyLabel" aria-atomic="true">
+															<div class="col-12 m-0 p-0 tab-search-list"></div>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -158,7 +234,7 @@
 		</header>
 
 		<nav class="border-right">
-			<div class="d-flex border-bottom nav-tab-head">
+			<div class="d-flex border-bottom plannerr-text nav-tab-head">
 				<div class="col-3 m-auto">
 					<ion-icon class="d-block mx-auto" role="" name="flame"></ion-icon>
 				</div>
@@ -214,7 +290,7 @@
 			</footer>
 		</nav>
 
-		<section>
+		<section class="border-right">
 			<div class="container-fluid p-0">
 				<div class="row">
 					<div class="tab-content col-12 no-gutters">
@@ -292,7 +368,9 @@
 					<div data-project="project-true" data-nav-controlled class="tab-pane tab-body">
 						<div class="d-flex col-12 border-bottom">
 							<h3>Project Milestones</h3>
-							<button id="project-info" type="button">i</button>
+							<button class="btn-show-aside" type="button">
+								<ion-icon name="information-circle-outline"></ion-icon>
+							</button>
 							<button>New <i class="fas fa-sort-down"></i></button>
 						</div>
 						<div class="con-milestones py-3">
@@ -329,169 +407,188 @@
 			</div>
 		</section>
 
-		<aside id="main-aside" class="">
-			<header class="d-flex flex-nowrap justify-content-between">
-				<h3>About this project</h3>
-				<button>xxx</button>
-			</header>
-			<section class="">
-				<div class="col-12 con-about-project">
-					<div class="d-flex flex-nowrap align-items-center">
-						<span></span>
-						<div>Project details</div>
-						<button class="get-about-project-details" data-project-detail="project">arr</button>
-					</div>
-					<div class="about-project-details" data-project-detail="project">
-						<div>
-							<div class="d-flex w-100">
-								<h6 id="projectDetailsName">Name</h6>
-								<a href="" data-toggle="modal" data-target="#editProjectName">edit</a>
-								<!-- modal to edit project name -->
-								<div class="modal" id="editProjectName" tabindex="-1" role="dialog" aria-labelledby="updateProjectName"
-									aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="col-12 modal-content">
-											<div class="d-flex modal-header border-0">
-												<h4 class="modal-title" id="updateProjectName">Update project name</h4>
-												<button type="button" class="border rounded-circle close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-													<p>esc</p>
-												</button>
-											</div>
-											<form id="editProjectNameForm">
-												<div class="col-12 mx-auto modal-body">
-													<div class="form-group conInput">
-														<input placeholder="" type="text" minlength="4" class="form-control brand-input"
-															name="title" id="" required>
-													</div>
-												</div>
-												<div class="col-12 d-flex align-items-center mx-auto modal-footer">
-													<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
-													<button data-project-name="" id="btnEditProjectName" type="submit"
-														class="btn btn-primary">Update name</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div aria-labelledby="projectDetailsName" data-store-project-name>Projection</div>
-						</div>
-						<div>
-							<div class="d-flex w-100">
-								<h6 id="projectDetailsDescription">Purpose</h6>
-								<a href="" data-toggle="modal" data-target="#editProjectPurpose">edit</a>
-								<!-- modal to edit project purpose -->
-								<div class="modal" id="editProjectPurpose" tabindex="-1" role="dialog"
-									aria-labelledby="updateProjectPurpose" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="col-12 modal-content">
-											<div class="d-flex modal-header border-0">
-												<h4 class="modal-title my-2" id="updateProjectPurpose">Edit project
-													purpose</h4>
-												<button type="button" class="border rounded close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-													<p>esc</p>
-												</button>
-											</div>
-											<form id="editProjectPurposeForm">
-												<div class="col-12 mx-auto modal-body">
-													<div class="form-group conInput">
-														<input placeholder="" type="text" minlength="4" class="form-control brand-input"
-															name="description" id="" required>
-													</div>
-												</div>
-												<div class="col-12 d-flex align-items-center mx-auto modal-footer">
-													<p>Describe what this project is for...</p>
-													<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
-													<button data-project-purpose="" id="btnEditProjectPurpose" type="submit"
-														class="btn btn-primary">Update purpose</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div aria-labelledby="#projectDetailsDescription" data-store-project-desc></div>
-						</div>
-						<div data-store-project-creation></div>
-						<div id="thesePeopleCanAnswerYourQuestions"></div>
-						<div data-store-project-updated></div>
-					</div>
-				</div>
+		<aside id="main-aside" class="no-flow tab-content">
+			<div class="tab-pane main-content">
+				<header class="d-flex px-3 pt-2 border-bottom align-items-center flex-nowrap justify-content-between">
+					<h4 class="">Workspace directory</h4>
+					<button class="plannerr-sm-icon c-pointer btn-close-aside">
+						<ion-icon name="close"></ion-icon>
+					</button>
+				</header>
 
-				<div class="col-12 con-about-project">
-					<div class="d-flex align-items-center">
-						<span></span>
-						<div>Company</div>
-						<button class="get-about-project-details" data-project-detail="company">arr</button>
-					</div>
-					<div class="about-project-details" data-project-detail="company">
-						<div class="about-company-logo"></div>
-						<div class="d-flex flex-column">
-							<a href="" class="about-company-name col-12">Andela</a>
-							<small class="about-company-email">company@email.com</small>
+				<section class="flow">
+					<div class="col-12 border-bottom get-about-project-details con-about-project" data-project-detail="project">
+						<div class="d-flex flex-nowrap c-pointer about-project py-3 align-items-center">
+							<ion-icon class="col-1 m-0 p-0" name="git-merge"></ion-icon>
+							<div class="col-10 m-0 p-0">Project details</div>
+							<button class="col-1 m-0 p-0 c-pointer plannerr-sm-icon">
+								<ion-icon class="btn-toggle" name="arrow-dropright"></ion-icon>
+								<ion-icon class="btn-toggle d-none" name="arrow-dropdown"></ion-icon>
+							</button>
+						</div>
+						<div class="about-project-details" data-project-detail="project">
 							<div>
-								<h6 id="projectDetailsCompanyTime">Local Time</h6>
-								<h5 aria-labelledby="projectDetailsCompanyTime">3:45 PM</h5>
+								<div class="d-flex w-100">
+									<h6 id="projectDetailsName">Name</h6>
+									<a href="" data-toggle="modal" data-target="#editProjectName">edit</a>
+									<!-- modal to edit project name -->
+									<div class="modal" id="editProjectName" tabindex="-1" role="dialog"
+										aria-labelledby="updateProjectName" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="col-12 modal-content">
+												<div class="d-flex modal-header border-0">
+													<h4 class="modal-title" id="updateProjectName">Update project name</h4>
+													<button type="button" class="border rounded-circle close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+														<p>esc</p>
+													</button>
+												</div>
+												<form id="editProjectNameForm">
+													<div class="col-12 mx-auto modal-body">
+														<div class="form-group conInput">
+															<input placeholder="" type="text" minlength="4" class="form-control brand-input"
+																name="title" id="" required>
+														</div>
+													</div>
+													<div class="col-12 d-flex align-items-center mx-auto modal-footer">
+														<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+														<button data-project-name="" id="btnEditProjectName" type="submit"
+															class="btn btn-primary">Update name</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div aria-labelledby="projectDetailsName" data-store-project-name>Projection</div>
+							</div>
+							<div>
+								<div class="d-flex w-100">
+									<h6 id="projectDetailsDescription">Purpose</h6>
+									<a href="" data-toggle="modal" data-target="#editProjectPurpose">edit</a>
+									<!-- modal to edit project purpose -->
+									<div class="modal" id="editProjectPurpose" tabindex="-1" role="dialog"
+										aria-labelledby="updateProjectPurpose" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="col-12 modal-content">
+												<div class="d-flex modal-header border-0">
+													<h4 class="modal-title my-2" id="updateProjectPurpose">Edit project
+														purpose</h4>
+													<button type="button" class="border rounded close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+														<p>esc</p>
+													</button>
+												</div>
+												<form id="editProjectPurposeForm">
+													<div class="col-12 mx-auto modal-body">
+														<div class="form-group conInput">
+															<input placeholder="" type="text" minlength="4" class="form-control brand-input"
+																name="description" id="" required>
+														</div>
+													</div>
+													<div class="col-12 d-flex align-items-center mx-auto modal-footer">
+														<p>Describe what this project is for...</p>
+														<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+														<button data-project-purpose="" id="btnEditProjectPurpose" type="submit"
+															class="btn btn-primary">Update purpose</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div aria-labelledby="#projectDetailsDescription" data-store-project-desc></div>
+							</div>
+							<div data-store-project-creation></div>
+							<div id="thesePeopleCanAnswerYourQuestions"></div>
+							<div data-store-project-updated></div>
+						</div>
+					</div>
+
+					<div class="col-12 border-bottom get-about-project-details con-about-project" data-project-detail="company">
+						<div class="d-flex flex-nowrap c-pointer about-project py-3 align-items-center">
+							<ion-icon class="col-1 m-0 p-0" name="business"></ion-icon>
+							<div class="col-10 m-0 p-0">Company</div>
+							<button class="col-1 m-0 p-0 c-pointer plannerr-sm-icon">
+								<ion-icon class="btn-toggle" name="arrow-dropright"></ion-icon>
+								<ion-icon class="btn-toggle d-none" name="arrow-dropdown"></ion-icon>
+							</button>
+						</div>
+						<div class="about-project-details" data-project-detail="company">
+							<div class="about-company-logo"></div>
+							<div class="d-flex flex-column">
+								<a href="" class="about-company-name col-12">Andela</a>
+								<small class="about-company-email">company@email.com</small>
+								<div>
+									<h6 id="projectDetailsCompanyTime">Local Time</h6>
+									<h5 aria-labelledby="projectDetailsCompanyTime">3:45 PM</h5>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="col-12 con-about-project">
-					<div class="d-flex flex-nowrap align-items-center">
-						<span></span>
-						<div>1,200 Members</div>
-						<button class="get-about-project-details" data-project-detail="members">arr</button>
-					</div>
-					<div class="about-project-details" data-project-detail="members">
-						<div class="d-flex flex-nowrap">
-							<div class="about-member-pic"></div>
-							<h5>Member</h5>
-							<div data-online-status=""></div>
+					<div class="col-12 border-bottom get-about-project-details con-about-project" data-project-detail="members">
+						<div class="d-flex flex-nowrap c-pointer about-project py-3 align-items-center">
+							<ion-icon class="col-1 m-0 p-0" name="person"></ion-icon>
+							<div class="col-10 m-0 p-0">1,200 Members</div>
+							<button class="col-1 m-0 p-0 c-pointer plannerr-sm-icon">
+								<ion-icon class="btn-toggle" name="arrow-dropright"></ion-icon>
+								<ion-icon class="btn-toggle d-none" name="arrow-dropdown"></ion-icon>
+							</button>
 						</div>
-					</div>
-				</div>
-
-				<div class="col-12 con-about-project">
-					<div class="d-flex align-items-center">
-						<span></span>
-						<div>Shared files</div>
-						<button class="get-about-project-details" data-project-detail="sharedFiles">arr</button>
-					</div>
-					<div class="about-project-details" data-project-detail="sharedFiles">
-						wut wut wut wut wut
-					</div>
-				</div>
-
-				<button data-toggle="modal" data-target="#deleteProject" type="button" class="btn btn-danger">End
-					project</button>
-
-				<!-- modal to confirm project deletion -->
-				<div class="modal" id="deleteProject" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteProject"
-					aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="col-12 modal-content">
-							<div class="d-flex modal-header border-0">
-								<h4 class="modal-title" id="confirmDeleteProject">Are you sure you want to end project?
-								</h4>
-								<button type="button" class="border rounded-circle close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-									<p>esc</p>
-								</button>
-							</div>
-							<div class="col-12 mx-auto d-flex align-items-center modal-body">
-								<h6>This action cannot be reversed!</h6>
-								<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
-								<button id="btnDeleteProject" type="submit" class="btn btn-primary">Confirm
-									delete</button>
+						<div class="about-project-details" data-project-detail="members">
+							<div class="d-flex flex-nowrap">
+								<div class="about-member-pic"></div>
+								<h5>Member</h5>
+								<div data-online-status=""></div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+
+					<div class="col-12 border-bottom get-about-project-details con-about-project"
+						data-project-detail="sharedFiles">
+						<div class="d-flex flex-nowrap c-pointer about-project py-3 align-items-center">
+							<ion-icon class="col-1 m-0 p-0" name="copy"></ion-icon>
+							<div class="col-10 m-0 p-0">Shared files</div>
+							<button class="col-1 m-0 p-0 c-pointer plannerr-sm-icon">
+								<ion-icon class="btn-toggle" name="arrow-dropright"></ion-icon>
+								<ion-icon class="btn-toggle d-none" name="arrow-dropdown"></ion-icon>
+							</button>
+						</div>
+						<div class="about-project-details" data-project-detail="sharedFiles">
+							wut wut wut wut wut
+						</div>
+					</div>
+
+					<button data-toggle="modal" data-target="#deleteProject" type="button" class="btn btn-danger">End
+						project</button>
+
+					<!-- modal to confirm project deletion -->
+					<div class="modal" id="deleteProject" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteProject"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="col-12 modal-content">
+								<div class="d-flex modal-header border-0">
+									<h4 class="modal-title" id="confirmDeleteProject">Are you sure you want to end project?
+									</h4>
+									<button type="button" class="border rounded-circle close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										<p>esc</p>
+									</button>
+								</div>
+								<div class="col-12 mx-auto d-flex align-items-center modal-body">
+									<h6>This action cannot be reversed!</h6>
+									<button id="" type="button" class="btn" data-dismiss="modal">Cancel</button>
+									<button id="btnDeleteProject" type="submit" class="btn btn-primary">Confirm
+										delete</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="tab-pane content"></div>
 		</aside>
 	</main>
 </body>

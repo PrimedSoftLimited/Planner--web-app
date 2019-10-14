@@ -96,21 +96,12 @@ header {
     transform: translate(-50%, -40%);
 }
 
-body > nav {
-    background-color: #fff !important;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1);
-}
-
-body:not(nav) {
-    background-color: #f8f8f8;
-}
-
 .c-pointer {
 	cursor: pointer;
 }
 
 .plannerr-text {
-	color: var(--color4);
+	color: var(--color31);
 }
 
 .scroller{
@@ -386,6 +377,11 @@ input:not(:focus):valid ~ .floating-label,
 
 	.flow {
 		overflow-y: scroll;
+		height: auto;
+	}
+
+	.no-flow {
+		overflow-y: hidden;
 	}
 
 	.plannerr-tab {
@@ -473,8 +469,13 @@ input:not(:focus):valid ~ .floating-label,
 
 .plannerr-sm-icon {
 	background-color: inherit;
-	outline: none;
+	outline: none !important;
 	border: none;
+}
+
+ion-icon.plannerr-sm-icon {
+	height: 22px;
+	width: 22px;
 }
 
 .plannerr-icon svg {
@@ -487,6 +488,14 @@ input:not(:focus):valid ~ .floating-label,
 	height: 22px;
 	width: 22px;
 	line-height: 20px;
+	border-radius: 3px;
+	border: none;
+}
+
+.plannerr-md-pic {
+	height: 40px;
+	width: 40px;
+	line-height: 35px;
 	border-radius: 3px;
 	border: none;
 }
