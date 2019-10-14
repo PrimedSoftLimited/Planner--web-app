@@ -101,7 +101,7 @@ export const search = {
 									Email
 								</small>
 								<div class="">
-									example@gmail.com
+								${this.querySelector('[data-save-user-email]').dataset.saveUserEmail}
 								</div>
 							</div>
 						</section>
@@ -424,14 +424,14 @@ export const search = {
 							if (message.includes('Users')) {
 								search.clear(searchComponent.querySelector('[data-search-param="Users"] .tab-search-list'));
 								search_result.forEach(result => {
-									let { name, username, user_image } = result;
+									let { name, username, user_image, email } = result;
 									searchComponent.querySelector('[data-search-param="Users"] .tab-search-list').innerHTML += `
 										<div class="d-flex search-item m-0 align-items-center pl-4 py-2 col-12" data-search-item data-search-user-class="focus">
 											<button type="button" class="plannerr-sm-pic" aria-label="">
 												<img src="" alt="">
 											</button>
 											<div class="d-flex col-11">
-												<span data-save-user-username="${username}">${username}</span>
+												<span data-save-user-email="${email}" data-save-user-username="${username}">${username}</span>
 												<div class="online-status"></div>
 												<span class="pl-1" data-save-user-name="${name}">- ${name}</span>
 											</div>

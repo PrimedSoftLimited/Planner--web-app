@@ -10,7 +10,6 @@ export const join = {
 			.then(response => {
 				if (response.data) {
 					console.log(response);
-					this.disabled = true;
 					return Promise.resolve(response);
 				}
 			})
